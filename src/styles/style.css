@@ -1,0 +1,70 @@
+@import url('http://fonts.cdnfonts.com/css/montserrat');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Montserrat',sans-serif;                                    
+    background-color: #223343;
+}
+header h1{
+    color: #FFF;
+    font-size: 48px;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    padding-top: 25px;
+}
+.login{
+    color: #FFF;
+    display: flex;
+    position: absolute;
+    top: 2%;
+    left: 75%;
+    transform: translate(0, -20%)
+}
+.register{
+    color: #FFF;
+    display: flex;
+    position: absolute;
+    top: 2%;
+    left: 84%;
+    transform: translate(0, -20%)
+   
+}
+
+
+main{
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+section{
+    padding: 15px;
+}
+
+.searchbox{
+    display: block;
+    width: 100%;
+    padding: 15px;
+
+    border: none;
+    outline: none;
+    background: none;
+
+    background-color: #EEE;
+    border-radius: 8px;
+
+    color: #53565A;
+    font-size: 20px;
+    font-weight: 300;
+
+    transition: 0.4s ease-out;
+}
+
+.searchbox:focus{
+    box-shadow: 0px 0px 8px 3px #4484C4;
+}
