@@ -1,14 +1,19 @@
 @import url('http://fonts.cdnfonts.com/css/montserrat');
 
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+
 body{
     font-family: 'Montserrat',sans-serif;                                    
     background-color: #223343;
 }
+
+
 header h1{
     color: #FFF;
     font-size: 48px;
@@ -17,6 +22,8 @@ header h1{
     position: relative;
     padding-top: 25px;
 }
+
+
 .login{
     color: #FFF;
     display: flex;
@@ -25,6 +32,8 @@ header h1{
     left: 75%;
     transform: translate(0, -20%)
 }
+
+
 .register{
     color: #FFF;
     display: flex;
@@ -42,9 +51,11 @@ main{
     margin: 0 auto;
 }
 
+
 section{
     padding: 15px;
 }
+
 
 .searchbox{
     display: block;
@@ -65,6 +76,129 @@ section{
     transition: 0.4s ease-out;
 }
 
+
 .searchbox:focus{
     box-shadow: 0px 0px 8px 3px #4484C4;
+}
+
+
+.results{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px -15px;
+}
+
+
+.results .result{
+    width: 33.333%;
+    min-width: 250px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+
+.results .result img {
+    display: block;
+    width: 100%;
+}
+
+
+.results .result h3{
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 10px;
+    background: #445565;
+    flex: 1 1 100%;
+    transition: 0.4s ease-out;
+}
+
+
+.results .result:hover h3 {
+    background: #FFF;
+    color: #223343;
+}
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #445565;
+
+    overflow-y: scroll;
+}
+
+
+.popup .content {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 25px;
+
+    color: #FFF;
+}
+
+
+.popup .content h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+
+.popup .content h2 span {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+
+.popup .content .rating {
+    margin-bottom: 30px;
+}
+
+
+.popup .content .plot {
+    display: block;
+    flex-wrap: wrap;
+    margin: 0px -15px 30px;
+}
+
+
+.popup .content .plot img {
+    flex: 1 1 50%;
+    max-width: 300px;
+    padding: 0px 15px;
+}
+
+
+.popup .content .plot p {
+    flex: 1 1 50%;
+    padding: 15px;
+}
+
+
+.popup .content .close {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+
+    background: #4484C4;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+
+    transition: 0.4s ease-out;
+}
+
+
+.popup .content .close:hover {
+    background: #223343;
 }
