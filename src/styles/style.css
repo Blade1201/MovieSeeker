@@ -10,17 +10,20 @@
 
 body{
     font-family: 'Montserrat',sans-serif;                                    
-    background-color: #223343;
+    background-color: #000000;
 }
 
+.topbar{
+    border-bottom: 1px solid #26c485;
+    display: grid;
+    background-color: black;
+}
 
-header h1{
+.logo{
     color: #FFF;
-    font-size: 48px;
-    font-weight: 500;
-    text-align: center;
+    width: 50px;
+    height: 50px;
     position: relative;
-    padding-top: 25px;
 }
 
 
@@ -28,9 +31,8 @@ header h1{
     color: #FFF;
     display: flex;
     position: absolute;
-    top: 2%;
     left: 75%;
-    transform: translate(0, -20%)
+    transform: translate(0, +100%)
 }
 
 
@@ -38,9 +40,8 @@ header h1{
     color: #FFF;
     display: flex;
     position: absolute;
-    top: 2%;
     left: 84%;
-    transform: translate(0, -20%)
+    transform: translate(0, +100%)
    
 }
 
@@ -58,10 +59,12 @@ section{
 
 
 .searchbox{
-    display: block;
-    width: 100%;
-    padding: 15px;
-
+    position: relative;
+    transform: translate(-50%, -157%);
+    display: flex;
+    width: 33%;
+    padding: 6px;
+    
     border: none;
     outline: none;
     background: none;
@@ -78,7 +81,7 @@ section{
 
 
 .searchbox:focus{
-    box-shadow: 0px 0px 8px 3px #4484C4;
+    box-shadow: 0px 0px 8px 3px #26c485;
 }
 
 
@@ -105,6 +108,11 @@ section{
 }
 
 
+.results .result:hover {
+    box-shadow: 0px 0px 8px 3px #26c485;
+}
+
+
 .results .result h3{
     color: #FFF;
     font-size: 20px;
@@ -117,8 +125,8 @@ section{
 
 
 .results .result:hover h3 {
-    background: #FFF;
-    color: #223343;
+    background: #26c485;
+    color: #000000;
 }
 
 
@@ -128,7 +136,7 @@ section{
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: #445565;
+    background-color: #161515;
 
     overflow-y: scroll;
 }
@@ -172,7 +180,7 @@ section{
 .popup .content .plot img {
     flex: 1 1 50%;
     max-width: 300px;
-    padding: 0px 15px;
+    box-shadow: 0px 0px 8px 3px #26c485;
 }
 
 
@@ -187,8 +195,8 @@ section{
     padding: 15px 30px;
     font-size: 18px;
     font-weight: 700;
-
-    background: #4484C4;
+    color: #FFF;
+    background: #445565;
     border-radius: 8px;
     border: none;
     outline: none;
@@ -200,5 +208,6 @@ section{
 
 
 .popup .content .close:hover {
-    background: #223343;
+    background: #26c485;
+    color: #000000;
 }
