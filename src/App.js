@@ -7,12 +7,18 @@ import Popup from './components/Popup'
 
 
 function App() {
+  
   const [state, setState] = useState({
     s: "",
     results: [],
     selected: {}
   });
+
+
   const apiurl = "http://www.omdbapi.com/?apikey=e7a640a0";
+
+
+
 
   const search = (e) => {
     if (e.key === "Enter") {
@@ -26,6 +32,8 @@ function App() {
     }
   }
   
+
+
   const handleInput = (e) => {
     let s = e.target.value;
 
@@ -36,11 +44,14 @@ function App() {
   //  console.log(state.s)
   }
 
+
+
+
   const openPopup = id => {
     axios(apiurl + "&i=" + id).then(({ data }) => {
       let result = data;
 
-  //  console.log(result);
+  // console.log(result);
 
       setState(prevState => {
         return { ...prevState, selected: result }
@@ -48,11 +59,15 @@ function App() {
     });
   }
 
+
+
+
   const closePopup = () => {
     setState(prevState => {
       return { ...prevState, selected: {} }
     });
   }
+
 
 
   return (
@@ -63,16 +78,16 @@ function App() {
       <p className='login'>Bejelentkezés</p>
       <p className='register'>Regisztráció</p>
       <img className='logo' alt='logo' src={require('./logo_transparent.png')} />
-
+      <Search handleInput = {handleInput} search = {search}/>
     </div>
  
 
       <main>
-      <Search handleInput = {handleInput} search = {search}/>
       <Results results={state.results} openPopup={openPopup}/>
 
       {(typeof state.selected.Title != "undefined") ? <Popup selected={state.selected} closePopup={closePopup} /> : false}
       </main>
+
     </div>
   )
 }

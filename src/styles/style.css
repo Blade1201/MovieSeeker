@@ -59,11 +59,11 @@ section{
 
 
 .searchbox{
-    position: relative;
-    transform: translate(-50%, -157%);
+    position: absolute;
     display: flex;
-    width: 33%;
+    width: 24%;
     padding: 6px;
+    transform: translate(+25%, +27%);
     
     border: none;
     outline: none;
@@ -88,7 +88,7 @@ section{
 .results{
     display: flex;
     flex-wrap: wrap;
-    margin: 0px -15px;
+    margin: 20px -15px;
 }
 
 
@@ -166,6 +166,16 @@ section{
 
 
 .popup .content .rating {
+    margin-bottom: 2px;
+}
+
+
+.popup .content .genre {
+    margin-bottom: 2px;
+}
+
+
+.popup .content .runtime {
     margin-bottom: 30px;
 }
 

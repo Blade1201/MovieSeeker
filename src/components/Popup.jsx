@@ -5,12 +5,14 @@ function Popup({ selected, closePopup }) {
 		<section className="popup">
 			<div className="content">
                 
-				<h2>{ selected.Title } <span>({ selected.Year })</span></h2>
+				<h2>{ selected.Title } <span>({ selected.Year }) {selected.Rated}</span></h2>
 
 				<p className="rating"> Értékelés: {selected.imdbRating}</p>
+				<p className="genre"> Műfaj: {selected.Genre}</p>
+				<p className="runtime"> Játékidő: {selected.Runtime}</p>
 
 				<div className="plot">
-					<img src={selected.Poster} />
+					<img src={selected.Poster} alt={selected.Title}/>
 					<p>{selected.Plot}</p>
 				</div>
 
