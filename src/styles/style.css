@@ -58,6 +58,12 @@ section{
 }
 
 
+.error{
+    color: #26c485;
+    transform: translate(-40%, -120%);
+}
+
+
 .searchbox{
     position: absolute;
     display: flex;

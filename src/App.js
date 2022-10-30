@@ -22,12 +22,14 @@ function App() {
 
   const search = (e) => {
     if (e.key === "Enter") {
-      axios(apiurl + "&s=" + state.s).then(({ data }) => {
+      axios(apiurl + "&s=" + state.s)
+          .then(({ data }) => {
         let results = data.Search;
 
         setState(prevState => {
           return { ...prevState, results: results }
         })
+
       });
     }
   }
@@ -84,7 +86,6 @@ function App() {
 
       <main>
       <Results results={state.results} openPopup={openPopup}/>
-
       {(typeof state.selected.Title != "undefined") ? <Popup selected={state.selected} closePopup={closePopup} /> : false}
       </main>
 
