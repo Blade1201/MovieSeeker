@@ -6,6 +6,7 @@ import Results from './components/Results'
 import Popup from './components/Popup'
 
 
+
 function App() {
   
   const [state, setState] = useState({
@@ -71,18 +72,18 @@ function App() {
   }
 
 
-
   return (
     <div className="App">
 
     <div className="topbar">
 
-      <p className='login'>Bejelentkezés</p>
-      <p className='register'>Regisztráció</p>
+      <button className="button"><span>Bejelentkezés</span></button>
+
+
       <img className='logo' alt='logo' src={require('./logo_transparent.png')} />
       <Search handleInput = {handleInput} search = {search}/>
     </div>
- 
+
 
       <main>
       <Results results={state.results} openPopup={openPopup}/>

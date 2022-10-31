@@ -1,0 +1,63 @@
+body {
+    text-align: center;
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-image: linear-gradient(  35deg,
+    hsl(0deg 0% 0%) 0%,
+    hsl(0deg 0% 0%) 8%,
+    hsl(0deg 0% 0%) 17%,
+    hsl(0deg 0% 0%) 25%,
+    hsl(0deg 12% 8%) 33%,
+    hsl(0deg 11% 17%) 42%,
+    hsl(0deg 11% 25%) 50%,
+    hsl(9deg 10% 37%) 58%,
+    hsl(23deg 9% 50%) 67%,
+    hsl(34deg 8% 62%) 75%,
+    hsl(39deg 33% 71%) 83%,
+    hsl(44deg 59% 81%) 92%,
+    hsl(50deg 84% 90%) 100%);
+}
+
+.auth-form-container, .login-form, .register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 600px) {
+    .auth-form-container {
+        padding: 5rem;
+        border: 1px solid white;
+        border-radius: 10px;
+        margin: 0.5rem;
+    }
+}
+
+label {
+    text-align: left;
+    padding: 0.25rem 0;
+}
+
+input {
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border: none;
+    border-radius: 10px;
+}
+
+button {
+    border: none;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #7439db;
+}
+
+.link-btn {
+    background: none;
+    color: white;
+    text-decoration: underline;
+}
