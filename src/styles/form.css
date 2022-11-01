@@ -1,4 +1,4 @@
-body {
+.form {
     text-align: center;
     display: flex;
     min-height: 100vh;
@@ -21,10 +21,12 @@ body {
     hsl(50deg 84% 90%) 100%);
 }
 
+
 .auth-form-container, .login-form, .register-form {
     display: flex;
     flex-direction: column;
 }
+
 
 @media screen and (min-width: 600px) {
     .auth-form-container {
@@ -35,29 +37,80 @@ body {
     }
 }
 
-label {
+
+.formLabel {
+    padding-top: 20px;
     text-align: left;
-    padding: 0.25rem 0;
 }
 
-input {
+
+.formInput {
     margin: 0.5rem 0;
     padding: 1rem;
     border: none;
     border-radius: 10px;
 }
 
-button {
-    border: none;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
+
+.btn {
+    width: 180px;
+    height: 60px;
+    position: relative;
+    transform: translate(17%,0);
     cursor: pointer;
-    color: #7439db;
+    background: transparent;
+    border: 1px solid #91C9FF;
+    border-radius: 8px;
+    outline: none;
+    transition: 1s ease-in-out;
 }
 
+
+svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    fill: none;
+    border-radius: 8px;
+    stroke: #fff;
+    stroke-dasharray: 150 480;
+    stroke-dashoffset: 150;
+    transition: 0.7s ease-in-out;
+}
+
+
+.btn:hover {
+    transition: 1s ease-in-out;
+    background: #4F95DA;
+}
+
+
+.btn:hover svg {
+    stroke-dashoffset: -480;
+}
+
+
+.btn span {
+    color: white;
+    font-size: 18px;
+    font-weight: 100;
+}
+
+
 .link-btn {
+    transform: translate(0,+50%);
     background: none;
+    border: none;
+    color: white;
+    text-decoration: underline;
+}
+
+
+.link-btn-return{
+    transform: translate(+100%,+190%);
+    background: none;
+    width: 80px;
+    border: none;
     color: white;
     text-decoration: underline;
 }
