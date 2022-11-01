@@ -6,6 +6,7 @@ import Results from './components/Results'
 import Popup from './components/Popup'
 
 
+
 function App() {
   
   const [state, setState] = useState({
@@ -22,12 +23,14 @@ function App() {
 
   const search = (e) => {
     if (e.key === "Enter") {
-      axios(apiurl + "&s=" + state.s).then(({ data }) => {
+      axios(apiurl + "&s=" + state.s)
+          .then(({ data }) => {
         let results = data.Search;
 
         setState(prevState => {
           return { ...prevState, results: results }
         })
+
       });
     }
   }
@@ -69,22 +72,21 @@ function App() {
   }
 
 
-
   return (
     <div className="App">
 
     <div className="topbar">
 
-      <p className='login'>Bejelentkezés</p>
-      <p className='register'>Regisztráció</p>
+      <button className="button"><span>Bejelentkezés</span></button>
+
+
       <img className='logo' alt='logo' src={require('./logo_transparent.png')} />
       <Search handleInput = {handleInput} search = {search}/>
     </div>
- 
+
 
       <main>
       <Results results={state.results} openPopup={openPopup}/>
-
       {(typeof state.selected.Title != "undefined") ? <Popup selected={state.selected} closePopup={closePopup} /> : false}
       </main>
 

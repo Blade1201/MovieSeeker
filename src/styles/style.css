@@ -27,24 +27,46 @@ body{
 }
 
 
-.login{
-    color: #FFF;
+.button {
+    border-radius: 4px;
+    background-color: #26c485;
+    border: none;
     display: flex;
     position: absolute;
-    left: 75%;
-    transform: translate(0, +100%)
+    left: 83%;
+    transform: translate(0, +60%);
+    color: #000000;
+    text-align: center;
+    font-size: 19px;
+    width: 141px;
+    transition: all 0.5s;
+    cursor: pointer;
 }
 
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
 
-.register{
-    color: #FFF;
-    display: flex;
+.button span:after {
+    content: '\00bb';
     position: absolute;
-    left: 84%;
-    transform: translate(0, +100%)
-   
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
 }
 
+.button:hover span {
+    padding-right: 25px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
+}
 
 main{
     width: 100%;
@@ -55,6 +77,12 @@ main{
 
 section{
     padding: 15px;
+}
+
+
+.error{
+    color: #26c485;
+    transform: translate(-40%, -120%);
 }
 
 
