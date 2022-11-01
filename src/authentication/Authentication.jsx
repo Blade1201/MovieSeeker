@@ -3,7 +3,7 @@ import Login from "../components/Login";
 import Register from "../components/Register";
 import "../styles/form.css"
 
-function Navigate() {
+function Authentication() {
     const [currentForm, setCurrentForm] = useState('login');
 
     const toggleForm = (formName) => {
@@ -11,7 +11,7 @@ function Navigate() {
     }
 
     return(
-        <div>
+        <div className="form">
         {
             currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
         }
@@ -19,4 +19,4 @@ function Navigate() {
     )
 }
 
-export default Navigate;
+export default Authentication;

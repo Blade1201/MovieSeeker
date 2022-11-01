@@ -1,97 +1,33 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React from 'react'
 import './styles/style.css'
-import Search from './components/Search'
-import Results from './components/Results'
-import Popup from './components/Popup'
+import Navbar from "./components/Navbar";
+import Authentication from "./authentication/Authentication";
+import {BrowserRouter as Router, Routes, Route, BrowserRouter} from "react-router-dom";
+
+
 
 
 
 function App() {
   
-  const [state, setState] = useState({
-    s: "",
-    results: [],
-    selected: {}
-  });
-
-
-  const apiurl = "http://www.omdbapi.com/?apikey=e7a640a0";
-
-
-
-
-  const search = (e) => {
-    if (e.key === "Enter") {
-      axios(apiurl + "&s=" + state.s)
-          .then(({ data }) => {
-        let results = data.Search;
-
-        setState(prevState => {
-          return { ...prevState, results: results }
-        })
-
-      });
-    }
-  }
-  
-
-
-  const handleInput = (e) => {
-    let s = e.target.value;
-
-    setState(prevState => {
-      return { ...prevState, s: s }
-    });
-
-  //  console.log(state.s)
-  }
-
-
-
-
-  const openPopup = id => {
-    axios(apiurl + "&i=" + id).then(({ data }) => {
-      let result = data;
-
-  // console.log(result);
-
-      setState(prevState => {
-        return { ...prevState, selected: result }
-      });
-    });
-  }
-
-
-
-
-  const closePopup = () => {
-    setState(prevState => {
-      return { ...prevState, selected: {} }
-    });
-  }
-
 
   return (
     <div className="App">
 
-    <div className="topbar">
+      <BrowserRouter>
+          <Routes>
 
-      <button className="button"><span>Bejelentkezés</span></button>
+              <Route path="/" element={<Navbar/>}/>
 
+              <Route path="/authentication" element={<Authentication/>}/>
 
-      <img className='logo' alt='logo' src={require('./logo_transparent.png')} />
-      <Search handleInput = {handleInput} search = {search}/>
-    </div>
+          </Routes>
 
-
-      <main>
-      <Results results={state.results} openPopup={openPopup}/>
-      {(typeof state.selected.Title != "undefined") ? <Popup selected={state.selected} closePopup={closePopup} /> : false}
-      </main>
+      </BrowserRouter>
 
     </div>
   )
 }
+
 
 export default App;
