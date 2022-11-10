@@ -1,11 +1,10 @@
 const express = require('express');
 const app = express();
-const port = 5000;
+const PORT = 5000;
+const apiRouter = require("./routes/api");
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+app.use("/api", apiRouter);
 
-app.listen(port, () => {
-    console.log(`Server is running on port ${port}.`)
+app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}.`)
 })
