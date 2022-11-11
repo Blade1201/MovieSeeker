@@ -13,27 +13,26 @@ function Navbar(){
     });
 
 
-    const apiurl = "http://www.omdbapi.com/?apikey=e7a640a0";
+    const apiurl = "/api?";
 
-
-    function searchWithButton() {
+    const searchWithButton = () => {
             axios(apiurl + "&s=" + state.s)
                 .then(({ data }) => {
-                    let results = data.Search;
+                    let results = data;
 
                     setState(prevState => {
                         return { ...prevState, results: results }
                     })
 
                 });
-        }
+            }
 
 
     const searchWithEnter = (e) => {
         if (e.key === "Enter") {
             axios(apiurl + "&s=" + state.s)
                 .then(({ data }) => {
-                    let results = data.Search;
+                    let results = data
 
                     setState(prevState => {
                         return { ...prevState, results: results }
@@ -58,8 +57,8 @@ function Navbar(){
 
 
 
-    const openPopup = id => {
-        axios(apiurl + "&i=" + id).then(({ data }) => {
+    const openPopup = props => {
+        axios(apiurl + "&i=" + props.id + "&m="+ props.type).then(({ data }) => {
             let result = data;
 
             // console.log(result);

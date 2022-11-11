@@ -10,7 +10,7 @@ function Results ({ results, openPopup }) {
 				!results ?   <p className="error">Nincs találat, kérem keressen újra!</p>:
 				results.map(result => (
 
-				<Result key={result.imdbID} result={result} openPopup={openPopup} />
+				<Result key={result.ImdbID} result={result} openPopup={openPopup} />
 			))}
 		</section>
 	)

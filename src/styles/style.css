@@ -19,7 +19,7 @@
     text-align: center;
     font-size: 18px;
     padding: 7px;
-    width: 92px;
+    width: 6.6%;
     transition: all 0.5s;
     cursor: pointer;
 }
@@ -85,15 +85,15 @@ body{
     padding-top: 4px;
     padding-left: 5px;
     width: 137px;
-    display: flex;
+    display: inline-block;
     position: absolute;
-    left: 84%;
     transform: translate(0, +40%);
     color: #fff;
     background: #111;
     cursor: pointer;
     z-index: 0;
     border-radius: 10px;
+    right: 100px;
 }
 
 
@@ -155,6 +155,9 @@ section{
 .error{
     color: #26c485;
     transform: translate(-40%, -120%);
+    text-align: center;
+    position: relative;
+    left: 110px;
 }
 
 
@@ -205,6 +208,7 @@ section{
 .results .result img {
     display: block;
     width: 100%;
+    height: 800%;
 }
 
 
