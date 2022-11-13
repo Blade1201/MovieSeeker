@@ -20,6 +20,7 @@ function Navbar(){
     const apiurl = "/api?";
 
     const searchWithButton = () => {
+        if (state.s.length !== 0){
             axios(apiurl + "&s=" + state.s)
                 .then(({ data }) => {
                     let results = data;
@@ -30,9 +31,11 @@ function Navbar(){
 
                 });
             }
+    }
 
 
     const searchWithEnter = (e) => {
+        if (state.s.length !==0){
         if (e.key === "Enter") {
             axios(apiurl + "&s=" + state.s)
                 .then(({ data }) => {
@@ -43,7 +46,7 @@ function Navbar(){
                     })
 
                 });
-        }
+        }}
     }
 
 
@@ -55,8 +58,8 @@ function Navbar(){
             return { ...prevState, s: s }
         });
 
-
-        axios(apiurl + "&s=" + s)
+        if(s.length !==0){
+       axios(apiurl + "&s=" + s)
             .then(({ data }) => {
                 let results = data;
 
@@ -64,7 +67,7 @@ function Navbar(){
                     return { ...prevState, query: results }
                 })
 
-            });
+            });}
 
         //  console.log(s)
     }
