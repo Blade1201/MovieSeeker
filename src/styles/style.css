@@ -8,6 +8,11 @@
 }
 
 
+.suggestions{
+    color: #26c485;
+}
+
+
 .searchWithButton {
     display: inline-block;
     border-radius: 10px;
