@@ -9,7 +9,7 @@ router.get("/", async (req, res) => {
 
     let json = "";
 
-    if (typeof s === "string") {
+    if (s !== undefined) {
         s = s.trim();
         if (s) {
             await searchMedia(s).then(mediaList => {
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
                     json = mediaList;
             });
         }
-    } else if (typeof m === "string" && i === "string") {
+    } else if (m !== undefined && i !== undefined) {
        m = m.trim();
        i = i.trim();
 
