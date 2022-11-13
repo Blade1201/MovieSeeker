@@ -3,12 +3,16 @@ import axios from "axios";
 import Search from "./Search";
 import Results from "./Results";
 import Popup from "./Popup";
+import LogoImage from "../images/logo_transparent.png";
+
+import Suggestions from "./Suggestions";
 
 
 function Navbar(){
     const [state, setState] = useState({
         s: "",
         results: [],
+        query: [],
         selected: {}
     });
 
@@ -51,9 +55,19 @@ function Navbar(){
             return { ...prevState, s: s }
         });
 
-        //  console.log(state.s)
-    }
 
+        axios(apiurl + "&s=" + s)
+            .then(({ data }) => {
+                let results = data;
+
+                setState(prevState => {
+                    return { ...prevState, query: results }
+                })
+
+            });
+
+        //  console.log(s)
+    }
 
 
 
@@ -61,7 +75,7 @@ function Navbar(){
         axios(apiurl + "&i=" + props.id + "&m="+ props.type).then(({ data }) => {
             let result = data;
 
-            // console.log(result);
+          //   console.log(result);
 
             setState(prevState => {
                 return { ...prevState, selected: result }
@@ -87,9 +101,9 @@ return(
             <a type="button" className="redirectButton"  href="/authentication">Bejelentkezés</a>
 
 
-            <img className='logo' alt='logo' src={require('../images/logo_transparent.png')} />
+            <img className='logo' alt='logo' src={LogoImage} />
             <Search handleInput = {handleInput} search = {searchWithEnter}/>
-
+             <Suggestions results={state.query}/>
             <button className="searchWithButton" onClick={searchWithButton}><span>Keresés</span></button>
 
         </div>
