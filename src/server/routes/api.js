@@ -5,20 +5,29 @@ const express = require("express");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
-    const {s, m, i} = req.query;
+    let {s, m, i} = req.query;
 
     let json = "";
 
-    if (s !== undefined) {
-       await searchMedia(s).then(mediaList => {
-            if (mediaList.length > 0)
-                json = mediaList;
-        });
-    } else if (m !== undefined && i !== undefined) {
-        await searchDetails(m, i).then(details => {
-            json = details;
-        });
+    if (typeof s === "string") {
+        s = s.trim();
+        if (s) {
+            await searchMedia(s).then(mediaList => {
+                if (mediaList.length > 0)
+                    json = mediaList;
+            });
+        }
+    } else if (typeof m === "string" && i === "string") {
+       m = m.trim();
+       i = i.trim();
+
+       if (m && i) {
+           await searchDetails(m, i).then(details => {
+               json = details;
+           });
+       }
     }
+
     return res.json(json);
 })
 
