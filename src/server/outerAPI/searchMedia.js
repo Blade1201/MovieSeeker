@@ -23,13 +23,17 @@ const fetchList = () => {
         .catch(console.error);
 }
 
+const removePeopleFromTheList = list => {
+    return list.filter(result => result["media_type"] !== "person");
+};
+
 const filterSearchList = list => {
-    return list.map(media => {
+    return removePeopleFromTheList(list).map(media => {
         return {
-            Id: media["id"],
-            Type: media["media_type"],
-            Title: media["title"] ?? media["name"],
-            Poster: conf.imageAbsolutePath(media["poster_path"] ?? media["profile_path"])
+            Id: media["id"] ?? null,
+            Type: media["media_type"] ?? null,
+            Title: media["title"] ?? media["name"] ?? null,
+            Poster: media["poster_path"] ? conf.imageAbsolutePath(media["poster_path"]) : null
         }
     })
 }
