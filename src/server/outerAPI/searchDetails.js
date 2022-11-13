@@ -68,6 +68,11 @@ const getCast = credits => {
     });
 };
 
+const reduceArraySize = (cast, newSize) => {
+    if (!Array.isArray(cast)) return null;
+    return cast.slice(0, newSize);
+};
+
 const filterDetails = details => {
     const Title = details["title"] ?? details["name"] ?? null;
     const ImdbID = details["external_ids"]["imdb_id"] ?? null;
@@ -79,7 +84,7 @@ const filterDetails = details => {
     const Plot = details["overview"] ?? null;
     const Providers = getWatchProviders(details["watch/providers"]);
     const Videos = getVideos(details["videos"]);
-    const Cast = getCast(details["credits"]);
+    const Cast = reduceArraySize(getCast(details["credits"]), 15);
 
     return {
         Title,
