@@ -1,10 +1,11 @@
 import React from "react";
 
-function Search(props){
+function Search({handleInput,search}){
+
 
     return(
 
-            <input type="text" placeholder="Keresés..." className="searchbox" onChange = {props.handleInput} onKeyPress = {props.search}/>
+            <input type="text" placeholder="Keresés..." className="searchbox" onChange = {handleInput} onKeyPress = {search}/>
 
 )
 }

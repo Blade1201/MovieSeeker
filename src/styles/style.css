@@ -8,8 +8,36 @@
 }
 
 
+.slider_cast_image{
+    margin: auto;
+    width: 50%;
+    height: 50%;
+}
+
+
+.slider_cast_paragraph{
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+
+.slider_cast_name{
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+/*
+
 .suggestions{
     color: #26c485;
+}
+*/
+
+
+.href_size_correction{
+    width: 50px;
 }
 
 

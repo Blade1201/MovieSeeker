@@ -5,7 +5,7 @@ import Results from "./Results";
 import Popup from "./Popup";
 import LogoImage from "../images/logo_transparent.png";
 
-import Suggestions from "./Suggestions";
+// import Suggestions from "./Suggestions";
 
 
 function Navbar(){
@@ -58,6 +58,7 @@ function Navbar(){
             return { ...prevState, s: s }
         });
 
+        {/*
         if(s.length !==0){
        axios(apiurl + "&s=" + s)
             .then(({ data }) => {
@@ -67,7 +68,7 @@ function Navbar(){
                     return { ...prevState, query: results }
                 })
 
-            });}
+            });} */}
 
         //  console.log(s)
     }
@@ -78,7 +79,7 @@ function Navbar(){
         axios(apiurl + "&i=" + props.id + "&m="+ props.type).then(({ data }) => {
             let result = data;
 
-          //   console.log(result);
+             console.log(result);
 
             setState(prevState => {
                 return { ...prevState, selected: result }
@@ -104,9 +105,9 @@ return(
             <a type="button" className="redirectButton"  href="/authentication">Bejelentkezés</a>
 
 
-            <img className='logo' alt='logo' src={LogoImage} />
+            <a className="href_size_correction" href="/"><img className='logo' alt='logo' src={LogoImage} /></a>
             <Search handleInput = {handleInput} search = {searchWithEnter}/>
-             <Suggestions results={state.query}/>
+            {/* <Suggestions results={state.query}/> */}
             <button className="searchWithButton" onClick={searchWithButton}><span>Keresés</span></button>
 
         </div>
