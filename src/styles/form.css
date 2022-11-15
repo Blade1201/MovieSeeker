@@ -38,8 +38,13 @@
 }
 
 
+.error_message{
+    color: #FF0000FF;
+}
+
+
 .formLabel {
-    padding-top: 20px;
+    padding-top: 8px;
     text-align: left;
 }
 
@@ -56,7 +61,7 @@
     width: 180px;
     height: 60px;
     position: relative;
-    transform: translate(17%,0);
+    transform: translate(17%,4%);
     cursor: pointer;
     background: transparent;
     border: 1px solid #91C9FF;
@@ -98,7 +103,7 @@ svg {
 
 
 .link-btn {
-    transform: translate(0,+50%);
+    transform: translate(0,+75%);
     background: none;
     border: none;
     color: white;

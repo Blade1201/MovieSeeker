@@ -8,7 +8,7 @@ import LogoImage from "../images/logo_transparent.png";
 // import Suggestions from "./Suggestions";
 
 
-function Navbar(){
+function Home(){
     const [state, setState] = useState({
         s: "",
         results: [],
@@ -121,4 +121,4 @@ return(
     )
 }
 
-export default Navbar;
+export default Home;

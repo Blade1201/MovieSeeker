@@ -5,7 +5,7 @@ function Search({handleInput,search}){
 
     return(
 
-            <input type="text" placeholder="Keresés..." className="searchbox" onChange = {handleInput} onKeyPress = {search}/>
+            <input type="text" placeholder="Keresés..." className="searchbox" onChange = {handleInput} onKeyDown = {search}/>
 
 )
 }
