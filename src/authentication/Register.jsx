@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 
-export const Register = (props) => {
+export const Register = ({onFormSwitch}) => {
 
     const [formInput, setFormInput] = useState({
         email: "",
@@ -148,7 +148,7 @@ export const Register = (props) => {
 
 
 
-            <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Van már felhasználói fiókod? Jelentkezz be.</button>
+            <button className="link-btn" onClick={() => onFormSwitch('login')}>Van már felhasználói fiókod? Jelentkezz be.</button>
             <a type="button" className="link-btn-return"  href="/">Mégsem</a>
 
         </div>

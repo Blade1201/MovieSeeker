@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const Login = (props) => {
+export const Login = ({onFormSwitch}) => {
 
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
@@ -34,7 +34,7 @@ export const Login = (props) => {
             </form>
 
 
-            <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Nincs még felhasználói fiókod? Regisztrálj.</button>
+            <button className="link-btn" onClick={() => onFormSwitch('register')}>Nincs még felhasználói fiókod? Regisztrálj.</button>
             <a type="button" className="link-btn-return"  href="/">Mégsem</a>
 
         </div>
