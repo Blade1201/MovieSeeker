@@ -89,7 +89,7 @@ const Popup = ({ selected, closePopup }) =>{
 											 onError={e => e.target.src = ReplacementImage} />
 										<p className="slider_provider_name">{item.Name}</p>
 									</div>
-								)) : <img className="slider_provider_image" src={ReplacementImage}/>}
+								)) : <img className="slider_provider_image" alt="Image_Not_Found!" src={ReplacementImage}/>}
 							</Slider>
 						</div>
 					</div>
