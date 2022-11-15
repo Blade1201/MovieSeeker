@@ -47,7 +47,7 @@ const Popup = ({ selected, closePopup }) =>{
 	const tomb = []
 	let videoCode;
 
-	// eslint-disable-next-line no-unused-expressions
+	// eslint-disable-next-line no-unused-expressions,no-lone-blocks
 	{ selected.Videos !== null ? selected.Videos.forEach(data => tomb.push(data.Url)) : ""}
 
 	for (let i = 0; i < tomb.length; i++) {
