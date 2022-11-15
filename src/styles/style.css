@@ -10,8 +10,9 @@
 
 .slider_provider_image{
     margin: auto;
-    width: 50%;
-    height: 50%;
+    width: 94px;
+    height: 94px;
+
 }
 
 
@@ -25,7 +26,9 @@
 
 
 .player{
+    text-align: center;
     padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 
@@ -37,8 +40,8 @@
 
 .slider_cast_image{
     margin: auto;
-    width: 50%;
-    height: 50%;
+    width: 94px;
+    height: 141px;
 }
 
 

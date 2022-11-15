@@ -6,14 +6,9 @@ import "slick-carousel/slick/slick-theme.css";
 import YouTube from "react-youtube";
 
 const Popup = ({ selected, closePopup }) =>{
-	let errorflag = true;
 
-	let [videoUrl, setVideoUrl] = React.useState("");
 
-	let videoCode;
-	if (videoUrl) {
-		videoCode = videoUrl.split("v=")[1].split("&")[0];
-	}
+
 	const settings = {
 		dots: false,
 		infinite: true,
@@ -43,12 +38,21 @@ const Popup = ({ selected, closePopup }) =>{
 
 	const options = {
 		height: '390',
-		width: '640',
-		playerVars: {
-			autoplay: 1
-		}}
+		width: '640'
+		}
 
-	{ Object.values(selected.Videos[0]).map(data => console.log(data.URL))}
+
+
+
+	const tomb = []
+	let videoCode;
+
+	// eslint-disable-next-line no-unused-expressions
+	{ selected.Videos !== null ? selected.Videos.forEach(data => tomb.push(data.Url)) : ""}
+
+	for (let i = 0; i < tomb.length; i++) {
+		videoCode = tomb[0];
+	}
 
 
 
@@ -66,15 +70,11 @@ const Popup = ({ selected, closePopup }) =>{
 
 
 
-				<YouTube
-					videoId={videoCode}
-					opts={options}
-					className="player"
-				/>
+
 
 				<div className="plot">
 					<img className="plot_image" src={selected.Poster} alt={selected.Title}
-						 onError={(e)=>{ if (errorflag){ errorflag = false; e.target.src = ReplacementImage; } }} />
+						 onError={e => e.target.src = ReplacementImage} />
 
 
 					<div className="slider_provider">
@@ -83,12 +83,13 @@ const Popup = ({ selected, closePopup }) =>{
 						</div>
 						<div >
 							<Slider {...settings_providers}>
-								{selected.Providers.map((item) => (
+								{selected.Providers !== null ? selected.Providers.map ((item) => (
 									<div >
-										<img className="slider_provider_image" src={item.Logo} alt={item.Name}/>
+										<img className="slider_provider_image" src={item.Logo} alt={item.Name}
+											 onError={e => e.target.src = ReplacementImage} />
 										<p className="slider_provider_name">{item.Name}</p>
 									</div>
-								))}
+								)) : <img className="slider_provider_image" src={ReplacementImage}/>}
 							</Slider>
 						</div>
 					</div>
@@ -101,17 +102,25 @@ const Popup = ({ selected, closePopup }) =>{
 					</div>
 					<div >
 						<Slider {...settings}>
-							{selected.Cast.map((item) => (
+
+							{selected.Cast !== null ? selected.Cast.map((item) => (
 								<div >
-									<img className="slider_cast_image" src={item.Image} alt={item.Name}/>
+									<img className="slider_cast_image" src={item.Image} alt={item.Name}
+										 onError={e => e.target.src = ReplacementImage}
+									  />
 									<p className="slider_cast_name">{item.Name}</p>
 								</div>
-							))}
+							)) : ""}
 						</Slider>
 					</div>
 				</div>
 
 
+					<YouTube
+						videoId={videoCode}
+						opts={options}
+						className="player"
+					/>
 
 
 					<p className="plot_paragraph">{selected.Plot}</p>
