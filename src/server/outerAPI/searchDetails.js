@@ -2,7 +2,6 @@ const conf = require("./configuration");
 const axios = require("axios");
 
 const EXTRA_DETAILS = ["external_ids", "watch/providers", "credits", "videos&include_video_language=hu,en"];
-const YOUTUBE_BASE_URL = "https://www.youtube.com/watch";
 
 const fetchDetails = (Type, Id) => {
     const detailsURL = new URL(`https://api.themoviedb.org/3/${Type}/${Id}`);
@@ -38,7 +37,7 @@ const getVideos = videosObj => {
     return rawVideosList.map(v => {
         return {
             Name: v["name"],
-            URL: `${YOUTUBE_BASE_URL}?v=${v["key"]}`,
+            Url: `${YOUTUBE_BASE_URL}?v=${v["key"]}`,
         }
     });
 }
@@ -84,7 +83,7 @@ const filterDetails = details => {
     const Plot = details["overview"] ?? null;
     const Providers = getWatchProviders(details["watch/providers"]);
     const Videos = getVideos(details["videos"]);
-    const Cast = reduceArraySize(getCast(details["credits"]), 15);
+    const Cast = reduceArraySize(getCast(details["credits"]), 25);
 
     return {
         Title,
