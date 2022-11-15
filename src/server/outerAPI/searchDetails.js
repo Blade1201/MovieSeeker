@@ -37,7 +37,7 @@ const getVideos = videosObj => {
     return rawVideosList.map(v => {
         return {
             Name: v["name"],
-            Url: `${YOUTUBE_BASE_URL}?v=${v["key"]}`,
+            Url: v["key"],
         }
     });
 }
