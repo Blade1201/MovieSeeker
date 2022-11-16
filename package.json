@@ -17,6 +17,7 @@
     "react-iframe": "^1.8.5",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "react-search-autocomplete": "^8.1.0",
     "react-slick": "^0.29.0",
     "react-youtube": "^10.0.0",
     "slick-carousel": "^1.8.1",

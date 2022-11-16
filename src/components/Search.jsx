@@ -1,6 +1,7 @@
 import React from "react";
 
-function Search({handleInput,search}){
+
+const Search = ({handleInput,search}) =>{
 
 
     return(

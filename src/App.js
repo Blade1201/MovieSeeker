@@ -1,14 +1,11 @@
-import React from 'react'
-import './styles/style.css'
+import React from 'react';
+import './styles/style.css';
 import Home from "./components/Home";
 import Authentication from "./authentication/Authentication";
 import {BrowserRouter as Router, Routes, Route, BrowserRouter} from "react-router-dom";
 
 
-
-
-
-function App() {
+const App = () =>{
   
 
   return (

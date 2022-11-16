@@ -1,8 +1,11 @@
-import React from 'react'
-import '../styles/style.css'
-import Result from './Result'
+import React from 'react';
+import '../styles/style.css';
+import Result from './Result';
 
-function Results ({ results, openPopup }) {
+
+const Results = ({ results, openPopup }) =>{
+
+
 	return (
 
 		<section className="results">
@@ -16,4 +19,4 @@ function Results ({ results, openPopup }) {
 	)
 }
 
-export default Results
+export default Results;

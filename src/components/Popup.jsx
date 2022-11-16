@@ -1,12 +1,12 @@
-import React from 'react'
-import ReplacementImage from '../images/image_not_found.jpg'
+import React from 'react';
+import ReplacementImage from '../images/image_not_found.jpg';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import YouTube from "react-youtube";
 
-const Popup = ({ selected, closePopup }) =>{
 
+const Popup = ({ selected, closePopup }) =>{
 
 
 	const settings = {
@@ -22,7 +22,7 @@ const Popup = ({ selected, closePopup }) =>{
 		focusOnSelect: false,
 		pauseOnDotsHover: true,
 		swipeToSlide: true
-	};
+	}
 
 	const settings_providers = {
 		dots: false,
@@ -34,24 +34,29 @@ const Popup = ({ selected, closePopup }) =>{
 		focusOnSelect: false,
 		pauseOnDotsHover: true,
 		swipeToSlide: true
-	};
+	}
 
-	const options = {
+
+	const video_options = {
 		height: '390',
 		width: '640'
 		}
 
 
 
+	const video_data = () => {
+		const video_data = []
+		let videoCode
 
-	const tomb = []
-	let videoCode;
+		if (selected.Videos !== null) {
+			selected.Videos.forEach(data => video_data.push(data.Url))
+		}
 
-	// eslint-disable-next-line no-unused-expressions,no-lone-blocks
-	{ selected.Videos !== null ? selected.Videos.forEach(data => tomb.push(data.Url)) : ""}
+		for (let i = 0; i < video_data.length; i++) {
+			videoCode = video_data[0]
+		}
 
-	for (let i = 0; i < tomb.length; i++) {
-		videoCode = tomb[0];
+		return videoCode
 	}
 
 
@@ -69,12 +74,13 @@ const Popup = ({ selected, closePopup }) =>{
 
 
 
-
-
-
 				<div className="plot">
-					<img className="plot_image" src={selected.Poster} alt={selected.Title}
-						 onError={e => e.target.src = ReplacementImage} />
+
+					{selected.Poster !== null ?
+						<img className="plot_image" src={selected.Poster} alt={selected.Title}
+							 onError={e => e.target.src = ReplacementImage}/>
+						: <img className="plot_image" alt="Image_Not_Found!" src={ReplacementImage}/>
+					}
 
 
 					<div className="slider_provider">
@@ -82,15 +88,20 @@ const Popup = ({ selected, closePopup }) =>{
 							<h1>Sugározható</h1>
 						</div>
 						<div >
+
 							<Slider {...settings_providers}>
+
 								{selected.Providers !== null ? selected.Providers.map ((item) => (
+
 									<div >
 										<img className="slider_provider_image" src={item.Logo} alt={item.Name}
 											 onError={e => e.target.src = ReplacementImage} />
 										<p className="slider_provider_name">{item.Name}</p>
 									</div>
+
 								)) : <img className="slider_provider_image" alt="Image_Not_Found!" src={ReplacementImage}/>}
 							</Slider>
+
 						</div>
 					</div>
 
@@ -98,38 +109,45 @@ const Popup = ({ selected, closePopup }) =>{
 
 					<div className="slider_cast">
 					<div className="slider_cast_paragraph">
+
 						<h1>Szereplők</h1>
+
 					</div>
 					<div >
+
 						<Slider {...settings}>
 
 							{selected.Cast !== null ? selected.Cast.map((item) => (
+
 								<div >
 									<img className="slider_cast_image" src={item.Image} alt={item.Name}
 										 onError={e => e.target.src = ReplacementImage}
 									  />
 									<p className="slider_cast_name">{item.Name}</p>
 								</div>
-							)) : ""}
+
+							)) : <img className="slider_cast_image" alt="Image_Not_Found!" src={ReplacementImage}/>}
 						</Slider>
+
 					</div>
 				</div>
 
-
 					<YouTube
-						videoId={videoCode}
-						opts={options}
+						videoId={video_data()}
+						opts={video_options}
 						className="player"
 					/>
 
 
 					<p className="plot_paragraph">{selected.Plot}</p>
+
 				</div>
 
 				<button className="close" onClick={closePopup}> Bezárás </button>
+
 			</div>
 		</section>
 	)
 }
 
-export default Popup
+export default Popup;

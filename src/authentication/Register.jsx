@@ -1,87 +1,93 @@
 import React, {useState} from "react";
 
-export const Register = ({onFormSwitch}) => {
+
+const Register = ({onFormSwitch}) => {
 
     const [formInput, setFormInput] = useState({
         email: "",
         password: "",
-        confirmPassword: "",
-    });
+        confirmPassword: ""
+    })
 
     const [formError, setFormError] = useState({
         email: "",
         password: "",
-        confirmPassword: "",
-    });
+        confirmPassword: ""
+    })
 
     const handleUserInput = (name, value) => {
         setFormInput({
             ...formInput,
-            [name]: value,
-        });
-    };
+            [name]: value
+        })
+    }
 
     const validateFormInput = (event) => {
-        event.preventDefault();
+        event.preventDefault()
         let inputError = {
             email: "",
             password: "",
-            confirmPassword: "",
-        };
+            confirmPassword: ""
+        }
+
 
         if (!formInput.email && !formInput.password) {
             setFormError({
                 ...inputError,
                 email: "Hiteles e-mail cimet adjon meg",
-                password: "A jelszó nem lehet üres",
-            });
+                password: "A jelszó nem lehet üres"
+            })
             return
         }
+
 
         if (!formInput.email) {
             setFormError({
                 ...inputError,
-                email: "Hiteles e-mail cimet adjon meg",
-            });
+                email: "Hiteles e-mail cimet adjon meg"
+            })
             return
         }
+
 
         if (formInput.confirmPassword !== formInput.password) {
             setFormError({
                 ...inputError,
-                confirmPassword: "A jelszónak és a megerősitő jelszónak megegyezőnek kell lennie",
-            });
-            return;
+                confirmPassword: "A jelszónak és a megerősitő jelszónak megegyezőnek kell lennie"
+            })
+            return
         }
+
 
         if (!formInput.password) {
             setFormError({
                 ...inputError,
-                password: "A jelszó nem lehet üres",
-            });
+                password: "A jelszó nem lehet üres"
+            })
             return
         }
 
         if (formInput.password.length < 8) {
             setFormError({
                 ...inputError,
-                password: "Legalább 8 karaktert adjon meg",
-            });
+                password: "Legalább 8 karaktert adjon meg"
+            })
             return
         }
 
-        setFormError(inputError);
-    };
+        setFormError(inputError)
+
+    }
 
 
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState('')
 
 
 
     return (
         <div className="auth-form-container">
-                        <h2>Regisztráció</h2>
 
+                        <h2>Regisztráció</h2>
 
             <form className="register-form" onSubmit={validateFormInput}>
 
@@ -89,12 +95,13 @@ export const Register = ({onFormSwitch}) => {
                 <input className="formInput" value={username} onChange={(e) => setUsername(e.target.value)}
                        type="text" name="username" id="username" placeholder="Felhasználónév" />
 
+
                 <label className="formLabel" htmlFor="email">E-mail</label>
 
                             <input
                                 value={formInput.email}
                                 onChange={({ target }) => {
-                                    handleUserInput(target.name, target.value);
+                                    handleUserInput(target.name, target.value)
                                 }}
                                 name="email"
                                 type="email"
@@ -104,12 +111,13 @@ export const Register = ({onFormSwitch}) => {
 
                             <p className="error_message">{formError.email}</p>
 
+
                 <label className="formLabel" htmlFor="password">Jelszó</label>
 
                             <input
                                 value={formInput.password}
                                 onChange={({ target }) => {
-                                    handleUserInput(target.name, target.value);
+                                    handleUserInput(target.name, target.value)
                                 }}
                                 name="password"
                                 type="password"
@@ -119,12 +127,13 @@ export const Register = ({onFormSwitch}) => {
 
                             <p className="error_message">{formError.password}</p>
 
+
                 <label className="formLabel" htmlFor="password">Jelszó megismétlése</label>
 
                             <input
                                 value={formInput.confirmPassword}
                                 onChange={({ target }) => {
-                                    handleUserInput(target.name, target.value);
+                                    handleUserInput(target.name, target.value)
                                 }}
                                 name="confirmPassword"
                                 type="password"
@@ -134,6 +143,7 @@ export const Register = ({onFormSwitch}) => {
 
                             <p className="error_message">{formError.confirmPassword}</p>
 
+
                 <button className="btn">
 
                     <svg width="180px" height="60px" viewBox="0 0 180 60" className="border">
@@ -142,6 +152,7 @@ export const Register = ({onFormSwitch}) => {
                     </svg>
 
                     <span>Regisztrálás</span>
+
                 </button>
 
                         </form>

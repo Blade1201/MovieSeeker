@@ -8,16 +8,17 @@ import LogoImage from "../images/logo_transparent.png";
 // import Suggestions from "./Suggestions";
 
 
-function Home(){
+const Home = () =>{
+
     const [state, setState] = useState({
         s: "",
         results: [],
-        query: [],
+       // query: [],
         selected: {}
-    });
+    })
 
 
-    const apiurl = "/api?";
+    const apiurl = "/api?"
 
     const searchWithButton = () => {
         if (state.s.length !== 0){
@@ -29,7 +30,7 @@ function Home(){
                         return { ...prevState, results: results }
                     })
 
-                });
+                })
             }
     }
 
@@ -45,18 +46,18 @@ function Home(){
                         return { ...prevState, results: results }
                     })
 
-                });
+                })
         }}
     }
 
 
 
     const handleInput = (e) => {
-        let s = e.target.value;
+        let s = e.target.value
 
         setState(prevState => {
             return { ...prevState, s: s }
-        });
+        })
 
         {/*
         if(s.length !==0){
@@ -75,7 +76,7 @@ function Home(){
 
 
 
-    const openPopup = props => {
+    const openPopup = (props) => {
         axios(apiurl + "&i=" + props.id + "&m="+ props.type).then(({ data }) => {
             let result = data;
 
@@ -83,8 +84,8 @@ function Home(){
 
             setState(prevState => {
                 return { ...prevState, selected: result }
-            });
-        });
+            })
+        })
     }
 
 
@@ -93,22 +94,25 @@ function Home(){
     const closePopup = () => {
         setState(prevState => {
             return { ...prevState, selected: {} }
-        });
+        })
     }
 
 
 
 return(
         <div>
-        <div className="navbar">
-
-            <a type="button" className="redirectButton"  href="/authentication">Bejelentkezés</a>
-
+        <div className="home">
 
             <a className="href_size_correction" href="/"><img className='logo' alt='logo' src={LogoImage} /></a>
+
+
             <Search handleInput = {handleInput} search = {searchWithEnter}/>
+
             {/* <Suggestions results={state.query}/> */}
+
             <button className="searchWithButton" onClick={searchWithButton}><span>Keresés</span></button>
+
+            <a type="button" className="redirectButton"  href="/authentication">Bejelentkezés</a>
 
         </div>
 
@@ -117,6 +121,7 @@ return(
         <Results results={state.results} openPopup={openPopup}/>
         {(typeof state.selected.Title != "undefined") ? <Popup selected={state.selected} closePopup={closePopup} /> : false}
     </main>
+
         </div>
     )
 }
