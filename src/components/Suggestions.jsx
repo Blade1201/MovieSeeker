@@ -1,17 +1,18 @@
 import React from 'react';
 
-const Suggestions = ({results}) => {
+const Suggestions = ({ results }) => {
 
     if (results instanceof Array) {
 
-        const options = results.map(result => (
-        <li className="suggestions">
-            {result.Title}
+        const choice = results.map(result => (
+
+        <li className = "suggestions">
+            { result.Title }
         </li>
-    ))
-          return <ul>{options}</ul>
+    ));
+          return <ul>{ choice }</ul>
 }
 
-}
+};
 
 export default Suggestions;

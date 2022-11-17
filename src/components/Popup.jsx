@@ -1,15 +1,16 @@
 import React from 'react';
-import ReplacementImage from '../images/image_not_found.jpg';
+import "../styles/popup.css"
+import ReplacementImage from '../images/image-not-found.jpg';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import YouTube from "react-youtube";
 
 
-const Popup = ({ selected, closePopup }) =>{
+const Popup = ({ selected, closePopup }) => {
 
 
-	const settings = {
+	const castSliderSettings = {
 		dots: false,
 		infinite: true,
 		speed: 500,
@@ -22,9 +23,10 @@ const Popup = ({ selected, closePopup }) =>{
 		focusOnSelect: false,
 		pauseOnDotsHover: true,
 		swipeToSlide: true
-	}
+	};
 
-	const settings_providers = {
+
+	const providerSliderSettings = {
 		dots: false,
 		infinite: false,
 		slidesToShow: 5,
@@ -34,120 +36,126 @@ const Popup = ({ selected, closePopup }) =>{
 		focusOnSelect: false,
 		pauseOnDotsHover: true,
 		swipeToSlide: true
-	}
+	};
 
 
-	const video_options = {
+	const videoOptions = {
 		height: '390',
 		width: '640'
-		}
+	};
 
 
 
-	const video_data = () => {
-		const video_data = []
-		let videoCode
+	const videoData = () => {
+		const video = [];
+		let videoCode;
 
 		if (selected.Videos !== null) {
-			selected.Videos.forEach(data => video_data.push(data.Url))
+			selected.Videos.forEach(data => video.push( data.Url ))
 		}
 
-		for (let i = 0; i < video_data.length; i++) {
-			videoCode = video_data[0]
+		for (let i = 0; i < video.length; i++) {
+			videoCode = video[0];
 		}
 
-		return videoCode
-	}
+		return videoCode;
+	};
 
 
 
 	return (
 
-		<section className="popup">
-			<div className="content">
+		<section className = "popup">
+			<div className = "content">
                 
-				<h2>{ selected.Title } <span>({ selected.Year })</span></h2>
+				<h2>{ selected.Title } <span> ({ selected.Year }) </span></h2>
 
-				<p className="rating"> Értékelés: {selected.Ratings}</p>
-				<p className="genre"> Műfaj: {selected.Genre}</p>
-				<p className="runtime"> Játékidő: {selected.Runtime} perc</p>
+				<p className = "rating"> Értékelés: { selected.Ratings } </p>
+				<p className = "genre"> Műfaj: { selected.Genre } </p>
+				<p className = "runtime"> Játékidő: { selected.Runtime } perc </p>
 
 
 
-				<div className="plot">
+				<div className = "plot">
 
 					{selected.Poster !== null ?
-						<img className="plot_image" src={selected.Poster} alt={selected.Title}
-							 onError={e => e.target.src = ReplacementImage}/>
-						: <img className="plot_image" alt="Image_Not_Found!" src={ReplacementImage}/>
+						<img className = "plot-image" src = { selected.Poster } alt = { selected.Title }
+							 onError = { e => e.target.src = ReplacementImage }/>
+
+						: <img className = "plot-image" alt = "image-not-found!" src = { ReplacementImage }/>
 					}
 
 
-					<div className="slider_provider">
-						<div className="slider_provider_paragraph">
-							<h1>Sugározható</h1>
+
+						<div className = "slider-provider-paragraph">
+
+							<h1> Sugározható </h1>
+
 						</div>
 						<div >
 
-							<Slider {...settings_providers}>
+							<Slider {...providerSliderSettings}>
 
-								{selected.Providers !== null ? selected.Providers.map ((item) => (
+								{selected.Providers !== null ? selected.Providers.map(item => (
 
 									<div >
-										<img className="slider_provider_image" src={item.Logo} alt={item.Name}
-											 onError={e => e.target.src = ReplacementImage} />
-										<p className="slider_provider_name">{item.Name}</p>
+										<img className = "slider-provider-image" src = { item.Logo } alt = { item.Name }
+											 onError = { e => e.target.src = ReplacementImage } />
+
+										<p className = "slider-provider-name"> { item.Name } </p>
 									</div>
 
-								)) : <img className="slider_provider_image" alt="Image_Not_Found!" src={ReplacementImage}/>}
+								)) : <img className = "slider-provider-image" alt = "image-not-found!" src = { ReplacementImage }/>}
+
 							</Slider>
 
 						</div>
-					</div>
 
 
 
-					<div className="slider_cast">
-					<div className="slider_cast_paragraph">
 
-						<h1>Szereplők</h1>
+					<div className = "slider-cast-paragraph">
+
+						<h1> Szereplők </h1>
 
 					</div>
 					<div >
 
-						<Slider {...settings}>
+						<Slider {...castSliderSettings}>
 
-							{selected.Cast !== null ? selected.Cast.map((item) => (
+							{selected.Cast !== null ? selected.Cast.map(item => (
 
 								<div >
-									<img className="slider_cast_image" src={item.Image} alt={item.Name}
-										 onError={e => e.target.src = ReplacementImage}
+									<img className = "slider-cast-image" src = { item.Image } alt = { item.Name }
+										 onError = { e => e.target.src = ReplacementImage }
 									  />
-									<p className="slider_cast_name">{item.Name}</p>
+									<p className = "slider-cast-name">{ item.Name }</p>
 								</div>
 
-							)) : <img className="slider_cast_image" alt="Image_Not_Found!" src={ReplacementImage}/>}
+							)) : <img className = "slider-cast-image" alt = "image-not-found!" src = { ReplacementImage }/>}
+
 						</Slider>
 
 					</div>
-				</div>
+
+
 
 					<YouTube
-						videoId={video_data()}
-						opts={video_options}
-						className="player"
+						videoId = { videoData() }
+						opts = { videoOptions }
+						className = "video-player"
 					/>
 
 
-					<p className="plot_paragraph">{selected.Plot}</p>
+					<p className = "plot-paragraph"> { selected.Plot } </p>
 
 				</div>
 
-				<button className="close" onClick={closePopup}> Bezárás </button>
+				<button className = "close" onClick = { closePopup }> Bezárás </button>
 
 			</div>
 		</section>
-	)
-}
+	);
+};
 
 export default Popup;

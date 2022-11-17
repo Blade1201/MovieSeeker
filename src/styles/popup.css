@@ -1,0 +1,141 @@
+.slider-provider-image {
+    margin: auto;
+    width: 94px;
+    height: 94px;
+
+}
+
+
+.slider-provider-name {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
+
+
+.slider-provider-paragraph {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+
+.slider-cast-image {
+    margin: auto;
+    width: 94px;
+    height: 141px;
+}
+
+
+.slider-cast-paragraph {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+
+.slider-cast-name {
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+.video-player {
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+
+.plot-image {
+    flex: 1 1 50%;
+    max-width: 300px;
+    box-shadow: 0 0 8px 3px #26c485;
+}
+
+
+.plot-paragraph {
+    flex: 1 1 50%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 18px;
+}
+
+
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #161515;
+    overflow-y: scroll;
+}
+
+
+.popup .content {
+    display: block;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 25px;
+    color: #FFF;
+}
+
+
+.popup .content h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+
+.popup .content h2 span {
+    font-weight: 300;
+    font-size: 20px;
+}
+
+
+.popup .content .rating {
+    margin-bottom: 2px;
+}
+
+
+.popup .content .genre {
+    margin-bottom: 2px;
+}
+
+
+.popup .content .runtime {
+    margin-bottom: 30px;
+}
+
+
+.popup .content .plot {
+    display: block;
+    flex-wrap: wrap;
+    margin: 0 -15px 30px;
+}
+
+
+.popup .content .close {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFF;
+    background: #445565;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    transition: 0.4s ease-out;
+}
+
+
+.popup .content .close:hover {
+    background: #26c485;
+    color: #000000;
+}

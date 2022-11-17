@@ -1,92 +1,103 @@
 import React, {useState} from "react";
+import '../styles/home.css';
 import axios from "axios";
 import Search from "./Search";
 import Results from "./Results";
 import Popup from "./Popup";
-import LogoImage from "../images/logo_transparent.png";
+import LogoImage from "../images/logo-transparent.png";
 
 // import Suggestions from "./Suggestions";
 
 
-const Home = () =>{
+const Home = () => {
 
     const [state, setState] = useState({
-        s: "",
+        search: "",
         results: [],
        // query: [],
         selected: {}
-    })
+    });
 
 
-    const apiurl = "/api?"
+    const API_URL = "/api?";
+
 
     const searchWithButton = () => {
-        if (state.s.length !== 0){
-            axios(apiurl + "&s=" + state.s)
+        if (state.search.length !== 0){
+
+            axios(API_URL + "&s=" + state.search)
                 .then(({ data }) => {
-                    let results = data;
+
+                    let gainedData = data;
 
                     setState(prevState => {
-                        return { ...prevState, results: results }
-                    })
+                        return { ...prevState, results: gainedData }
+                    });
 
-                })
+                });
             }
-    }
+    };
 
 
-    const searchWithEnter = (e) => {
-        if (state.s.length !==0){
-        if (e.key === "Enter") {
-            axios(apiurl + "&s=" + state.s)
+    const searchWithEnter = (intake) => {
+        if (state.search.length !== 0){
+
+        if (intake.key === "Enter") {
+
+            axios(API_URL + "&s=" + state.search)
                 .then(({ data }) => {
-                    let results = data
+
+                    let gainedData = data;
 
                     setState(prevState => {
-                        return { ...prevState, results: results }
-                    })
+                        return { ...prevState, results: gainedData }
+                    });
 
-                })
+                });
         }}
-    }
+    };
 
 
 
-    const handleInput = (e) => {
-        let s = e.target.value
+    const handleInput = (intake) => {
+        let typedIntake = intake.target.value;
 
         setState(prevState => {
-            return { ...prevState, s: s }
-        })
+            return { ...prevState, search: typedIntake }
+        });
 
         {/*
         if(s.length !==0){
-       axios(apiurl + "&s=" + s)
+
+       axios(apiurl + "&s=" + typedIntake)
             .then(({ data }) => {
-                let results = data;
+
+                let gainedData = data;
 
                 setState(prevState => {
-                    return { ...prevState, query: results }
-                })
+                    return { ...prevState, query: gainedData }
+                });
 
             });} */}
 
-        //  console.log(s)
-    }
+        //  console.log(typedIntake)
+    };
 
 
 
     const openPopup = (props) => {
-        axios(apiurl + "&i=" + props.id + "&m="+ props.type).then(({ data }) => {
+        axios(API_URL + "&i=" + props.id + "&m="+ props.type)
+            .then(({ data }) => {
+
             let result = data;
 
-             console.log(result);
+           //  console.log(result);
 
             setState(prevState => {
                 return { ...prevState, selected: result }
-            })
-        })
-    }
+            });
+        });
+    };
 
 
 
@@ -94,36 +105,36 @@ const Home = () =>{
     const closePopup = () => {
         setState(prevState => {
             return { ...prevState, selected: {} }
-        })
-    }
+        });
+    };
 
 
 
 return(
         <div>
-        <div className="home">
+        <div className = "home">
 
-            <a className="href_size_correction" href="/"><img className='logo' alt='logo' src={LogoImage} /></a>
+            <a className = "href-size-correction" href = "/"><img className = 'logo' alt = 'logo' src = {LogoImage} /></a>
 
 
-            <Search handleInput = {handleInput} search = {searchWithEnter}/>
+            <Search handleInput = { handleInput } search = { searchWithEnter }/>
 
-            {/* <Suggestions results={state.query}/> */}
+            {/* <Suggestions results = { state.query }/> */}
 
-            <button className="searchWithButton" onClick={searchWithButton}><span>Keresés</span></button>
+            <button className = "search_button" onClick = { searchWithButton }><span> Keresés </span></button>
 
-            <a type="button" className="redirectButton"  href="/authentication">Bejelentkezés</a>
+            <a type = "button" className = "redirect_button"  href = "/authentication"> Bejelentkezés </a>
 
         </div>
 
 
     <main>
-        <Results results={state.results} openPopup={openPopup}/>
-        {(typeof state.selected.Title != "undefined") ? <Popup selected={state.selected} closePopup={closePopup} /> : false}
+        <Results results = { state.results } openPopup = { openPopup }/>
+        {(typeof state.selected.Title != "undefined") ? <Popup selected = { state.selected } closePopup = { closePopup } /> : false}
     </main>
 
         </div>
-    )
-}
+    );
+};
 
 export default Home;

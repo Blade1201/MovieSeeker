@@ -1,88 +1,26 @@
 @import url('http://fonts.cdnfonts.com/css/montserrat');
 
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 
-.slider_provider_image{
-    margin: auto;
-    width: 94px;
-    height: 94px;
-
-}
-
-
-.slider_provider_name{
-    margin: auto;
-    width: 80%;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 20px;
-}
-
-
-.player{
-    text-align: center;
-    padding-bottom: 20px;
-    padding-top: 20px;
-}
-
-
-.slider_provider_paragraph{
-    text-align: center;
-    padding-bottom: 15px;
-}
-
-
-.slider_cast_image{
-    margin: auto;
-    width: 94px;
-    height: 141px;
-}
-
-
-.slider_provider{
-    /* Ezzel kell majd áthelyezni*/
-}
-
-
-.slider_cast{
-    /* Ezzel kell majd áthelyezni*/
-}
-
-
-.slider_cast_paragraph{
-    text-align: center;
-    padding-bottom: 15px;
-}
-
-
-.slider_cast_name{
-    margin: auto;
-    width: 80%;
-    text-align: center;
-    padding-top: 10px;
-}
-
-
 /*
-
 .suggestions{
     color: #26c485;
 }
 */
 
 
-.href_size_correction{
+.href-size-correction {
     width: 50px;
 }
 
 
-.searchWithButton {
+.search_button {
     display: inline-block;
     border-radius: 10px;
     background-color: #29a372;
@@ -99,7 +37,7 @@
 }
 
 
-.searchWithButton span {
+.search_button span {
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -107,8 +45,8 @@
 }
 
 
-.searchWithButton span:after {
-    content: url(/src/images/searching_logo.png);
+.search_button span:after {
+    content: url(/src/images/search-logo.png);
     position: absolute;
     opacity: 0;
     top: 0;
@@ -117,31 +55,31 @@
 }
 
 
-.searchWithButton:hover span {
+.search_button:hover span {
     padding-right: 19px;
 }
 
 
-.searchWithButton:hover span:after {
+.search_button:hover span:after {
     opacity: 1;
     right: 0;
 }
 
 
-body{
+body {
     font-family: 'Montserrat',sans-serif;                                    
     background-color: #000000;
 }
 
 
-.home{
+.home {
     border-bottom: 1px solid #26c485;
     display: grid;
     background-color: black;
 }
 
 
-.logo{
+.logo {
     color: #FFF;
     width: 50px;
     height: 50px;
@@ -149,7 +87,7 @@ body{
 }
 
 
-.redirectButton {
+.redirect_button {
     height: 30px;
     border: none;
     text-decoration: none;
@@ -171,7 +109,7 @@ body{
 }
 
 
-.redirectButton:before {
+.redirect_button:before {
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -189,12 +127,12 @@ body{
 }
 
 
-.redirectButton:hover:before {
+.redirect_button:hover:before {
     opacity: 1;
 }
 
 
-.redirectButton:after {
+.redirect_button:after {
     z-index: -1;
     content: '';
     position: absolute;
@@ -214,19 +152,19 @@ body{
 }
 
 
-main{
+main {
     width: 100%;
     max-width: 960px;
     margin: 0 auto;
 }
 
 
-section{
+section {
     padding: 15px;
 }
 
 
-.error{
+.movie-not-found-error-message {
     color: #26c485;
     transform: translate(-40%, -120%);
     text-align: center;
@@ -235,41 +173,36 @@ section{
 }
 
 
-.searchbox{
+.searchbox {
     position: absolute;
     display: flex;
     width: 24%;
     padding: 6px;
     transform: translate(+25%, +27%);
-    
     border: none;
     outline: none;
-    background: none;
-
-    background-color: #EEE;
+    background: #EEE none;
     border-radius: 8px;
-
     color: #53565A;
     font-size: 20px;
     font-weight: 300;
-
     transition: 0.4s ease-out;
 }
 
 
-.searchbox:focus{
-    box-shadow: 0px 0px 8px 3px #26c485;
+.searchbox:focus {
+    box-shadow: 0 0 8px 3px #26c485;
 }
 
 
-.results{
+.results {
     display: flex;
     flex-wrap: wrap;
     margin: 20px -15px;
 }
 
 
-.results .result{
+.results .result {
     width: 33.333%;
     min-width: 250px;
     padding: 15px;
@@ -287,11 +220,11 @@ section{
 
 
 .results .result:hover {
-    box-shadow: 0px 0px 8px 3px #26c485;
+    box-shadow: 0 0 8px 3px #26c485;
 }
 
 
-.results .result h3{
+.results .result h3 {
     color: #FFF;
     font-size: 20px;
     font-weight: 600;
@@ -303,101 +236,6 @@ section{
 
 
 .results .result:hover h3 {
-    background: #26c485;
-    color: #000000;
-}
-
-
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: #161515;
-
-    overflow-y: scroll;
-}
-
-
-.popup .content {
-    display: block;
-    width: 100%;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 25px;
-
-    color: #FFF;
-}
-
-
-.popup .content h2 {
-    font-size: 28px;
-    font-weight: 600;
-}
-
-
-.popup .content h2 span {
-    font-weight: 300;
-    font-size: 20px;
-}
-
-
-.popup .content .rating {
-    margin-bottom: 2px;
-}
-
-
-.popup .content .genre {
-    margin-bottom: 2px;
-}
-
-
-.popup .content .runtime {
-    margin-bottom: 30px;
-}
-
-
-.popup .content .plot {
-    display: block;
-    flex-wrap: wrap;
-    margin: 0px -15px 30px;
-}
-
-
-.plot_image {
-    flex: 1 1 50%;
-    max-width: 300px;
-    box-shadow: 0px 0px 8px 3px #26c485;
-}
-
-
-.plot_paragraph {
-    flex: 1 1 50%;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    font-size: 18px;
-}
-
-
-.popup .content .close {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #FFF;
-    background: #445565;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    appearance: none;
-    cursor: pointer;
-
-    transition: 0.4s ease-out;
-}
-
-
-.popup .content .close:hover {
     background: #26c485;
     color: #000000;
 }
