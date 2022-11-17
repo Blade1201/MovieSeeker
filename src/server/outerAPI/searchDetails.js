@@ -1,7 +1,16 @@
 const conf = require("./configuration");
 const axios = require("axios");
 
-const EXTRA_DETAILS = ["external_ids", "watch/providers", "credits", "videos&include_video_language=hu,en"];
+const BASIC_DETAILS = ["external_ids", "watch/providers", "credits", "videos&include_video_language=hu,en"];
+
+const getExtras = (Type) => {
+    if (Type === "movie") {
+        return ["release_dates", BASIC_DETAILS];
+    } else if (Type === "tv") {
+        return ["content_ratings", BASIC_DETAILS];
+    }
+    return "";
+};
 
 const fetchDetails = (Type, Id) => {
     const detailsURL = new URL(`https://api.themoviedb.org/3/${Type}/${Id}`);
@@ -10,11 +19,14 @@ const fetchDetails = (Type, Id) => {
         language: conf.LANGUAGE,
     });
 
-    const extras = `append_to_response=${EXTRA_DETAILS.join(',')}`;
+    const extras = `append_to_response=${getExtras(Type).join(',')}`;
 
     return axios.get(`${detailsURL.href}&${extras}`)
         .then(res => res.data)
-        .then(data => data)
+        .then(data => {
+            data.media_type = Type;
+            return data;
+        })
         .catch(err => {
             console.error(err.data);
             return [];
@@ -72,6 +84,32 @@ const reduceArraySize = (cast, newSize) => {
     return cast.slice(0, newSize);
 };
 
+const getMovieCertification = release_dates => {
+    const results = release_dates?.results;
+
+    if (!results || results.length === 0) return null;
+
+    const huCertificationsDetails = results.find(result => result["iso_3166_1"] === "HU");
+
+    if (!huCertificationsDetails) return null;
+
+    console.log(huCertificationsDetails);
+
+    return huCertificationsDetails["release_dates"][0]["certification"];
+}
+
+const getTVCertification = content_ratings => {
+    const results = content_ratings?.results;
+
+    if (!results || results.length === 0) return null;
+
+    const huCertificationDetails = results.find(result => result["iso_3166_1"] === "HU");
+
+    if (!huCertificationDetails) return null;
+
+    return huCertificationDetails["rating"];
+}
+
 const filterDetails = details => {
     const Title = details["title"] ?? details["name"] ?? null;
     const ImdbID = details["external_ids"]["imdb_id"] ?? null;
@@ -85,6 +123,11 @@ const filterDetails = details => {
     const Videos = getVideos(details["videos"]);
     const Cast = reduceArraySize(getCast(details["credits"]), 25);
 
+    console.log(details["media_type"]);
+
+    const Certification = details["media_type"] === "movie" ?
+        getMovieCertification(details["release_dates"]) : getTVCertification(details["content_ratings"]);
+
     return {
         Title,
         ImdbID,
@@ -96,7 +139,8 @@ const filterDetails = details => {
         Plot,
         Providers,
         Videos,
-        Cast
+        Cast,
+        Certification,
     }
 };
 
