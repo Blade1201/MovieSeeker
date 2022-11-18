@@ -1,66 +1,61 @@
-.slider-provider-image {
-    margin: auto;
-    width: 94px;
-    height: 94px;
-
+.carousel-container .provider-paragraph {
+    text-align: center;
+    padding-bottom: 25px;
 }
 
 
-.slider-provider-name {
+.carousel-container .carousel-size .provider-image {
+    margin: auto;
+    width: 94px;
+    height: 94px;
+}
+
+
+.carousel-container .carousel-size .provider-name {
     margin: auto;
     width: 80%;
     text-align: center;
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 35px;
 }
 
 
-.slider-provider-paragraph {
-    text-align: center;
-    padding-bottom: 15px;
-}
-
-
-.slider-cast-image {
+.carousel-container .carousel-size .cast-image {
     margin: auto;
     width: 94px;
     height: 141px;
 }
 
 
-.slider-cast-paragraph {
+.carousel-container .cast-paragraph {
     text-align: center;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
 }
 
 
-.slider-cast-name {
+.carousel-container .carousel-size .cast-name {
     margin: auto;
-    width: 80%;
+    width: 140px;
     text-align: center;
     padding-top: 10px;
+    transform: translate(-15%,0);
 }
 
 
 .video-player {
     text-align: center;
     padding-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 
-.plot-image {
-    flex: 1 1 50%;
-    max-width: 300px;
-    box-shadow: 0 0 8px 3px #26c485;
+.carousel-container{
+    text-align: center;
 }
 
 
-.plot-paragraph {
-    flex: 1 1 50%;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    font-size: 18px;
+.carousel-container .carousel-size{
+    max-width:100px;
 }
 
 
@@ -99,6 +94,33 @@
 
 .popup .content .rating {
     margin-bottom: 2px;
+}
+
+
+.popup .content .rating .rating-star{
+    width: 17px;
+    height: 17px;
+}
+
+
+.popup .content .movie-ratings{
+    width: 30px;
+    height: 30px;
+}
+
+
+.popup .content .plot .plot-image {
+    flex: 1 1 50%;
+    max-width: 300px;
+    box-shadow: 0 0 8px 3px #26c485;
+}
+
+
+.popup .content .plot .plot-paragraph {
+    flex: 1 1 50%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    font-size: 18px;
 }
 
 

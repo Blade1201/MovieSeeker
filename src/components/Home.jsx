@@ -52,7 +52,6 @@ const Home = () => {
                     setState(prevState => {
                         return { ...prevState, results: gainedData }
                     });
-
                 });
         }}
     };
@@ -63,7 +62,7 @@ const Home = () => {
         let typedIntake = intake.target.value;
 
         setState(prevState => {
-            return { ...prevState, search: typedIntake }
+            return {...prevState, search: typedIntake}
         });
 
         {/*
@@ -86,12 +85,12 @@ const Home = () => {
 
 
     const openPopup = (props) => {
-        axios(API_URL + "&i=" + props.id + "&m="+ props.type)
+        axios(API_URL + "&i=" + props.id + "&m=" + props.type)
             .then(({ data }) => {
 
             let result = data;
 
-           //  console.log(result);
+             console.log(result);
 
             setState(prevState => {
                 return { ...prevState, selected: result }
@@ -114,16 +113,16 @@ return(
         <div>
         <div className = "home">
 
-            <a className = "href-size-correction" href = "/"><img className = 'logo' alt = 'logo' src = {LogoImage} /></a>
+            <a className = "logo-href-size-correction" href = "/"><img className = 'logo' alt = 'logo' src = {LogoImage} /></a>
 
 
             <Search handleInput = { handleInput } search = { searchWithEnter }/>
 
             {/* <Suggestions results = { state.query }/> */}
 
-            <button className = "search_button" onClick = { searchWithButton }><span> Keresés </span></button>
+            <button className = "search-button" onClick = { searchWithButton }><span> Keresés </span></button>
 
-            <a type = "button" className = "redirect_button"  href = "/authentication"> Bejelentkezés </a>
+            <a type = "button" className = "redirect-button"  href = "/authentication"> Bejelentkezés </a>
 
         </div>
 

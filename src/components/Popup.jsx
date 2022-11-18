@@ -1,6 +1,13 @@
 import React from 'react';
 import "../styles/popup.css"
 import ReplacementImage from '../images/image-not-found.jpg';
+import RatedX from '../images/rated-x.png';
+import Rated18 from '../images/rated-18.png';
+import Rated16 from '../images/rated-16.png';
+import Rated12 from '../images/rated-12.png';
+import Rated6 from '../images/rated-6.png';
+import RatedEveryone from '../images/rated-everyone.png';
+import Star from '../images/star.png';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -22,7 +29,7 @@ const Popup = ({ selected, closePopup }) => {
 		autoplaySpeed: 1500,
 		focusOnSelect: false,
 		pauseOnDotsHover: true,
-		swipeToSlide: true
+		swipeToSlide: true,
 	};
 
 
@@ -68,9 +75,19 @@ const Popup = ({ selected, closePopup }) => {
 		<section className = "popup">
 			<div className = "content">
                 
-				<h2>{ selected.Title } <span> ({ selected.Year }) </span></h2>
+				<h2>{ selected.Title } <span> ({ selected.Year })
 
-				<p className = "rating"> Értékelés: { selected.Ratings } </p>
+					{selected.Certification === "X" ? <img className = "movie-ratings" alt = "not-found!" src = { RatedX }/>
+						: selected.Certification === "18" ? <img className = "movie-ratings" alt = "not-found!" src = { Rated18 }/>
+						: selected.Certification === "16" ? <img className = "movie-ratings" alt = "not-found!" src = { Rated16 }/>
+						: selected.Certification === "12" ? <img className = "movie-ratings" alt = "not-found!" src = { Rated12 }/>
+						: selected.Certification === "6" || selected.Certification === "Children" ? <img className = "movie-ratings" alt = "not-found!" src = { Rated6 }/>
+						: selected.Certification === "NR" || selected.Certification === "KN" ? <img className = "movie-ratings" alt = "not-found!" src = { RatedEveryone }/>
+						: ""}
+
+				</span></h2>
+
+				{ selected.Ratings !== null ? <p className = "rating"> Értékelés: { selected.Ratings } <img className = "rating-star" alt = "not-found!" src = { Star }/></p> : ""}
 				<p className = "genre"> Műfaj: { selected.Genre } </p>
 				<p className = "runtime"> Játékidő: { selected.Runtime } perc </p>
 
@@ -82,30 +99,55 @@ const Popup = ({ selected, closePopup }) => {
 						<img className = "plot-image" src = { selected.Poster } alt = { selected.Title }
 							 onError = { e => e.target.src = ReplacementImage }/>
 
-						: <img className = "plot-image" alt = "image-not-found!" src = { ReplacementImage }/>
+						: <img className = "plot-image" alt = "not-found!" src = { ReplacementImage }/>
 					}
 
 
 
-						<div className = "slider-provider-paragraph">
 
-							<h1> Sugározható </h1>
+						<div className="carousel-container">
 
-						</div>
-						<div >
+							<div className = "provider-paragraph">
+
+								<h1> Sugározható </h1>
+
+							</div>
 
 							<Slider {...providerSliderSettings}>
 
 								{selected.Providers !== null ? selected.Providers.map(item => (
 
-									<div >
-										<img className = "slider-provider-image" src = { item.Logo } alt = { item.Name }
-											 onError = { e => e.target.src = ReplacementImage } />
+									<div className="carousel-size">
 
-										<p className = "slider-provider-name"> { item.Name } </p>
+										{ item.Name === "HBO Max" ? <a target = "blank" href = "https://www.hbomax.com/hu/hu">
+											<img className = "provider-image" src = { item.Logo } alt = { item.Name }
+												 onError = { e => e.target.src = ReplacementImage } /> </a>
+
+											: item.Name === "Netflix" ? <a target = "blank" href = "https://www.netflix.com/hu/">
+						     				<img className = "provider-image" src = { item.Logo } alt = { item.Name }
+												 onError = { e => e.target.src = ReplacementImage } /> </a>
+
+				  							: item.Name === "Disney Plus" ? <a target = "blank" href = "https://www.disneyplus.com/hu-hu">
+											<img className = "provider-image" src = { item.Logo } alt = { item.Name }
+												 onError = { e => e.target.src = ReplacementImage } /> </a>
+
+											: item.Name === "Amazon Prime Video" ? <a target = "blank" href = "https://www.primevideo.com/">
+											<img className = "provider-image" src = { item.Logo } alt = { item.Name }
+												 onError = { e => e.target.src = ReplacementImage } /> </a>
+
+											: item.Name === "Apple TV Plus" ? <a target = "blank" href = "https://www.apple.com/hu/apple-tv-plus/">
+											<img className = "provider-image" src = { item.Logo } alt = { item.Name }
+												 onError = { e => e.target.src = ReplacementImage } /> </a>
+
+											: <img className = "provider-image" src = { item.Logo } alt = { item.Name }
+												   onError = { e => e.target.src = ReplacementImage } />}
+
+
+													<p className = "provider-name"> { item.Name } </p>
+
 									</div>
 
-								)) : <img className = "slider-provider-image" alt = "image-not-found!" src = { ReplacementImage }/>}
+								)) : <img className = "provider-image" alt = "not-found!" src = { ReplacementImage }/>}
 
 							</Slider>
 
@@ -114,25 +156,33 @@ const Popup = ({ selected, closePopup }) => {
 
 
 
-					<div className = "slider-cast-paragraph">
 
-						<h1> Szereplők </h1>
+					<div className="carousel-container">
 
-					</div>
-					<div >
+						<div className = "cast-paragraph">
+
+							<h1> Szereplők </h1>
+
+						</div>
 
 						<Slider {...castSliderSettings}>
 
 							{selected.Cast !== null ? selected.Cast.map(item => (
 
-								<div >
-									<img className = "slider-cast-image" src = { item.Image } alt = { item.Name }
-										 onError = { e => e.target.src = ReplacementImage }
-									  />
-									<p className = "slider-cast-name">{ item.Name }</p>
+
+								<div className="carousel-size">
+
+
+									<a target = "blank" href = {`https://www.google.hu/search?q=${ item.Name }`}>
+										<img className = "cast-image" src = { item.Image } alt = { item.Name }
+											 onError = { e => e.target.src = ReplacementImage }
+									/></a>
+
+									<p className = "cast-name">{ item.Name }</p>
+
 								</div>
 
-							)) : <img className = "slider-cast-image" alt = "image-not-found!" src = { ReplacementImage }/>}
+							)) : <img className = "cast-image" alt = "not-found!" src = { ReplacementImage }/>}
 
 						</Slider>
 

@@ -8,6 +8,12 @@
 }
 
 
+body {
+    font-family: 'Montserrat',sans-serif;
+    background-color: #000000;
+}
+
+
 /*
 .suggestions{
     color: #26c485;
@@ -15,12 +21,19 @@
 */
 
 
-.href-size-correction {
+.home {
+    border-bottom: 1px solid #26c485;
+    display: grid;
+    background-color: black;
+}
+
+
+.home .logo-href-size-correction {
     width: 50px;
 }
 
 
-.search_button {
+.home .search-button {
     display: inline-block;
     border-radius: 10px;
     background-color: #29a372;
@@ -37,7 +50,7 @@
 }
 
 
-.search_button span {
+.home .search-button span {
     cursor: pointer;
     display: inline-block;
     position: relative;
@@ -45,7 +58,7 @@
 }
 
 
-.search_button span:after {
+.home .search-button span:after {
     content: url(/src/images/search-logo.png);
     position: absolute;
     opacity: 0;
@@ -55,31 +68,18 @@
 }
 
 
-.search_button:hover span {
+.home .search_button:hover span {
     padding-right: 19px;
 }
 
 
-.search_button:hover span:after {
+.home .search-button:hover span:after {
     opacity: 1;
     right: 0;
 }
 
 
-body {
-    font-family: 'Montserrat',sans-serif;                                    
-    background-color: #000000;
-}
-
-
-.home {
-    border-bottom: 1px solid #26c485;
-    display: grid;
-    background-color: black;
-}
-
-
-.logo {
+.home .logo {
     color: #FFF;
     width: 50px;
     height: 50px;
@@ -87,7 +87,7 @@ body {
 }
 
 
-.redirect_button {
+.home .redirect-button {
     height: 30px;
     border: none;
     text-decoration: none;
@@ -109,7 +109,7 @@ body {
 }
 
 
-.redirect_button:before {
+.home .redirect-button:before {
     content: '';
     background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
     position: absolute;
@@ -127,12 +127,12 @@ body {
 }
 
 
-.redirect_button:hover:before {
+.home .redirect-button:hover:before {
     opacity: 1;
 }
 
 
-.redirect_button:after {
+.home .redirect-button:after {
     z-index: -1;
     content: '';
     position: absolute;
@@ -164,34 +164,12 @@ section {
 }
 
 
-.movie-not-found-error-message {
+.section .movie-not-found-error-message {
     color: #26c485;
     transform: translate(-40%, -120%);
     text-align: center;
     position: relative;
     left: 110px;
-}
-
-
-.searchbox {
-    position: absolute;
-    display: flex;
-    width: 24%;
-    padding: 6px;
-    transform: translate(+25%, +27%);
-    border: none;
-    outline: none;
-    background: #EEE none;
-    border-radius: 8px;
-    color: #53565A;
-    font-size: 20px;
-    font-weight: 300;
-    transition: 0.4s ease-out;
-}
-
-
-.searchbox:focus {
-    box-shadow: 0 0 8px 3px #26c485;
 }
 
 
@@ -238,4 +216,26 @@ section {
 .results .result:hover h3 {
     background: #26c485;
     color: #000000;
+}
+
+
+.searchbox {
+    position: absolute;
+    display: flex;
+    width: 24%;
+    padding: 6px;
+    transform: translate(+25%, +27%);
+    border: none;
+    outline: none;
+    background: #EEE none;
+    border-radius: 8px;
+    color: #53565A;
+    font-size: 20px;
+    font-weight: 300;
+    transition: 0.4s ease-out;
+}
+
+
+.searchbox:focus {
+    box-shadow: 0 0 8px 3px #26c485;
 }
