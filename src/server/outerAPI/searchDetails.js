@@ -93,8 +93,6 @@ const getMovieCertification = release_dates => {
 
     if (!huCertificationsDetails) return null;
 
-    console.log(huCertificationsDetails);
-
     return huCertificationsDetails["release_dates"][0]["certification"];
 }
 
@@ -122,8 +120,6 @@ const filterDetails = details => {
     const Providers = getWatchProviders(details["watch/providers"]);
     const Videos = getVideos(details["videos"]);
     const Cast = reduceArraySize(getCast(details["credits"]), 25);
-
-    console.log(details["media_type"]);
 
     const Certification = details["media_type"] === "movie" ?
         getMovieCertification(details["release_dates"]) : getTVCertification(details["content_ratings"]);
