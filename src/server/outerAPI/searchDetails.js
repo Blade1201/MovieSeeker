@@ -91,7 +91,12 @@ const getMovieCertification = release_dates => {
 
     const huCertificationsDetails = results.find(result => result["iso_3166_1"] === "HU");
 
-    if (!huCertificationsDetails) return null;
+    if (!huCertificationsDetails) {
+        const deCertificationsDetails = results.find(result => result["iso_3166_1"] === "DE");
+        if (!deCertificationsDetails) return null;
+
+        return deCertificationsDetails["release_dates"][0]["certification"];
+    }
 
     return huCertificationsDetails["release_dates"][0]["certification"];
 }
@@ -103,7 +108,12 @@ const getTVCertification = content_ratings => {
 
     const huCertificationDetails = results.find(result => result["iso_3166_1"] === "HU");
 
-    if (!huCertificationDetails) return null;
+    if (!huCertificationDetails) {
+        const deCertificationDetails = results.find(result => result["iso_3166_1"] === "DE");
+        if (!deCertificationDetails) return null;
+        
+        return deCertificationDetails["rating"];
+    }
 
     return huCertificationDetails["rating"];
 }
