@@ -69,7 +69,7 @@ const getWatchProviders = watchProvidersObj => {
 const getCast = credits => {
     const cast = credits["cast"];
 
-    if (!cast) return null;
+    if (!cast || cast.length === 0) return null;
 
     return cast.map(c => {
         return {
@@ -123,10 +123,10 @@ const filterDetails = details => {
     const ImdbID = details["external_ids"]["imdb_id"] ?? null;
     const Year = details["first_air_date"] ?? details["release_date"] ?? null;
     const Ratings = details.vote_average ? Number(details.vote_average).toFixed(1) : null;
-    const Genre = details["genres"]?.map(genre => genre.name).join(", ") ?? null;
-    const Runtime = details["runtime"] ?? details?.episode_run_time[0] ?? null;
+    const Genre = details["genres"]?.map(genre => genre.name).join(", ") || null;
+    const Runtime = details["runtime"] || details?.episode_run_time?.[0] || null;
     const Poster = details["poster_path"] ? conf.imageAbsolutePath(details["poster_path"]) : null;
-    const Plot = details["overview"] ?? null;
+    const Plot = details["overview"] || null;
     const Providers = getWatchProviders(details["watch/providers"]);
     const Videos = getVideos(details["videos"]);
     const Cast = reduceArraySize(getCast(details["credits"]), 25);
