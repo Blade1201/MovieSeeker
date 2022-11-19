@@ -102,10 +102,10 @@ const Register = ({ onFormSwitch }) => {
         }
 
 
-        if ( formInput.password.length < 8 ) {
+        if ( formInput.password.length < 8 || formInput.password.length > 30 ) {
             setFormError({
                 ...inputError,
-                password: "Legalább 8 karaktert adjon meg!"
+                password: "8 és 30 közötti hosszt adjon meg!"
             });
             return;
         }
