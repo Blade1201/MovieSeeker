@@ -20,7 +20,7 @@
 }
 
 
-.carousel-container .carousel-size .cast-image {
+.carousel-container .cast-image {
     margin: auto;
     width: 94px;
     height: 141px;
@@ -51,6 +51,11 @@
 
 .carousel-container{
     text-align: center;
+}
+
+
+.carousel-container .content-not-found{
+    padding-bottom: 20px;
 }
 
 
@@ -104,8 +109,8 @@
 
 
 .popup .content .movie-ratings{
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
 }
 
 

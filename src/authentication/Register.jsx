@@ -3,13 +3,16 @@ import React, {useState} from "react";
 
 const Register = ({ onFormSwitch }) => {
 
+
     const [formInput, setFormInput] = useState({
+        username: "",
         email: "",
         password: "",
         confirmPassword: ""
     });
 
     const [formError, setFormError] = useState({
+        username: "",
         email: "",
         password: "",
         confirmPassword: ""
@@ -25,10 +28,22 @@ const Register = ({ onFormSwitch }) => {
     const validateFormInput = (event) => {
         event.preventDefault();
         let inputError = {
+            username: "",
             email: "",
             password: "",
             confirmPassword: ""
         };
+
+
+        if ( !formInput.username && !formInput.email && !formInput.password ) {
+            setFormError({
+                ...inputError,
+                username: "1 és 30 közötti hosszt adjon meg!",
+                email: "Valós e-mail címet adjon meg!",
+                password: "A jelszó nem lehet üres!"
+            });
+            return;
+        }
 
 
         if ( !formInput.email && !formInput.password ) {
@@ -36,6 +51,15 @@ const Register = ({ onFormSwitch }) => {
                 ...inputError,
                 email: "Valós e-mail címet adjon meg!",
                 password: "A jelszó nem lehet üres!"
+            });
+            return;
+        }
+
+
+        if ( formInput.username.length < 1 || formInput.username.length > 30 ) {
+            setFormError({
+                ...inputError,
+                username: "1 és 30 közötti hosszt adjon meg!"
             });
             return;
         }
@@ -88,7 +112,15 @@ const Register = ({ onFormSwitch }) => {
 
 
         const isWhitespace = /^(?=.*\s)/;
-        if ( isWhitespace.test( formInput.password )) {
+        if ( isWhitespace.test( formInput.username ) ) {
+            setFormError({
+                ...inputError,
+                username: "Nem tartalmazhat szóközt!"
+            });
+            return;
+        }
+
+        if ( isWhitespace.test( formInput.password ) ) {
             setFormError({
                 ...inputError,
                 password: "Nem tartalmazhat szóközt!"
@@ -142,9 +174,6 @@ const Register = ({ onFormSwitch }) => {
     };
 
 
-    const [username, setUsername] = useState('');
-
-
 
     return (
         <div className = "authentication-form-container">
@@ -156,14 +185,17 @@ const Register = ({ onFormSwitch }) => {
                 <label className = "label-form" htmlFor = "username"> Felhasználónév </label>
 
                             <input
-                                value = { username }
-                                onChange = {(e) => setUsername( e.target.value )}
+                                value = { formInput.username }
+                                onChange = {({ target }) => {
+                                    handleUserInput( target.name, target.value )
+                                }}
                                 name = "username"
                                 type = "text"
                                 className = "input-form"
                                 placeholder = "Felhasználónév"
                             />
 
+                             <p className = "input-error-message"> { formError.username } </p>
 
                 <label className = "label-form" htmlFor = "email"> E-mail </label>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import "../styles/popup.css"
+import "../styles/popup.css";
 import ReplacementImage from '../images/image-not-found.jpg';
 import RatedX from '../images/rated-x.png';
 import Rated18 from '../images/rated-18.png';
@@ -17,7 +17,7 @@ import YouTube from "react-youtube";
 const Popup = ({ selected, closePopup }) => {
 
 
-	const castSliderSettings = {
+	const castCarouselSettings = {
 		dots: false,
 		infinite: true,
 		speed: 500,
@@ -33,7 +33,23 @@ const Popup = ({ selected, closePopup }) => {
 	};
 
 
-	const providerSliderSettings = {
+	const reducedCastCarouselSettings = {
+		dots: false,
+		infinite: true,
+		speed: 1500,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		accessibility: true,
+		arrows: false,
+		autoplay: true,
+		autoplaySpeed: 1000,
+		focusOnSelect: false,
+		pauseOnDotsHover: true,
+		swipeToSlide: true,
+	};
+
+
+	const providerCarouselSettings = {
 		dots: false,
 		infinite: false,
 		slidesToShow: 5,
@@ -87,9 +103,10 @@ const Popup = ({ selected, closePopup }) => {
 
 				</span></h2>
 
+
 				{ selected.Ratings !== null ? <p className = "rating"> Értékelés: { selected.Ratings } <img className = "rating-star" alt = "not-found!" src = { Star }/></p> : ""}
-				<p className = "genre"> Műfaj: { selected.Genre } </p>
-				<p className = "runtime"> Játékidő: { selected.Runtime } perc </p>
+				{ selected.Ratings !== null ? <p className = "genre"> Műfaj: { selected.Genre } </p> : ""}
+				{ selected.Ratings !== null ? <p className = "runtime"> Játékidő: { selected.Runtime } perc </p> : ""}
 
 
 
@@ -113,7 +130,7 @@ const Popup = ({ selected, closePopup }) => {
 
 							</div>
 
-							<Slider {...providerSliderSettings}>
+							<Slider {...providerCarouselSettings}>
 
 								{selected.Providers !== null ? selected.Providers.map(item => (
 
@@ -147,7 +164,7 @@ const Popup = ({ selected, closePopup }) => {
 
 									</div>
 
-								)) : <img className = "provider-image" alt = "not-found!" src = { ReplacementImage }/>}
+								)) : <p className="content-not-found"> A műsor nem található! </p>}
 
 							</Slider>
 
@@ -165,26 +182,49 @@ const Popup = ({ selected, closePopup }) => {
 
 						</div>
 
-						<Slider {...castSliderSettings}>
 
-							{selected.Cast !== null ? selected.Cast.map(item => (
+						{selected.Cast === null ? <p className="content-not-found"> A szereplők nem találhatóak! </p>
+							: selected.Cast.length > 4 ?
 
+							<Slider {...castCarouselSettings}>
 
-								<div className="carousel-size">
+								{selected.Cast.map(item => (
 
+									<div className="carousel-size">
 
-									<a target = "blank" href = {`https://www.google.hu/search?q=${ item.Name }`}>
-										<img className = "cast-image" src = { item.Image } alt = { item.Name }
-											 onError = { e => e.target.src = ReplacementImage }
-									/></a>
+										<a target="blank" href={`https://www.google.hu/search?q=${item.Name}`}>
+											<img className="cast-image" src={item.Image} alt={item.Name}
+												 onError={e => e.target.src = ReplacementImage}
+											/></a>
 
-									<p className = "cast-name">{ item.Name }</p>
+										<p className="cast-name">{item.Name}</p>
 
-								</div>
+									</div>
 
-							)) : <img className = "cast-image" alt = "not-found!" src = { ReplacementImage }/>}
+								)) }
 
-						</Slider>
+							</Slider>
+
+						: <Slider {...reducedCastCarouselSettings}>
+
+								{selected.Cast.map(item => (
+
+									<div className="carousel-size">
+
+										<a target="blank" href={`https://www.google.hu/search?q=${item.Name}`}>
+											<img className="cast-image" src={item.Image} alt={item.Name}
+												 onError={e => e.target.src = ReplacementImage}
+											/></a>
+
+										<p className="cast-name">{item.Name}</p>
+
+									</div>
+
+								)) }
+
+								</Slider>
+						}
+
 
 					</div>
 
