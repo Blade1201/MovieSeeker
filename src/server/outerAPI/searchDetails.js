@@ -122,7 +122,8 @@ const filterDetails = details => {
     const Title = details["title"] ?? details["name"] ?? null;
     const ImdbID = details["external_ids"]["imdb_id"] ?? null;
     const Year = details["first_air_date"] ?? details["release_date"] ?? null;
-    const Ratings = details.vote_average ? Number(details.vote_average).toFixed(1) : null;
+    const Ratings = details["vote_average"] ?
+        Math.round((details["vote_average"] + Number.EPSILON) * 10) / 10 : null;
     const Genre = details["genres"]?.map(genre => genre.name).join(", ") || null;
     const Runtime = details["runtime"] || details?.episode_run_time?.[0] || null;
     const Poster = details["poster_path"] ? conf.imageAbsolutePath(details["poster_path"]) : null;

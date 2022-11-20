@@ -33,7 +33,10 @@ const filterSearchList = list => {
             Id: media["id"] ?? null,
             Type: media["media_type"] ?? null,
             Title: media["title"] ?? media["name"] ?? null,
-            Poster: media["poster_path"] ? conf.imageAbsolutePath(media["poster_path"]) : null
+            Poster: media["poster_path"] ? conf.imageAbsolutePath(media["poster_path"]) : null,
+            Year: media["first_air_date"] ?? media["release_date"] ?? null,
+            Ratings: media["vote_average"] ?
+                Math.round((media["vote_average"] + Number.EPSILON) * 10) / 10 : null,
         }
     })
 }
