@@ -5,6 +5,7 @@ import Search from "./Search";
 import Results from "./Results";
 import Popup from "./Popup";
 import LogoImage from "../images/logo-transparent.png";
+import Queries from "./Queries";
 
 // import Suggestions from "./Suggestions";
 
@@ -14,7 +15,7 @@ const Home = () => {
     const [state, setState] = useState({
         search: "",
         results: [],
-       // query: [],
+        query: [],
         selected: {}
     });
 
@@ -65,10 +66,10 @@ const Home = () => {
             return {...prevState, search: typedIntake}
         });
 
-        {/*
-        if(s.length !==0){
 
-       axios(apiurl + "&s=" + typedIntake)
+        if(typedIntake.length !==0){
+
+       axios(API_URL + "&s=" + typedIntake)
             .then(({ data }) => {
 
                 let gainedData = data;
@@ -77,9 +78,10 @@ const Home = () => {
                     return { ...prevState, query: gainedData }
                 });
 
-            });} */}
+            });}
 
-        //  console.log(typedIntake)
+        setIsVisible(true)
+          console.log(state.query)
     };
 
 
@@ -107,11 +109,15 @@ const Home = () => {
         });
     };
 
+    const [isVisible, setIsVisible] = useState(true);
 
+    const handleClick = event => {
+        setIsVisible(false);
+    };
 
 return(
         <div>
-        <div className = "home">
+        <div className = "home" onClick={handleClick}>
 
             <a className = "logo-href-size-correction" href = "/"><img className = 'logo' alt = 'logo' src = {LogoImage} /></a>
 
@@ -124,8 +130,17 @@ return(
 
             <a type = "button" className = "redirect-button"  href = "/authentication"> Bejelentkezés </a>
 
-        </div>
 
+        </div>
+            <div className={isVisible ? 'visible' : 'hidden'}>
+                {state.query && (
+                    <ul>
+                            <li>
+                                <Queries results = { state.query } openPopup = { openPopup }/>
+                            </li>
+                    </ul>
+                )}
+            </div>
 
     <main>
         <Results results = { state.results } openPopup = { openPopup }/>

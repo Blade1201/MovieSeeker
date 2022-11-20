@@ -14,7 +14,7 @@ const Result = ({ result, openPopup }) => {
 				: <img alt = { result.Title } src = { ReplacementImage }/>
 			}
 
-			<h3>{ result.Title }</h3>
+			<h3> { result.Title } </h3>
 		</div>
 	);
 };
