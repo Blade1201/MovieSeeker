@@ -7,7 +7,6 @@ import Popup from "./Popup";
 import LogoImage from "../images/logo-transparent.png";
 import Queries from "./Queries";
 
-// import Suggestions from "./Suggestions";
 
 
 const Home = () => {
@@ -81,7 +80,6 @@ const Home = () => {
             });}
 
         setIsVisible(true)
-          console.log(state.query)
     };
 
 
@@ -92,7 +90,6 @@ const Home = () => {
 
             let result = data;
 
-             console.log(result);
 
             setState(prevState => {
                 return { ...prevState, selected: result }
@@ -111,20 +108,18 @@ const Home = () => {
 
     const [isVisible, setIsVisible] = useState(true);
 
-    const handleClick = event => {
+    const handleClick = () => {
         setIsVisible(false);
     };
 
 return(
-        <div>
-        <div className = "home" onClick={handleClick}>
+        <div onClick={handleClick}>
+        <div className = "home">
 
             <a className = "logo-href-size-correction" href = "/"><img className = 'logo' alt = 'logo' src = {LogoImage} /></a>
 
 
             <Search handleInput = { handleInput } search = { searchWithEnter }/>
-
-            {/* <Suggestions results = { state.query }/> */}
 
             <button className = "search-button" onClick = { searchWithButton }><span> Keresés </span></button>
 
