@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import {Link} from "react-router-dom";
 
 
 const Register = ({ onFormSwitch }) => {
@@ -261,7 +262,7 @@ const Register = ({ onFormSwitch }) => {
 
 
             <button className = "link-button" onClick = {() => onFormSwitch( 'login' )}> Van már felhasználói fiókod? Jelentkezz be. </button>
-            <a type = "button" className = "link-button-return"  href = "/"> Mégsem </a>
+            <Link className="link-button-return" to="/"> Mégsem </Link>
 
         </div>
     );

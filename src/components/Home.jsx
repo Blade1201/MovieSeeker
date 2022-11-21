@@ -6,7 +6,7 @@ import Results from "./Results";
 import Popup from "./Popup";
 import LogoImage from "../images/logo-transparent.png";
 import Queries from "./Queries";
-
+import {Link} from "react-router-dom";
 
 
 const Home = () => {
@@ -116,14 +116,15 @@ return(
         <div onClick={handleClick}>
         <div className = "home">
 
-            <a className = "logo-href-size-correction" href = "/"><img className = 'logo' alt = 'logo' src = {LogoImage} /></a>
+            <Link className="logo-href-size-correction" to="/"> <img className = 'logo' alt = 'logo' src = {LogoImage} /> </Link>
 
 
             <Search handleInput = { handleInput } search = { searchWithEnter }/>
 
             <button className = "search-button" onClick = { searchWithButton }><span> Keresés </span></button>
 
-            <a type = "button" className = "redirect-button"  href = "/authentication"> Bejelentkezés </a>
+
+                <Link className="redirect-button" to="/authentication"> Bejelentkezés </Link>
 
 
         </div>
