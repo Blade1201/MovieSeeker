@@ -8,6 +8,7 @@ const Feature = ({ title, text }) => (
   <div className = "what-movieseeker__features-container__feature">
 
     <div className = "what-movieseeker__features-container__feature-title">
+        <div />
       <h1> { title } </h1>
     </div>
 
