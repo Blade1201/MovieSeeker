@@ -16,13 +16,13 @@ const WhatMovieSeeker = () => (
 
 
     <div className = "what-movieseeker-heading">
-      <h1 className = "gradient__text"> A lehetőségek meghaladják a képzeletedet </h1>
+      <h1 className = "gradient__text"> A lehetőségek meghaladják a képzeleted </h1>
         <Link to = "/search"> Fedezd fel </Link>
     </div>
 
 
     <div className = "what-movieseeker-container">
-      <Feature title = "Nézelődj" text = "Legyen az mozifilm esetleg tv sorozat nálunk mindent megtalálhatsz" />
+      <Feature title = "Nézelődj" text = "Legyen az mozifilm esetleg tv sorozat, nálunk mindent megtalálhatsz" />
       <Feature title = "Böngéssz" text = "Számos tartalom közül válogathatsz kedvedre" />
       <Feature title = "Regisztrálj" text = "Amennyiben többre vágysz, mi megadhatjuk neked a kellő odafigyelést" />
     </div>
