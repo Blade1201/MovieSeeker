@@ -2,7 +2,7 @@
 
 
 .what-movieseeker__features-container__feature {
-    width: 100%;
+    width: 65%;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;

@@ -21,6 +21,7 @@
 }
 
 .possibility-content {
+    padding-bottom: 300px;
     flex: 1;
     display: flex;
     justify-content: flex-end;
