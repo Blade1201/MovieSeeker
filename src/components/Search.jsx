@@ -6,7 +6,10 @@ const Search = ({ handleInput,search }) => {
 
     return(
 
-            <input type = "text" placeholder = "Keresés..." className = "searchbox" onChange = { handleInput } onKeyDown = { search }/>
+        <div className="inputBox">
+             <input type="text" required="required" onChange = { handleInput } onKeyDown = { search } />
+             <span> Keresés... </span>
+        </div>
 
 );
 };

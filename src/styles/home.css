@@ -40,7 +40,7 @@ body {
     display: inline-block;
     border-radius: 10px;
     background-color: #5e2a50;
-    transform: translate(+470%, +28%);
+    transform: translate(+500%, +28%);
     border: none;
     color: #FFFFFF;
     position: absolute;
@@ -202,6 +202,56 @@ section .movie-not-found-error-message {
     height: 800%;
 }
 
+.inputBox{
+    padding-top: 12px;
+    margin-left: 100px;
+    position: absolute;
+}
+
+
+.inputBox input{
+    border: 1px solid rgba(255,255,255,0.25);
+    background: #1d2b3a;
+    border-radius: 5px;
+    outline: none;
+    color: #EEEEEE;
+    font-size: 1em;
+    width: 190%;
+    padding: 6px;
+}
+
+
+.inputBox span{
+    position: absolute;
+    left: 0;
+    padding-left: 110px;
+    padding-top: 9px;
+    pointer-events: none;
+    font-size: 1em;
+    color: rgba(255,255,255,0.25);
+    text-transform: uppercase;
+    transition: 0.5s;
+}
+
+
+.inputBox input:valid~span,
+.inputBox input:focus~span{
+    color: #00dfc4;
+    transform: translateX(60px) translateY(-7px);
+    font-size: 0.65em;
+    padding: 0 10px;
+    background: #1d2b3a;
+    border-left: 1px solid #00dfc4;
+    border-right: 1px solid #00dfc4;
+    letter-spacing: 0.2em;
+}
+
+
+.inputBox input:valid,
+.inputBox input:focus{
+    border: 1px solid #00dfc4;
+}
+
 
 .results .result:hover {
     box-shadow: 0 0 8px 3px #26c485;
@@ -222,26 +272,4 @@ section .movie-not-found-error-message {
 .results .result:hover h3 {
     background: #26c485;
     color: #000000;
-}
-
-
-.searchbox {
-    position: absolute;
-    display: flex;
-    width: 24%;
-    padding: 6px;
-    transform: translate(+25%, +27%);
-    border: none;
-    outline: none;
-    background: #EEE none;
-    border-radius: 8px;
-    color: #53565A;
-    font-size: 20px;
-    font-weight: 300;
-    transition: 0.4s ease-out;
-}
-
-
-.searchbox:focus {
-    box-shadow: 0 0 8px 3px #26c485;
 }
