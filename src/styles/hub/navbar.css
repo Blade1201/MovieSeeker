@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+
+.movieseeker-navbar-links__container a,
+.movieseeker-navbar__sign a {
+    color: unset;
+    text-decoration: none;
+}
+
+.movieseeker-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 6rem;
+}
+
+.movieseeker-navbar-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.movieseeker-navbar-links-title {
+    margin-right: 2rem;
+    color: #EEEEEE;
+}
+
+
+.movieseeker-navbar-links__container {
+    display: flex;
+    flex-direction: row;
+}
+
+.movieseeker-navbar__sign {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.movieseeker-navbar-links__container p {
+    color: #fff;
+    font-family:  'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    text-transform: capitalize;
+
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.movieseeker-navbar__sign a {
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background: #FF4820;
+    font-family:  'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 5px;
+}
+
+
+@media screen and (max-width: 1050px) {
+    .movieseeker-navbar-links__container {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .movieseeker-navbar {
+        padding: 2rem 4rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .movieseeker-navbar {
+        padding: 2rem;
+    }
+
+    .movieseeker-navbar__sign {
+        display: none;
+    }
+}

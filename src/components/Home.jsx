@@ -124,8 +124,6 @@ return(
             <button className = "search-button" onClick = { searchWithButton }><span> Keresés </span></button>
 
 
-                <Link className="redirect-button" to="/authentication"> Bejelentkezés </Link>
-
 
         </div>
             <div className={isVisible ? 'visible' : 'hidden'}>

@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+
+
+.movieseeker-header {
+    display: flex;
+    flex-direction: row;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body{
+    background: #040C18;;
+}
+.section__padding {
+    padding: 4rem 6rem;
+}
+.section__margin {
+    margin: 4rem 6rem;
+}
+.gradient__text {
+    background: linear-gradient(89.97deg, #AE67FA 1.84%, #F49867 102.67%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient__bg {
+    background:-moz-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+
+    /* safari 5.1+,chrome 10+ */
+    background:-webkit-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+
+    /* opera 11.10+ */
+    background:-o-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+
+    /* ie 10+ */
+    background:-ms-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+
+    /* global 92%+ browsers support */
+    background:radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
+}
+.movieseeker-header-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+
+    margin-right: 5rem;
+}
+
+.movieseeker-header-content h1 {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 800;
+    font-size: 62px;
+    line-height: 75px;
+    letter-spacing: -0.04em;
+}
+
+.movieseeker-header-content p {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 28px;
+    color: #81AFDD;
+
+    margin-top: 1.5rem;
+}
+
+.movieseeker-header-content__input {
+    width: 100%;
+    margin: 2rem 0 1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.movieseeker-header-content__input a {
+    flex: 0.6;
+    width: 10%;
+    min-height: 50px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    background: #FF4820;
+    border: 2px solid #FF4820;
+    padding-top: 8px;
+    color: #fff;
+    text-decoration: none;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    text-align: center;
+}
+
+
+.movieseeker-header-content__people {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+
+    margin-top: 2rem;
+}
+
+.movieseeker-header-content__people img {
+    width: 181.79px;
+    height: 38px;
+}
+
+.movieseeker-header-content__people p {
+    margin: 0 0 0 1rem;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 38px;
+    color: #fff;
+    text-align: center;
+}
+
+.movieseeker-header-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.movieseeker-header-image img {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1050px) {
+    .movieseeker-header {
+        flex-direction: column;
+    }
+
+    .movieseeker-header-content {
+        margin: 0 0 3rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .movieseeker-header-content h1 {
+        font-size: 48px;
+        line-height: 60px;
+    }
+
+    .movieseeker-header-content p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    
+    .movieseeker-header-content__people {
+        flex-direction: column;
+    }
+
+    .movieseeker-header-content__people p {
+        margin: 0;
+    }
+
+    .movieseeker-header-content__input input,
+    .movieseeker-header-content__input button {
+        font-size: 16px;
+        line-height: 24px;
+    }
+}
+
+@media screen and (max-width: 490px) {
+    .movieseeker-header-content h1 {
+        font-size: 36px;
+        line-height: 48px;
+    }
+
+    .movieseeker-header-content p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .movieseeker-header-content__input input,
+    .movieseeker-header-content__input button {
+        font-size: 12px;
+        line-height: 16px;
+    }
+}
