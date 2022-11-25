@@ -75,6 +75,7 @@ section .movie-not-found-error-message {
     background-color: #1d2b3a;
     max-width: 28%;
     min-width: 25%;
+    min-height: 57%;
     flex-direction: column;
     display: flex;
     border-radius: 15px;
@@ -113,13 +114,37 @@ section .movie-not-found-error-message {
     box-shadow: 0 0 8px 3px #26c485;
     min-width: 290px;
     border-radius: 15px;
+    max-height: 175px;
 }
 
 
 .query-results .result h3:hover{
     min-width: 210px;
+    min-height: 175px;
 }
 
+
+.query-results .result h3 span:nth-child(1) img{
+    display: flex;
+    flex-direction: row;
+    width: 4%;
+    height: 4%;
+}
+
+
+.query-results .result h3 span:nth-child(1){
+    margin-top: 14%;
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+}
+
+
+.query-results .result h3 span:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
 
 .query-results .result h3 {
     color: #FFF;
@@ -131,29 +156,6 @@ section .movie-not-found-error-message {
     background: #445565;
     flex: 1 1 100%;
     transition: 0.4s ease-out;
-}
-
-
-.query-results .result .ratings{
-    color: #EEEEEE;
-    margin-top: 12%;
-    margin-left: 90px;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.query-results .result .release-date{
-    color: #EEEEEE;
-    margin-top: 19%;
-    margin-left: 90px;
-    min-width: 60%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 
@@ -186,6 +188,7 @@ section .movie-not-found-error-message {
     width: 100%;
     height: 800%;
 }
+
 
 .inputBox{
     margin-top: 10px;
