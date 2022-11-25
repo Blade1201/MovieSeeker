@@ -60,6 +60,12 @@
     margin-bottom: 2rem;
 }
 
+
+.possibility-content span {
+   font-size: 2rem;
+}
+
+
 @media screen and (max-width: 950px) {
     .possibility {
         flex-direction: column;

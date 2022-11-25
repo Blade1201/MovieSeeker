@@ -116,10 +116,10 @@ const Home = () => {
 
 
 return(
-        <div className="main-home" onClick={handleClick}>
+        <div className = "main-home" onClick = { handleClick }>
         <div className = "home">
 
-            <Link className="logo-href-size-correction" to="/"> <img className = 'logo' alt = 'logo' src = {LogoImage} /> </Link>
+            <Link className = "logo-href-size-correction" to = "/"> <img className = 'logo' alt = 'logo' src = { LogoImage } /> </Link>
 
 
             <Search handleInput = { handleInput } search = { searchWithEnter } button = { searchWithButton }/>

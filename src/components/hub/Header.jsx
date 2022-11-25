@@ -21,7 +21,7 @@ const Header = () => (
 
 
       <div className = "movieseeker-header-content__people">
-        <img src = {people} />
+        <img src = {people} alt = "people" />
         <p> 1,600 ember már meglátogatta ezt az oldalt az elmúlt 24 órában </p>
       </div>
 
@@ -29,7 +29,7 @@ const Header = () => (
     </div>
 
     <div className = "movieseeker-header-image">
-      <img src={ai} />
+      <img src={ai} alt = "AI" />
     </div>
 
   </div>
