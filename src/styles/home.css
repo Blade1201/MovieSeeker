@@ -69,16 +69,27 @@ section .movie-not-found-error-message {
 
 
 .query-results{
-    margin-left: 3%;
+    margin-left: 4.2%;
+    transform: translate(0,-2.4%);
     position: absolute;
     background-color: #1d2b3a;
     max-width: 28%;
-    min-width: 28%;
+    min-width: 25%;
     flex-direction: column;
     display: flex;
     border-radius: 15px;
     border: 1px solid #00dfc4;
+    overflow: auto;
 }
+
+
+@media screen and (max-width: 1200px) {
+    .query-results .result img {
+       max-width: 60px;
+        max-height: 80px;
+    }
+}
+
 
 
 .query-results .result{
@@ -100,8 +111,13 @@ section .movie-not-found-error-message {
 
 .query-results .result:hover {
     box-shadow: 0 0 8px 3px #26c485;
-    min-width: 420px;
+    min-width: 290px;
     border-radius: 15px;
+}
+
+
+.query-results .result h3:hover{
+    min-width: 210px;
 }
 
 
@@ -110,10 +126,9 @@ section .movie-not-found-error-message {
     font-size: 20px;
     font-weight: 600;
     padding: 10px;
-    min-width: 320px;
+    min-width: 150%;
     min-height: 120px;
     background: #445565;
-    position: relative;
     flex: 1 1 100%;
     transition: 0.4s ease-out;
 }

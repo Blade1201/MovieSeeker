@@ -16,7 +16,7 @@ const Result = ({ result, openPopup }) => {
 
                 <h3> {result.Title} </h3>
                 <p className="ratings"> Értékelés: {result.Ratings} </p>
-                <p className="release-date"> Megjelenési év: {result.Year} </p>
+                <p className="release-date"> Megjelenés: {result.Year} </p>
             </div>
     );
 };
