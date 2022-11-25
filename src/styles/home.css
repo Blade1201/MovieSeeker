@@ -75,7 +75,7 @@ section .movie-not-found-error-message {
     background-color: #1d2b3a;
     max-width: 28%;
     min-width: 25%;
-    min-height: 57%;
+    min-height: 61%;
     flex-direction: column;
     display: flex;
     border-radius: 15px;

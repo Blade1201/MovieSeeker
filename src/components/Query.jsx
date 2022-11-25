@@ -16,7 +16,7 @@ const Result = ({ result, openPopup }) => {
             }
 
                 <h3> { result.Title } <span> Értékelés: {result.Ratings}
-                    <img className = "rating-star" alt = "not-found!" src = { Star }/></span>
+                    <img alt = "not-found!" src = { Star } /></span>
                     <span> Megjelenés: {result.Year} </span></h3>
 
             </div>
