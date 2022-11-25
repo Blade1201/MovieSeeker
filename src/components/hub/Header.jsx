@@ -32,6 +32,14 @@ const Header = () => (
       <img src={ai} alt = "AI" />
     </div>
 
+
+      <div className="scroll-downs">
+          <div className="mouse">
+              <div className="scroller"></div>
+          </div>
+      </div>
+
+
   </div>
 );
 
