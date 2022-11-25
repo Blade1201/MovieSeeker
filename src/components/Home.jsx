@@ -77,9 +77,11 @@ const Home = () => {
                     return { ...prevState, query: gainedData }
                 });
 
+                setIsVisible(true)
+
             });}
 
-        setIsVisible(true)
+
     };
 
 
@@ -106,22 +108,21 @@ const Home = () => {
         });
     };
 
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState(false);
 
     const handleClick = () => {
         setIsVisible(false);
     };
 
+
 return(
-        <div onClick={handleClick}>
+        <div className="main-home" onClick={handleClick}>
         <div className = "home">
 
             <Link className="logo-href-size-correction" to="/"> <img className = 'logo' alt = 'logo' src = {LogoImage} /> </Link>
 
 
-            <Search handleInput = { handleInput } search = { searchWithEnter }/>
-
-            <button className = "search-button" onClick = { searchWithButton }><span> Keresés </span></button>
+            <Search handleInput = { handleInput } search = { searchWithEnter } button = { searchWithButton }/>
 
 
 

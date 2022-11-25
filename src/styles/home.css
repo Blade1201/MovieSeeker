@@ -20,12 +20,16 @@
 
 body {
     font-family: 'Montserrat',sans-serif;
-    background-color: #000000;
+}
+
+
+.main-home{
+    min-height: 100vh;
 }
 
 
 .home {
-    border-bottom: 1px solid #FF14BDFF;
+    border-bottom: 1px solid #00dfc4;
     display: grid;
     background-color: black;
 }
@@ -112,21 +116,26 @@ section .movie-not-found-error-message {
 
 
 .query-results{
-    margin: 0 50px;
+    margin-left: 3%;
     position: absolute;
-    background-color: #53565A;
-    max-width: 30%;
+    background-color: #1d2b3a;
+    max-width: 28%;
+    min-width: 28%;
     flex-direction: column;
     display: flex;
     border-radius: 15px;
+    border: 1px solid #00dfc4;
 }
 
 
 .query-results .result{
     width: 50%;
-    padding: 15px;
+    padding: 3%;
     display: flex;
     cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20%;
 }
 
 
@@ -159,17 +168,24 @@ section .movie-not-found-error-message {
 
 .query-results .result .ratings{
     color: #EEEEEE;
-    margin-top: 75px;
+    margin-top: 12%;
     margin-left: 90px;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
 .query-results .result .release-date{
     color: #EEEEEE;
-    margin-top: 95px;
+    margin-top: 19%;
     margin-left: 90px;
+    min-width: 60%;
     position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -178,6 +194,7 @@ section .movie-not-found-error-message {
     color: #000000;
     border-radius: 25px;
 }
+
 
 .results {
     display: flex;
@@ -203,20 +220,26 @@ section .movie-not-found-error-message {
 }
 
 .inputBox{
-    padding-top: 12px;
+    margin-top: 10px;
     margin-left: 100px;
     position: absolute;
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1d2b3a;
+    border-radius: 1rem;
 }
 
 
 .inputBox input{
     border: 1px solid rgba(255,255,255,0.25);
     background: #1d2b3a;
-    border-radius: 5px;
+    border-radius: 1rem;
     outline: none;
     color: #EEEEEE;
     font-size: 1em;
-    width: 190%;
+    width: 100%;
     padding: 6px;
 }
 
@@ -225,7 +248,7 @@ section .movie-not-found-error-message {
     position: absolute;
     left: 0;
     padding-left: 110px;
-    padding-top: 9px;
+    padding-top: 1%;
     pointer-events: none;
     font-size: 1em;
     color: rgba(255,255,255,0.25);
@@ -237,7 +260,7 @@ section .movie-not-found-error-message {
 .inputBox input:valid~span,
 .inputBox input:focus~span{
     color: #00dfc4;
-    transform: translateX(60px) translateY(-7px);
+    transform: translateX(60px) translateY(-15px);
     font-size: 0.65em;
     padding: 0 10px;
     background: #1d2b3a;
@@ -252,6 +275,12 @@ section .movie-not-found-error-message {
     border: 1px solid #00dfc4;
 }
 
+
+.inputBox img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
 
 .results .result:hover {
     box-shadow: 0 0 8px 3px #26c485;
