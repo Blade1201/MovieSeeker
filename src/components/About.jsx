@@ -57,7 +57,7 @@ const About = () => {
                             <div className={toggleTab === 1 ? "content active-content" : "content"}>
                                 <p className="about-myself">Az IT problémák megoldásainak ördöge, aki problémamegoldó képességével számos teljesithetetlennek tűnő
                                     feladatra talált megoldást. A projekt
-                                    alapitója, koordinációs kézsége és a háttérben futó folyamatok kidolgozásai nélkül ma nem létezne a MovieSeeker. Igazi veterán, aki
+                                    alapitója, koordinációs kézsége és a háttérben futó folyamatok kidolgozásai nélkül, ma nem létezne a MovieSeeker. Igazi veterán, aki
                                     rajong a kihívásokért, de nem szeret hosszú időre beragadni egyetlen feladatba sem.</p>
 
                                 <p className="quote"> Mindenki a saját baklövéseit hívja tapasztalatnak!
