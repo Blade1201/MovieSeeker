@@ -239,7 +239,7 @@ const About = () => {
 
                             <div className={toggleTabRoman === 1 ? "content active-content" : "content"}>
                                 <p className="about-myself">Igazi kreatív elme. Szabadidejében videójátékok fejlesztésében vesz részt, kiemelkedő elszántsága valamint kitartása és a
-                                    kreatív nézetei nélkül a MovieSeeker kevésbé lehetne felhasználó baráti. Ördögien elhivatott, aki
+                                    kreatív nézetei nélkül a MovieSeeker kevésbé lehetne felhasználó barát. Ördögien elhivatott, aki
                                     sohasem adja fel a kítüzött céljait.</p>
 
                                 <p className="quote"> Azt az utat ami mögötted van, már nem javíthatod meg.<br/> Viszont azt az utat, ami előtted van, még szebbé teheted!
