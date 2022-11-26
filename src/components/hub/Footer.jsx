@@ -29,7 +29,7 @@ const Footer = () => (
       <div className = "footer-links_div">
         <h4> Hivatkozások </h4>
         <p> Közösségi média </p>
-        <p> Rólunk </p>
+        <p> <Link to = "/about"> Rólunk </Link></p>
       </div>
 
 

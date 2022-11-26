@@ -80,6 +80,13 @@
     color: #fff;
 }
 
+
+.footer-links_div a{
+    text-decoration: none;
+    color: #EEEEEE;
+}
+
+
 .footer-links_logo .rights {
     font-family:  'Manrope', sans-serif;
     font-size: 12px;

@@ -73,8 +73,7 @@ section .movie-not-found-error-message {
     transform: translate(0,-2.4%);
     position: absolute;
     background-color: #1d2b3a;
-    max-width: 28%;
-    min-width: 25%;
+    width: 25%;
     min-height: 61%;
     flex-direction: column;
     display: flex;

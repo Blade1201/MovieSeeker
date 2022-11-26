@@ -62,6 +62,13 @@
 }
 
 
+.movieseeker-navbar-links__container .about-team{
+    padding: 0.6rem;
+    border: 1px solid #fff;
+    text-align: center;
+}
+
+
 @media screen and (max-width: 1050px) {
     .movieseeker-navbar-links__container {
         display: none;
