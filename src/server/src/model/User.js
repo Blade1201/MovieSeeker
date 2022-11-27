@@ -35,16 +35,6 @@ User.init({
 }, {
     sequelize, // We need to pass the connection instance
     modelName: 'User', // We need to choose the model name
-    indexes: [
-        {
-            unique: true,
-            fields: ["email"]
-        },
-        {
-            unique: true,
-            fields: ["username"]
-        },
-    ]
 });
 
 User.sync({alter: true});

@@ -15,7 +15,6 @@ module.exports = (req, res, next) => {
                 res.userId = decoded.id;
                 next();
             } else {
-                console.log(err);
                 res.json({
                     success: false,
                     reason: "Hiba történt a token érvenyesítése közben!"
