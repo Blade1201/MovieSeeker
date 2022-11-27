@@ -46,7 +46,7 @@ const About = () => {
 
 
                             <div className = {toggleTab === 2 ? "single-tab active-tab" : "single-tab"} onClick = {() => toggleState(2)}>
-                                <h2> Képességek </h2>
+                                <h2> Készségek </h2>
                             </div>
 
 
@@ -230,7 +230,7 @@ const About = () => {
 
 
                             <div className = {toggleTabRoman === 2 ? "single-tab active-tab" : "single-tab"} onClick = {() => toggleStateRoman(2)}>
-                                <h2> Képességek </h2>
+                                <h2> Készségek </h2>
                             </div>
 
 
