@@ -1,15 +1,13 @@
-const conf =  require("./configuration.js");
 const axios = require("axios");
+const {PAGE, INCLUDE_ADULT, REGION, imageAbsolutePath, API_KEY, LANGUAGE, refreshBaseImageUrl} =
+    require("../../configs/outer.api.config");
 
-const INCLUDE_ADULT = false;
-const PAGE = 1;
-const REGION = "hu"
 
 const url = new URL("https://api.themoviedb.org/3/search/multi");
 
 url.search = new URLSearchParams({
-    api_key: conf.API_KEY,
-    language: conf.LANGUAGE,
+    api_key: API_KEY,
+    language: LANGUAGE,
     query: "",
     page: PAGE,
     include_adult: INCLUDE_ADULT,
@@ -33,7 +31,7 @@ const filterSearchList = list => {
             Id: media["id"] ?? null,
             Type: media["media_type"] ?? null,
             Title: media["title"] ?? media["name"] ?? null,
-            Poster: media["poster_path"] ? conf.imageAbsolutePath(media["poster_path"]) : null,
+            Poster: media["poster_path"] ? imageAbsolutePath(media["poster_path"]) : null,
             Year: media["first_air_date"] ?? media["release_date"] ?? null,
             Ratings: media["vote_average"] ?
                 Math.round((media["vote_average"] + Number.EPSILON) * 10) / 10 : null,
@@ -42,7 +40,7 @@ const filterSearchList = list => {
 }
 
 const searchMedia = async (query) => {
-    await conf.refreshBaseImageUrl();
+    await refreshBaseImageUrl();
 
     url.searchParams.set("query", query);
 

@@ -1,30 +1,31 @@
-const conf = require("./configuration");
+require("../../configs/outer.api.config");
 const axios = require("axios");
+const {API_KEY, LANGUAGE, imageAbsolutePath, refreshBaseImageUrl} = require("../../configs/outer.api.config");
 
 const BASIC_DETAILS = ["external_ids", "watch/providers", "credits", "videos&include_video_language=hu,en"];
 
-const getExtras = (Type) => {
-    if (Type === "movie") {
+const getExtras = (type) => {
+    if (type === "movie") {
         return ["release_dates", BASIC_DETAILS];
-    } else if (Type === "tv") {
+    } else if (type === "tv") {
         return ["content_ratings", BASIC_DETAILS];
     }
     return "";
 };
 
-const fetchDetails = (Type, Id) => {
-    const detailsURL = new URL(`https://api.themoviedb.org/3/${Type}/${Id}`);
+const fetchDetails = (type, id) => {
+    const detailsURL = new URL(`https://api.themoviedb.org/3/${type}/${id}`);
     detailsURL.search = new URLSearchParams({
-        api_key: conf.API_KEY,
-        language: conf.LANGUAGE,
+        api_key: API_KEY,
+        language: LANGUAGE,
     });
 
-    const extras = `append_to_response=${getExtras(Type).join(',')}`;
+    const extras = `append_to_response=${getExtras(type).join(',')}`;
 
     return axios.get(`${detailsURL.href}&${extras}`)
         .then(res => res.data)
         .then(data => {
-            data.media_type = Type;
+            data.media_type = type;
             return data;
         })
         .catch(err => {
@@ -61,7 +62,7 @@ const getWatchProviders = watchProvidersObj => {
     return flatrates.map(f => {
         return {
             Name: f["provider_name"],
-            Logo: conf.imageAbsolutePath(f["logo_path"]),
+            Logo: imageAbsolutePath(f["logo_path"]),
         }
     });
 }
@@ -74,7 +75,7 @@ const getCast = credits => {
     return cast.map(c => {
         return {
             Name: c["original_name"],
-            Image: conf.imageAbsolutePath(c["profile_path"]),
+            Image: imageAbsolutePath(c["profile_path"]),
         }
     });
 };
@@ -119,50 +120,36 @@ const getTVCertification = content_ratings => {
 }
 
 const filterDetails = details => {
-    const Title = details["title"] ?? details["name"] ?? null;
-    const ImdbID = details["external_ids"]["imdb_id"] ?? null;
-    const Year = details["first_air_date"] ?? details["release_date"] ?? null;
-    const Ratings = details["vote_average"] ?
-        Math.round((details["vote_average"] + Number.EPSILON) * 10) / 10 : null;
-    const Genre = details["genres"]?.map(genre => genre.name).join(", ") || null;
-    const Runtime = details["runtime"] || details?.episode_run_time?.[0] || null;
-    const Poster = details["poster_path"] ? conf.imageAbsolutePath(details["poster_path"]) : null;
-    const Plot = details["overview"] || null;
-    const Providers = getWatchProviders(details["watch/providers"]);
-    const Videos = getVideos(details["videos"]);
-    const Cast = reduceArraySize(getCast(details["credits"]), 25);
-
-    const Certification = details["media_type"] === "movie" ?
-        getMovieCertification(details["release_dates"]) : getTVCertification(details["content_ratings"]);
-
     return {
-        Title,
-        ImdbID,
-        Year,
-        Ratings,
-        Genre,
-        Runtime,
-        Poster,
-        Plot,
-        Providers,
-        Videos,
-        Cast,
-        Certification,
+        Title : details["title"] ?? details["name"] ?? null,
+        ImdbID: details["external_ids"]["imdb_id"] ?? null,
+        Year: details["first_air_date"] ?? details["release_date"] ?? null,
+        Ratings: details["vote_average"] ?
+            Math.round((details["vote_average"] + Number.EPSILON) * 10) / 10 : null,
+        Genre: details["genres"]?.map(genre => genre.name).join(", ") || null,
+        Runtime: details["runtime"] || details?.episode_run_time?.[0] || null,
+        Poster: details["poster_path"] ? imageAbsolutePath(details["poster_path"]) : null,
+        Plot:  details["overview"] || null,
+        Providers: getWatchProviders(details["watch/providers"]),
+        Videos: getVideos(details["videos"]),
+        Cast: reduceArraySize(getCast(details["credits"]), 25),
+        Certification: details["media_type"] === "movie" ?
+            getMovieCertification(details["release_dates"]) : getTVCertification(details["content_ratings"]),
     }
 };
 
-const searchDetails = async (Type, Id) => {
-    if (!(Type === "tv" || Type === "movie") && isFinite(Id)) {
+const searchDetails = async (type, id) => {
+    if (!(type === "tv" || type === "movie") && isFinite(id)) {
         return {message: "Invalid params"};
     }
 
-    const details = await fetchDetails(Type, Id);
+    const details = await fetchDetails(type, id);
 
     if (details.hasOwnProperty("success") && !details["success"]) {
         return {message: "Invalid params"};
     }
 
-    await conf.refreshBaseImageUrl();
+    await refreshBaseImageUrl();
 
     return filterDetails(details);
 }
