@@ -9,16 +9,17 @@
     flex-direction: row;
 }
 
+
 .what-movieseeker__features-heading {
     flex: 1;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-
     text-align: left;
     margin-right: 5rem;
 }
+
 
 .what-movieseeker__features-heading h1 {
     font-size: 34px;
@@ -26,6 +27,7 @@
     font-weight: 800;
     font-family:  'Manrope', sans-serif;
 }
+
 
 .what-movieseeker__features-heading a {
     color:  #FF8A71;
@@ -37,6 +39,7 @@
     margin-top: 2rem;
 }
 
+
 .what-movieseeker__features-container {
     flex: 1.5;
     display: flex;
@@ -45,10 +48,12 @@
     flex-direction: column;
 }
 
+
 @media screen and (max-width: 990px) {
     .what-movieseeker__features {
         flex-direction: column;
     }
+
 
     .what-movieseeker__features-heading {
         margin: 0 0 2rem 0;

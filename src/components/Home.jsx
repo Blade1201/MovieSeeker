@@ -18,6 +18,7 @@ const Home = () => {
         selected: {}
     });
 
+    const [isVisible, setIsVisible] = useState(false);
 
     const API_URL = "/api?";
 
@@ -86,6 +87,12 @@ const Home = () => {
 
 
 
+    const handleClick = () => {
+        setIsVisible(false);
+    };
+
+
+
     const openPopup = (props) => {
         axios(API_URL + "&i=" + props.id + "&m=" + props.type)
             .then(({ data }) => {
@@ -108,11 +115,7 @@ const Home = () => {
         });
     };
 
-    const [isVisible, setIsVisible] = useState(false);
 
-    const handleClick = () => {
-        setIsVisible(false);
-    };
 
 
 return(
@@ -127,7 +130,7 @@ return(
 
 
         </div>
-            <div className={isVisible ? 'visible' : 'hidden'}>
+            <div className = {isVisible ? 'visible' : 'hidden'}>
                 {state.query && (
                     <ul>
                             <li>
@@ -136,6 +139,7 @@ return(
                     </ul>
                 )}
             </div>
+
 
     <main>
         <Results results = { state.results } openPopup = { openPopup }/>

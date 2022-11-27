@@ -261,7 +261,7 @@ const Register = ({ onFormSwitch }) => {
 
 
 
-            <button className = "link-button" onClick = {() => onFormSwitch( 'login' )}> Van már felhasználói fiókod? Jelentkezz be. </button>
+            <button className = "link-button" onClick = {() => onFormSwitch( 'login' )}> Van már felhasználói fiókja? Jelentkezzen be. </button>
             <Link className="link-button-return" to="/"> Mégsem </Link>
 
         </div>

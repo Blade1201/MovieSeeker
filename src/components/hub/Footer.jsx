@@ -9,7 +9,7 @@ const Footer = () => (
   <div className = "footer section__padding">
 
     <div className = "footer-heading">
-      <h1 className = "gradient__text"> Szeretnél mások előtt belépni a jövőbe? </h1>
+      <h1 className = "gradient__text"> Szeretne mások előtt belépni a jövőbe? </h1>
     </div>
 
 
@@ -21,8 +21,8 @@ const Footer = () => (
     <div className = "footer-links">
       <div className = "footer-links_logo">
         <h1> MovieSeeker </h1>
-        <p >Nyiregyháza 4400 <br /> Szabolcs-Szatmár-Bereg </p>
-        <p className = "rights"> Minden jog fenntartva </p>
+        <p >Nyíregyháza 4400 <br /> Szabolcs-Szatmár-Bereg </p>
+        <p className = "rights"> Minden jog fenntartva. </p>
       </div>
 
 
@@ -42,10 +42,10 @@ const Footer = () => (
 
 
       <div className = "footer-links_div">
-        <h4> Lépj kapcsolatba </h4>
-        <p> Nyiregyháza 4400 <br /> Szabolcs-Szatmár-Bereg </p>
+        <h4> Lépjen kapcsolatba </h4>
+        <p> Nyíregyháza 4400 <br /> Szabolcs-Szatmár-Bereg </p>
         <p> 085-132567 </p>
-        <p> info@nyirszikszi.net </p>
+        <p> info@movieseeker.hu </p>
       </div>
     </div>
 

@@ -23,8 +23,8 @@ const Navbar = () => {
           <p><a href = "#home"> Kezdőlap </a></p>
           <p><a href = "#movieseeker"> MovieSeeker? </a></p>
           <p><a href = "#possibilities"> Lehetőségek </a></p>
-          <p><a href = "#premium-account"> Előfizetői lehetőségek </a></p>
-          <p> <Link className="about-team" to = "/about"> A Csapat </Link></p>
+          <p><a href = "#premium-account"> Előfizetői Lehetőségek </a></p>
+          <p> <Link className = "about-team" to = "/about"> A Csapat </Link></p>
         </div>
 
 

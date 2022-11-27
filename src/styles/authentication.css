@@ -22,13 +22,13 @@
 }
 
 
-.form .authentication-form-container, .login-form, .register-form {
+.authentication-form-container, .login-form, .register-form {
     display: flex;
     flex-direction: column;
 }
 
 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 415px) {
     .authentication-form-container {
         padding: 5rem;
         border: 1px solid white;
@@ -38,13 +38,13 @@
 }
 
 
-.form .authentication-form-container .login-form label {
+.login-form label {
     padding-top: 8px;
     text-align: left;
 }
 
 
-.form .authentication-form-container .login-form .input-form {
+.login-form .input-form {
     margin: 0.5rem 0;
     padding: 1rem;
     border: none;
@@ -52,7 +52,7 @@
 }
 
 
-.form .authentication-form-container .login-form .authentication-button {
+.login-form .authentication-button {
     width: 180px;
     height: 60px;
     position: relative;
@@ -66,7 +66,7 @@
 }
 
 
-.form .authentication-form-container .login-form .authentication-button svg {
+.login-form .authentication-button svg {
     position: absolute;
     left: 0;
     top: 0;
@@ -79,31 +79,31 @@
 }
 
 
-.form .authentication-form-container .login-form .authentication-button:hover {
+.login-form .authentication-button:hover {
     transition: 1s ease-in-out;
     background: #4F95DA;
 }
 
 
-.form .authentication-form-container .login-form .authentication-button:hover svg {
+.login-form .authentication-button:hover svg {
     stroke-dashoffset: -480;
 }
 
 
-.form .authentication-form-container .login-form .authentication-button span {
+.login-form .authentication-button span {
     color: white;
     font-size: 18px;
     font-weight: 100;
 }
 
 
-.form .authentication-form-container .register-form label {
+.register-form label {
     padding-top: 8px;
     text-align: left;
 }
 
 
-.form .authentication-form-container .register-form .input-form {
+.register-form .input-form {
     margin: 0.5rem 0;
     padding: 1rem;
     border: none;
@@ -111,12 +111,12 @@
 }
 
 
-.form .authentication-form-container .register-form .input-error-message {
+.register-form .input-error-message {
     color: #FF0000FF;
 }
 
 
-.form .authentication-form-container .register-form .authentication-button {
+.register-form .authentication-button {
     width: 180px;
     height: 60px;
     position: relative;
@@ -130,7 +130,7 @@
 }
 
 
-.form .authentication-form-container .register-form .authentication-button svg {
+.register-form .authentication-button svg {
     position: absolute;
     left: 0;
     top: 0;
@@ -143,25 +143,25 @@
 }
 
 
-.form .authentication-form-container .register-form .authentication-button:hover {
+.register-form .authentication-button:hover {
     transition: 1s ease-in-out;
     background: #4F95DA;
 }
 
 
-.form .authentication-form-container .register-form .authentication-button:hover svg {
+.register-form .authentication-button:hover svg {
     stroke-dashoffset: -480;
 }
 
 
-.form .authentication-form-container .register-form .authentication-button span {
+.register-form .authentication-button span {
     color: white;
     font-size: 18px;
     font-weight: 100;
 }
 
 
-.form .authentication-form-container .link-button {
+.authentication-form-container .link-button {
     transform: translate(0,+75%);
     background: none;
     border: none;
@@ -170,7 +170,7 @@
 }
 
 
-.form .authentication-form-container .link-button-return{
+.authentication-form-container .link-button-return{
     transform: translate(+100%,+190%);
     background: none;
     width: 80px;

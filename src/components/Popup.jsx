@@ -89,7 +89,7 @@ const Popup = ({ selected, closePopup }) => {
 	return (
 
 		<section className = "popup">
-			<div className = "content">
+			<div className = "popup-content">
                 
 				<h2>{ selected.Title } <span> ({ selected.Year })
 
@@ -110,7 +110,7 @@ const Popup = ({ selected, closePopup }) => {
 
 
 
-				<div className = "plot">
+				<div className = "content-plot">
 
 					{selected.Poster !== null ?
 						<img className = "plot-image" src = { selected.Poster } alt = { selected.Title }

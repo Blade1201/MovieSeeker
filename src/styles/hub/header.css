@@ -38,22 +38,6 @@ body{
 }
 
 
-.gradient__bg {
-    background:-moz-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
-
-    /* safari 5.1+,chrome 10+ */
-    background:-webkit-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
-
-    /* opera 11.10+ */
-    background:-o-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
-
-    /* ie 10+ */
-    background:-ms-radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
-
-    /* global 92%+ browsers support */
-    background:radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
-}
-
 .movieseeker-header-content {
     flex: 1;
     display: flex;
@@ -80,7 +64,6 @@ body{
     font-size: 20px;
     line-height: 28px;
     color: #81AFDD;
-
     margin-top: 1.5rem;
 }
 
@@ -117,7 +100,6 @@ body{
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-
     margin-top: 2rem;
 }
 
@@ -200,6 +182,7 @@ body{
         flex-direction: column;
     }
 
+
     .movieseeker-header-content {
         margin: 0 0 3rem;
     }
@@ -212,23 +195,20 @@ body{
         line-height: 60px;
     }
 
+
     .movieseeker-header-content p {
         font-size: 16px;
         line-height: 24px;
     }
+
     
     .movieseeker-header-content__people {
         flex-direction: column;
     }
 
+
     .movieseeker-header-content__people p {
         margin: 0;
-    }
-
-    .movieseeker-header-content__input input,
-    .movieseeker-header-content__input button {
-        font-size: 16px;
-        line-height: 24px;
     }
 }
 
@@ -239,14 +219,9 @@ body{
         line-height: 48px;
     }
 
+
     .movieseeker-header-content p {
         font-size: 14px;
         line-height: 24px;
-    }
-
-    .movieseeker-header-content__input input,
-    .movieseeker-header-content__input button {
-        font-size: 12px;
-        line-height: 16px;
     }
 }

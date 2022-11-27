@@ -9,8 +9,8 @@ const CTA = () => (
   <div className = "call-to-action">
 
     <div className = "call-to-action-content">
-      <p> Fizess elő a további lehetőségekért </p>
-      <h3> Jeletkezz be még ma és fedezd fel a végtelen lehetőségeket </h3>
+      <Link to = "/authentication"> Fizessünk elő a további lehetőségekért </Link>
+      <h3> Jeletkezzen be még ma és fedezze fel a végtelen lehetőségeket </h3>
     </div>
 
 

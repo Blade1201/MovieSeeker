@@ -11,7 +11,7 @@ const Header = () => (
   <div className = "movieseeker-header section__padding" id = "home">
     <div className = "movieseeker-header-content">
 
-      <h1 className = "gradient__text"> Épitsünk együtt valami újat </h1>
+      <h1 className = "gradient__text"> Építsünk együtt valami újat </h1>
       <p> Szolgáltatásunk akár ingyenesen, regisztráció nélkül is használható PC-n, Laptopon vagy bármelyik okoseszközön. </p>
 
 

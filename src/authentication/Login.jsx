@@ -58,7 +58,7 @@ const Login = ({ onFormSwitch }) => {
 
 
 
-            <button className = "link-button" onClick = {() => onFormSwitch( 'register' )}> Nincs még felhasználói fiókod? Regisztrálj. </button>
+            <button className = "link-button" onClick = {() => onFormSwitch( 'register' )}> Nincs még felhasználói fiókja? Regisztráljon. </button>
             <Link className="link-button-return" to="/"> Mégsem </Link>
 
         </div>

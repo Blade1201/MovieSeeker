@@ -7,6 +7,7 @@
     text-decoration: none;
 }
 
+
 .movieseeker-navbar {
     display: flex;
     justify-content: space-between;
@@ -14,12 +15,14 @@
     padding: 2rem 6rem;
 }
 
+
 .movieseeker-navbar-links {
     flex: 1;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
+
 
 .movieseeker-navbar-links-title {
     margin-right: 2rem;
@@ -32,11 +35,13 @@
     flex-direction: row;
 }
 
+
 .movieseeker-navbar__sign {
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
+
 
 .movieseeker-navbar-links__container p {
     color: #fff;
@@ -44,11 +49,10 @@
     font-weight: 500;
     font-size: 18px;
     line-height: 25px;
-    text-transform: capitalize;
-
     margin: 0 1rem;
     cursor: pointer;
 }
+
 
 .movieseeker-navbar__sign a {
     padding: 0.5rem 1rem;
@@ -75,16 +79,19 @@
     }
 }
 
+
 @media screen and (max-width: 700px) {
     .movieseeker-navbar {
         padding: 2rem 4rem;
     }
 }
 
+
 @media screen and (max-width: 550px) {
     .movieseeker-navbar {
         padding: 2rem;
     }
+
 
     .movieseeker-navbar__sign {
         display: none;

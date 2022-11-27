@@ -145,6 +145,7 @@ section .movie-not-found-error-message {
     font-size: 13px;
 }
 
+
 .query-results .result h3 {
     color: #FFF;
     font-size: 20px;
@@ -251,6 +252,7 @@ section .movie-not-found-error-message {
     height: 35px;
     cursor: pointer;
 }
+
 
 .results .result:hover {
     box-shadow: 0 0 8px 3px #26c485;

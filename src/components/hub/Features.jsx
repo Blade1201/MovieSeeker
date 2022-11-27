@@ -11,7 +11,7 @@ const featuresData = [
     text: 'A jól megírt vélemény segíthet másoknak megtalálni a számukra éppen megfelelő tartalmakat.',
   },
   {
-    title: 'Népszerü tartalmak tárháza',
+    title: 'Népszerű tartalmak tárháza',
     text: 'Ismerje meg a világ legismertebb média tartalmait.',
   },
   {
@@ -25,6 +25,7 @@ const featuresData = [
 ];
 
 
+
 const Features = () => (
 
   <div className = "what-movieseeker__features section__padding" id = "possibilities">
@@ -33,7 +34,7 @@ const Features = () => (
     <div className = "what-movieseeker__features-heading">
       <h1 className = "gradient__text"> A jövő megérkezett, csak szembesülnie kell vele. Lépjen a jövőbe és tegye megtörténté még ma </h1>
 
-      <Link to = "/authentication"> Regisztrálj a kezdéshez </Link>
+      <Link to = "/authentication"> Regisztráljunk a kezdéshez </Link>
     </div>
 
 
