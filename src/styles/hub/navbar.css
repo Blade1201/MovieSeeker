@@ -54,7 +54,7 @@
 }
 
 
-.movieseeker-navbar__sign a {
+.movieseeker-navbar__sign a{
     padding: 0.5rem 1rem;
     color: #fff;
     background: #FF4820;
@@ -63,6 +63,20 @@
     font-size: 18px;
     line-height: 25px;
     border-radius: 5px;
+}
+
+
+.movieseeker-navbar__sign button{
+    padding: 0.5rem 1rem;
+    color: #fff;
+    background: #FF4820;
+    font-family:  'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
 }
 
 

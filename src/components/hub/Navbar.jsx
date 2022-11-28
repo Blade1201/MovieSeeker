@@ -1,10 +1,17 @@
 import React from 'react';
 import '../../styles/hub/navbar.css';
 import {Link} from "react-router-dom";
+import isLoggedIn from "../../helpers/isLoggedIn";
 
 
 
 const Navbar = () => {
+
+    const logout = () => {
+        localStorage.removeItem("token");
+        isLoggedIn.bind(false);
+    }
+
 
   return (
     <div className = "movieseeker-navbar">
@@ -32,7 +39,8 @@ const Navbar = () => {
 
 
       <div className = "movieseeker-navbar__sign">
-        <Link to = "/authentication"> Bejelentkezés </Link>
+          <Link to = "/authentication"> Bejelentkezés </Link>
+          <button onClick = { logout }> Kilépés </button>
       </div>
 
 

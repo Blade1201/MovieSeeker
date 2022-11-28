@@ -4,12 +4,11 @@ import Authentication from "./authentication/Authentication";
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import Hub from "./Hub";
 import About from "./components/About";
+import GuestRoute from "./components/GuestRoute";
 
 
 
 const App = () => {
-  
-
   return (
     <div className = "App">
 
@@ -23,7 +22,9 @@ const App = () => {
 
               <Route path = "/search" element = { <Home/> }/>
 
-              <Route path = "/authentication" element = { <Authentication/> }/>
+              <Route path = "/authentication" element = {
+                      <GuestRoute component={Authentication} />
+              }/>
 
           </Routes>
 

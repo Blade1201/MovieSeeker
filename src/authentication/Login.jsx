@@ -1,32 +1,49 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
+import axios from "axios";
 import {Link} from "react-router-dom";
 
-const Login = ({ onFormSwitch }) => {
+const Login = ({ onFormSwitch, setRedirect}) => {
 
-    const [email, setEmail] = useState('');
-    const [pass, setPass] = useState('');
+    const [credential, setCredential] = useState("");
+    const [password, setPassword] = useState("");
 
+    const sendLoginAttempt = () => {
+
+        axios.post("/authorization/login", {
+            credential,
+            password
+        }).then(res => res.data)
+            .then(data => {console.log(data);
+                if (data["success"]) {
+                    localStorage.setItem("token", data["token"]);
+                    setRedirect(true);
+                }
+            })
+            .catch(err => console.error(err["response"]["data"]));
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-    //    console.log(email)
+
+        sendLoginAttempt();
     };
 
 
     return (
+
         <div className = "authentication-form-container">
 
             <h2> Bejelentkezés </h2>
 
             <form className = "login-form" onSubmit = { handleSubmit }>
 
-                <label className = "label-form" htmlFor = "email"> E-mail </label>
+                <label className = "label-form" htmlFor = "credential"> E-mail / Felhasználónév </label>
 
                 <input
-                    value={ email }
-                    onChange={(e) => setEmail( e.target.value )}
-                    type = "email"
-                    name = "email"
+                    value={ credential }
+                    onChange={(e) => setCredential( e.target.value )}
+                    type = "text"
+                    name = "credential"
                     placeholder = "cím@domain"
                     className = "input-form"
                 />
@@ -34,8 +51,8 @@ const Login = ({ onFormSwitch }) => {
                 <label className = "label-form" htmlFor = "password"> Jelszó </label>
 
                 <input
-                    value={ pass }
-                    onChange={(e) => setPass( e.target.value )}
+                    value={ password }
+                    onChange={(e) => setPassword( e.target.value )}
                     type = "password"
                     name = "password"
                     placeholder = "********"
@@ -58,7 +75,7 @@ const Login = ({ onFormSwitch }) => {
 
 
 
-            <button className = "link-button" onClick = {() => onFormSwitch( 'register' )}> Nincs még felhasználói fiókja? Regisztráljon. </button>
+            <button className = "link-button" onClick = {() => onFormSwitch( 'register' )}>  Nincs még felhasználói fiókja? Regisztráljon. </button>
             <Link className="link-button-return" to="/"> Mégsem </Link>
 
         </div>

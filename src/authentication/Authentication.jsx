@@ -4,7 +4,8 @@ import Login from "./Login";
 import Register from "./Register";
 
 
-const Authentication = () => {
+
+const Authentication = ({setRedirect}) => {
 
     const [currentForm, setCurrentForm] = useState('login');
 
@@ -14,9 +15,11 @@ const Authentication = () => {
 
 
     return(
+
         <div className = "form">
         {
-            currentForm === "login" ? <Login onFormSwitch = { toggleForm } /> : <Register onFormSwitch = { toggleForm } />
+            currentForm === "login" ? <Login onFormSwitch = { toggleForm } setRedirect={setRedirect} /> :
+                <Register onFormSwitch = { toggleForm } setRedirect={setRedirect} />
         }
         </div>
     );
