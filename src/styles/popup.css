@@ -125,6 +125,12 @@
     flex: 1 1 50%;
     max-width: 300px;
     box-shadow: 0 0 8px 3px #26c485;
+    transition: all 0.7s ease-in-out;
+}
+
+
+.content-plot .plot-image:hover {
+    transform: scale(1.05);
 }
 
 

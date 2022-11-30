@@ -1,7 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import "../styles/about.css";
-import {Link} from "react-router-dom";
 import Back from "../images/back.png";
+import {Link} from "react-router-dom";
 
 
 
@@ -39,17 +39,17 @@ const About = () => {
                     <div className = "column">
                         <div className = "tabs">
 
-                            <div className = {toggleTab === 1 ? "single-tab active-tab" : "single-tab"} onClick = {() => toggleState(1)}>
+                            <div className = { toggleTab === 1 ? "single-tab active-tab" : "single-tab" } onClick = { () => toggleState(1) }>
                                 <h2> Magamról </h2>
                             </div>
 
 
-                            <div className = {toggleTab === 2 ? "single-tab active-tab" : "single-tab"} onClick = {() => toggleState(2)}>
+                            <div className = { toggleTab === 2 ? "single-tab active-tab" : "single-tab" } onClick = { () => toggleState(2) }>
                                 <h2> Készségek </h2>
                             </div>
 
 
-                            <div className = {toggleTab === 3 ? "single-tab active-tab" : "single-tab"} onClick = {() => toggleState(3)}>
+                            <div className = { toggleTab === 3 ? "single-tab active-tab" : "single-tab" } onClick = { () => toggleState(3) }>
                                 <h2> Hobbik </h2>
                             </div>
                         </div>
@@ -57,7 +57,7 @@ const About = () => {
 
                         <div className = "tab-content">
 
-                            <div className = {toggleTab === 1 ? "content active-content" : "content"}>
+                            <div className = { toggleTab === 1 ? "content active-content" : "content" }>
                                 <p className = "about-myself"> Az IT problémák megoldásainak ördöge, aki problémamegoldó képességével számos teljesíthetetlennek tűnő
                                     feladatra talált megoldást. A projekt
                                     alapítója, koordinációs kézsége és a háttérben futó folyamatok kidolgozásai nélkül, ma nem létezne a MovieSeeker. Igazi veterán, aki
@@ -69,7 +69,7 @@ const About = () => {
 
                         </div>
 
-                        <div className = {toggleTab === 2 ? "content active-content" : "content"}>
+                        <div className = { toggleTab === 2 ? "content active-content" : "content" }>
 
                             <div className = "skills-row">
 
@@ -149,7 +149,7 @@ const About = () => {
                             </div>
 
                         </div>
-                        <div className = {toggleTab === 3 ? "content active-content" : "content"}>
+                        <div className = { toggleTab === 3 ? "content active-content" : "content" }>
                             <div className = "hobbies-column">
 
                                 <div className = "box">
@@ -223,17 +223,17 @@ const About = () => {
                     <div className = "column">
                         <div className = "tabs">
 
-                            <div className = {toggleTabRoman === 1 ? "single-tab active-tab" : "single-tab"} onClick = {() => toggleStateRoman(1)}>
+                            <div className = { toggleTabRoman === 1 ? "single-tab active-tab" : "single-tab" } onClick = { () => toggleStateRoman(1) }>
                                 <h2> Magamról </h2>
                             </div>
 
 
-                            <div className = {toggleTabRoman === 2 ? "single-tab active-tab" : "single-tab"} onClick = {() => toggleStateRoman(2)}>
+                            <div className = { toggleTabRoman === 2 ? "single-tab active-tab" : "single-tab" } onClick = { () => toggleStateRoman(2) }>
                                 <h2> Készségek </h2>
                             </div>
 
 
-                            <div className = {toggleTabRoman === 3 ? "single-tab active-tab" : "single-tab"} onClick = {() => toggleStateRoman(3)}>
+                            <div className = { toggleTabRoman === 3 ? "single-tab active-tab" : "single-tab" } onClick = { () => toggleStateRoman(3) }>
                                 <h2> Hobbik </h2>
                             </div>
                         </div>
@@ -241,7 +241,7 @@ const About = () => {
 
                         <div className = "tab-content">
 
-                            <div className = {toggleTabRoman === 1 ? "content active-content" : "content"}>
+                            <div className = { toggleTabRoman === 1 ? "content active-content" : "content" }>
                                 <p className = "about-myself"> Igazi kreatív elme. Szabadidejében videójátékok fejlesztésében vesz részt, kiemelkedő elszántsága valamint kitartása és a
                                     kreatív nézetei nélkül a MovieSeeker kevésbé lenne felhasználó barát. Ördögien elhivatott, aki
                                     sohasem adja fel a kítűzött céljait. </p>
@@ -252,7 +252,7 @@ const About = () => {
 
                         </div>
 
-                        <div className = {toggleTabRoman === 2 ? "content active-content" : "content"}>
+                        <div className = { toggleTabRoman === 2 ? "content active-content" : "content" }>
 
                             <div className = "skills-row">
                                 <div className = "skills-column">
@@ -354,7 +354,7 @@ const About = () => {
                             </div>
 
                         </div>
-                        <div className = {toggleTabRoman === 3 ? "content active-content" : "content"}>
+                        <div className = { toggleTabRoman === 3 ? "content active-content" : "content" }>
                             <div className = "hobbies-column">
 
 
