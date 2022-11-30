@@ -1,8 +1,7 @@
 import React, {Fragment, useState} from 'react';
 import "../styles/about.css";
-import "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js";
-import "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js";
 import {Link} from "react-router-dom";
+import Back from "../images/back.png";
 
 
 
@@ -26,8 +25,8 @@ const About = () => {
 
             <section className = "about">
 
-                    <div className = "return-home">
-                          <Link to = "/"> Vissza </Link>
+                    <div className = "return-hub">
+                          <Link to = "/">  <img src = { Back } alt = "back-to-hub"/> </Link>
                     </div>
 
                 <div className = "row">

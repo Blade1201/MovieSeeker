@@ -35,9 +35,9 @@ const Footer = () => (
 
       <div className = "footer-links_div">
         <h4> Cégünk </h4>
-        <p> Felhasználási feltételek </p>
-        <p> Adatvédelmi irányelvek </p>
-          <p> Kapcsolatfelvétel </p>
+          <p> Adatkezelési tájékozatató </p>
+          <p> Felhasználási feltételek </p>
+          <p> Szerzői jogok </p>
       </div>
 
 

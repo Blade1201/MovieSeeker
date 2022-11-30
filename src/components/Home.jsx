@@ -1,12 +1,14 @@
 import React, {useState} from "react";
 import '../styles/home.css';
+import Back from "../images/back-arrow.png";
 import axios from "axios";
 import Search from "./Search";
 import Results from "./Results";
 import Popup from "./Popup";
-import LogoImage from "../images/logo-transparent.png";
 import Queries from "./Queries";
 import {Link} from "react-router-dom";
+
+
 
 
 const Home = () => {
@@ -122,7 +124,7 @@ return(
         <div className = "main-home" onClick = { handleClick }>
         <div className = "home">
 
-            <Link className = "logo-href-size-correction" to = "/"> <img className = 'logo' alt = 'logo' src = { LogoImage } /> </Link>
+            <Link to = "/"> <img className = 'logo' alt = 'back-to-hub' src = { Back } /> </Link>
 
 
             <Search handleInput = { handleInput } search = { searchWithEnter } button = { searchWithButton }/>

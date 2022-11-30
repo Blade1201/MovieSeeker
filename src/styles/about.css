@@ -2,24 +2,31 @@
 
 
 
+
 .about{
-    padding: 2.2rem 3rem 1.6rem 3rem;
+    padding: 3rem 3rem 1.5rem 3rem;
     background:radial-gradient(circle at 3% 25%, rgba(0, 40, 83, 1) 0%, rgba(4, 12, 24, 1) 25%);
 }
 
 
-.return-home{
-    width: 4%;
-    transform: translate(-40%,-60%);
+.return-hub{
+    width: 2%;
+    position: absolute;
 }
 
 
-.return-home a{
-    text-decoration: none;
-    color: #EEEEEE;
-    border: 1px solid #fff;
-    text-align: center;
-    padding: 0.8rem;
+.return-hub a {
+    display: block;
+    width: 0;
+    height: 0;
+}
+
+
+.return-hub img{
+    transform: translate(-70%,-80%);
+    border-radius: 100%;
+    width: 44px;
+    height: 44px;
 }
 
 
