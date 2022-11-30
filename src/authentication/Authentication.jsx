@@ -5,7 +5,7 @@ import Register from "./Register";
 
 
 
-const Authentication = ({setRedirect}) => {
+const Authentication = ({ setRedirect }) => {
 
     const [currentForm, setCurrentForm] = useState('login');
 
@@ -14,12 +14,13 @@ const Authentication = ({setRedirect}) => {
     };
 
 
+
     return(
 
         <div className = "form">
         {
-            currentForm === "login" ? <Login onFormSwitch = { toggleForm } setRedirect={setRedirect} /> :
-                <Register onFormSwitch = { toggleForm } setRedirect={setRedirect} />
+            currentForm === "login" ? <Login onFormSwitch = { toggleForm } setRedirect = { setRedirect } /> :
+                <Register onFormSwitch = { toggleForm } setRedirect = { setRedirect } />
         }
         </div>
     );

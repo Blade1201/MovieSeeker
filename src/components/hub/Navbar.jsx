@@ -52,11 +52,11 @@ const Navbar = () => {
 
         <div className = "movieseeker-navbar-links__container">
 
-          <p><a href = "#home"> Kezdőlap </a></p>
-          <p><a href = "#movieseeker"> MovieSeeker? </a></p>
-          <p><a href = "#possibilities"> Lehetőségek </a></p>
-          <p><a href = "#premium-account"> Előfizetői Lehetőségek </a></p>
-          <p> <Link className = "about-team" to = "/about"> A Csapat </Link></p>
+          <a href = "#home"> Kezdőlap </a>
+          <a href = "#movieseeker"> MovieSeeker? </a>
+          <a href = "#possibilities"> Lehetőségek </a>
+          <a href = "#premium-account"> Előfizetői Lehetőségek </a>
+          <Link className = "about-team" to = "/about"> A Csapat </Link>
         </div>
 
 

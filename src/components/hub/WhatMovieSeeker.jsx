@@ -10,8 +10,8 @@ const WhatMovieSeeker = () => (
   <div className = "what-movieseeker section__margin" id = "movieseeker">
 
     <div className = "what-movieseeker-feature">
-      <Feature title = "Mi is ez?" text = "Egy Single Page Application (SPA), amelyen rákereshetünk az általunk keresett tartalomra,
-       és megtekinthetjük, hogy melyik streaming platformon érhető el az." />
+      <Feature title = "Mi is ez?" text = "Egy Single Page Application (SPA), amelyel rákereshetünk az általunk böngészett tartalomra
+       és megtekinthetjük, hogy melyik streaming platformon érhető el a kívánt tartalom." />
     </div>
 
 

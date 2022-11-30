@@ -2,10 +2,13 @@ import React, {useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
+
+
 const Login = ({ onFormSwitch, setRedirect}) => {
 
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
+
 
     const sendLoginAttempt = () => {
 
@@ -22,11 +25,14 @@ const Login = ({ onFormSwitch, setRedirect}) => {
             .catch(err => console.error(err["response"]["data"]));
     };
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         sendLoginAttempt();
     };
+
 
 
     return (
@@ -76,7 +82,7 @@ const Login = ({ onFormSwitch, setRedirect}) => {
 
 
             <button className = "link-button" onClick = {() => onFormSwitch( 'register' )}>  Nincs még felhasználói fiókja? Regisztráljon. </button>
-            <Link className="link-button-return" to="/"> Mégsem </Link>
+            <Link to = "/"> Mégsem </Link>
 
         </div>
     );

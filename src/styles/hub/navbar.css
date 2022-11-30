@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
 
+
 .movieseeker-navbar-links__container a,
 .movieseeker-navbar__sign a {
     color: unset;
@@ -43,14 +44,42 @@
 }
 
 
-.movieseeker-navbar-links__container p {
-    color: #fff;
+.movieseeker-navbar-links__container a{
     font-family:  'Manrope', sans-serif;
     font-weight: 500;
     font-size: 18px;
-    line-height: 25px;
     margin: 0 1rem;
-    cursor: pointer;
+    color: #fff;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    padding: 15px 0;
+    position: relative;
+}
+
+
+.movieseeker-navbar-links__container a:after{
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+
+.movieseeker-navbar-links__container a:hover:after{
+    width: 100%;
+    left: 0;
+}
+
+
+.movieseeker-navbar-links__container .about-team{
+    padding: 0.8rem 0.5rem;
+    border: 1px solid #fff;
+    text-align: center;
 }
 
 
@@ -175,13 +204,6 @@
 .movieseeker-navbar__sign .menu ul li:hover button{
     color: #D42109FF;
     cursor: pointer;
-}
-
-
-.movieseeker-navbar-links__container .about-team{
-    padding: 0.6rem;
-    border: 1px solid #fff;
-    text-align: center;
 }
 
 

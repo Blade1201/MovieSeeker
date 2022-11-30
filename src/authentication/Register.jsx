@@ -2,7 +2,9 @@ import React, {useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-const Register = ({onFormSwitch, setRedirect}) => {
+
+
+const Register = ({ onFormSwitch, setRedirect }) => {
 
     const [formInput, setFormInput] = useState({
         username: "",
@@ -11,6 +13,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
         confirmPassword: ""
     });
 
+
     const [formError, setFormError] = useState({
         username: "",
         email: "",
@@ -18,12 +21,14 @@ const Register = ({onFormSwitch, setRedirect}) => {
         confirmPassword: ""
     });
 
+
     const handleUserInput = (name, value) => {
         setFormInput({
             ...formInput,
             [name]: value
         });
     };
+
 
     const validateFormInput = () => {
 
@@ -35,7 +40,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
         };
 
 
-        if (!formInput.username && !formInput.email && !formInput.password) {
+        if ( !formInput.username && !formInput.email && !formInput.password ) {
             setFormError({
                 ...inputError,
                 username: "1 és 30 közötti hosszt adjon meg!",
@@ -46,7 +51,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
         }
 
 
-        if (!formInput.email && !formInput.password) {
+        if ( !formInput.email && !formInput.password ) {
             setFormError({
                 ...inputError,
                 email: "Valós e-mail címet adjon meg!",
@@ -56,7 +61,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
         }
 
 
-        if (formInput.username.length < 1 || formInput.username.length > 30) {
+        if ( formInput.username.length < 1 || formInput.username.length > 30 ) {
             setFormError({
                 ...inputError,
                 username: "1 és 30 közötti hosszt adjon meg!"
@@ -65,7 +70,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
         }
 
 
-        if (formInput.password.length < 8 && !formInput.email) {
+        if ( formInput.password.length < 8 && !formInput.email ) {
             setFormError({
                 ...inputError,
                 password: "Legalább 8 karaktert adjon meg!",
@@ -75,7 +80,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
         }
 
 
-        if (!formInput.email) {
+        if ( !formInput.email ) {
             setFormError({
                 ...inputError,
                 email: "Valós e-mail címet adjon meg!"
@@ -84,7 +89,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
         }
 
 
-        if (!formInput.password) {
+        if ( !formInput.password ) {
             setFormError({
                 ...inputError,
                 password: "A jelszó nem lehet üres!"
@@ -93,7 +98,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
         }
 
 
-        if (formInput.confirmPassword !== formInput.password) {
+        if ( formInput.confirmPassword !== formInput.password ) {
             setFormError({
                 ...inputError,
                 confirmPassword: "A jelszavak nem megeggyezőek!"
@@ -102,7 +107,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
         }
 
 
-        if (formInput.password.length < 8 || formInput.password.length > 30) {
+        if ( formInput.password.length < 8 || formInput.password.length > 30 ) {
             setFormError({
                 ...inputError,
                 password: "8 és 30 közötti hosszt adjon meg!"
@@ -112,7 +117,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
 
 
         const isWhitespace = /^(?=.*\s)/;
-        if (isWhitespace.test(formInput.username)) {
+        if ( isWhitespace.test(formInput.username) ) {
             setFormError({
                 ...inputError,
                 username: "Nem tartalmazhat szóközt!"
@@ -120,7 +125,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
             return;
         }
 
-        if (isWhitespace.test(formInput.password)) {
+        if ( isWhitespace.test(formInput.password) ) {
             setFormError({
                 ...inputError,
                 password: "Nem tartalmazhat szóközt!"
@@ -130,7 +135,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
 
 
         const isContainsUppercase = /^(?=.*[A-Z])/;
-        if (!isContainsUppercase.test(formInput.password)) {
+        if ( !isContainsUppercase.test(formInput.password) ) {
             setFormError({
                 ...inputError,
                 password: "Adjon meg legalább 1 nagybetűt!"
@@ -140,7 +145,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
 
 
         const isContainsLowercase = /^(?=.*[a-z])/;
-        if (!isContainsLowercase.test(formInput.password)) {
+        if ( !isContainsLowercase.test(formInput.password) ) {
             setFormError({
                 ...inputError,
                 password: "Adjon meg legalább 1 kisbetűt!"
@@ -150,7 +155,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
 
 
         const isContainsNumber = /^(?=.*[0-9])/;
-        if (!isContainsNumber.test(formInput.password)) {
+        if ( !isContainsNumber.test(formInput.password) ) {
             setFormError({
                 ...inputError,
                 password: "Adjon meg legalább 1 számot!"
@@ -160,7 +165,7 @@ const Register = ({onFormSwitch, setRedirect}) => {
 
 
         const isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}[\]|\\:;"'<>,.?/_₹])/;
-        if (!isContainsSymbol.test(formInput.password)) {
+        if ( !isContainsSymbol.test(formInput.password) ) {
             setFormError({
                 ...inputError,
                 password: "Adjon meg legalább 1 szimbólumot!"
@@ -168,12 +173,13 @@ const Register = ({onFormSwitch, setRedirect}) => {
             return;
         }
 
-
         setFormError(inputError);
 
         return true;
 
     };
+
+
 
     const sendRegistration = () => {
         const {username, email, password} = formInput;
@@ -193,6 +199,8 @@ const Register = ({onFormSwitch, setRedirect}) => {
             .catch(err => console.error(err["response"]["data"]));
     }
 
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -201,81 +209,83 @@ const Register = ({onFormSwitch, setRedirect}) => {
         sendRegistration();
     }
 
+
+
     return (
-        <div className="authentication-form-container">
+        <div className = "authentication-form-container">
 
             <h2> Regisztráció </h2>
 
-            <form className="register-form" onSubmit={handleSubmit}>
+            <form className = "register-form" onSubmit = { handleSubmit }>
 
-                <label className="label-form" htmlFor="username"> Felhasználónév </label>
-
-                <input
-                    value={formInput.username}
-                    onChange={({target}) => {
-                        handleUserInput(target.name, target.value)
-                    }}
-                    name="username"
-                    type="text"
-                    className="input-form"
-                    placeholder="Felhasználónév"
-                />
-
-                <p className="input-error-message"> {formError.username} </p>
-
-                <label className="label-form" htmlFor="email"> E-mail </label>
+                <label className = "label-form" htmlFor = "username"> Felhasználónév </label>
 
                 <input
-                    value={formInput.email}
-                    onChange={({target}) => {
+                    value = { formInput.username }
+                    onChange = { ( {target} ) => {
                         handleUserInput(target.name, target.value)
                     }}
-                    name="email"
-                    type="email"
-                    className="input-form"
-                    placeholder="cím@domain"
+                    name = "username"
+                    type = "text"
+                    className = "input-form"
+                    placeholder = "Felhasználónév"
                 />
 
-                <p className="input-error-message"> {formError.email} </p>
+                <p className = "input-error-message"> { formError.username } </p>
 
-
-                <label className="label-form" htmlFor="password"> Jelszó </label>
+                <label className = "label-form" htmlFor = "email"> E-mail </label>
 
                 <input
-                    value={formInput.password}
-                    onChange={({target}) => {
+                    value = { formInput.email }
+                    onChange = { ( {target} ) => {
                         handleUserInput(target.name, target.value)
                     }}
-                    name="password"
-                    type="password"
-                    className="input-form"
-                    placeholder="********"
+                    name = "email"
+                    type = "email"
+                    className = "input-form"
+                    placeholder = "cím@domain"
                 />
 
-                <p className="input-error-message"> {formError.password} </p>
+                <p className = "input-error-message"> { formError.email } </p>
 
 
-                <label className="label-form" htmlFor="password"> Jelszó megismétlése </label>
+                <label className = "label-form" htmlFor = "password"> Jelszó </label>
 
                 <input
-                    value={formInput.confirmPassword}
-                    onChange={({target}) => {
+                    value = { formInput.password }
+                    onChange = { ( {target} ) => {
                         handleUserInput(target.name, target.value)
                     }}
-                    name="confirmPassword"
-                    type="password"
-                    className="input-form"
-                    placeholder="********"
+                    name = "password"
+                    type = "password"
+                    className = "input-form"
+                    placeholder = "********"
                 />
 
-                <p className="input-error-message"> {formError.confirmPassword} </p>
+                <p className = "input-error-message"> { formError.password } </p>
 
 
-                <button className="authentication-button">
+                <label className = "label-form" htmlFor = "password"> Jelszó megismétlése </label>
 
-                    <svg width="180px" height="60px" viewBox="0 0 180 60" className="border">
-                        <polyline points="179,1 179,59 1,59 1,1 179,1" className="bg-line"/>
-                        <polyline points="179,1 179,59 1,59 1,1 179,1" className="hl-line"/>
+                <input
+                    value = { formInput.confirmPassword }
+                    onChange={ ( {target} ) => {
+                        handleUserInput(target.name, target.value)
+                    }}
+                    name = "confirmPassword"
+                    type = "password"
+                    className = "input-form"
+                    placeholder = "********"
+                />
+
+                <p className = "input-error-message"> { formError.confirmPassword } </p>
+
+
+                <button className = "authentication-button">
+
+                    <svg width = "180px" height = "60px" viewBox = "0 0 180 60" className = "border">
+                        <polyline points = "179,1 179,59 1,59 1,1 179,1" className = "bg-line"/>
+                        <polyline points = "179,1 179,59 1,59 1,1 179,1" className = "hl-line"/>
                     </svg>
 
                     <span> Regisztrálás </span>
@@ -285,8 +295,8 @@ const Register = ({onFormSwitch, setRedirect}) => {
             </form>
 
 
-            <button className="link-button" onClick={() => onFormSwitch('login')}> Van már felhasználói fiókja? Jelentkezzen be. </button>
-            <Link className="link-button-return" to="/"> Mégsem </Link>
+            <button className = "link-button" onClick={ () => onFormSwitch('login') }> Van már felhasználói fiókja? Jelentkezzen be. </button>
+            <Link className = "link-button-return" to = "/"> Mégsem </Link>
 
         </div>
     );
