@@ -60,6 +60,8 @@
 .mobile i {
     color: #EEEEEE;
 }
+
+
 .mobile {
     display: none;
 }
@@ -223,15 +225,15 @@
         align-items: center;
         position: fixed;
         top: 90px;
-        right: -300px;
+        right: 0;
+        display: none;
         width: 300px;
-        height: 50%;
+        height: 47%;
         background: rgba(255,255,255,.25);
         box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
         border-radius: 30px;
         backdrop-filter: blur(5px);
         padding: 40px 0 0 10px;
-        transition: 0.3s ease-in-out;
     }
 
 
@@ -246,7 +248,7 @@
 
 
     .movieseeker-navbar-links__container.active {
-        right: 0;
+        display: flex;
     }
 
 

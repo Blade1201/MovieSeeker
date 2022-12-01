@@ -235,6 +235,83 @@ section .movie-not-found-error-message {
 }
 
 
+@media screen and (max-width: 950px) {
+    .inputBox span {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 1668px) {
+    .query-results {
+        transform: translate(+3%,-2.4%);
+    }
+}
+
+
+@media screen and (max-width: 1480px) {
+    .query-results {
+        transform: translate(+5%,-2.4%);
+    }
+}
+
+
+@media screen and (max-width: 1280px) {
+    .query-results {
+        transform: translate(+8%,-2.4%);
+    }
+}
+
+
+@media screen and (max-width: 1100px) {
+    .query-results {
+        transform: translate(+12%,-2.4%);
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .query-results {
+        transform: translate(+20%,-2.4%);
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    .query-results {
+        transform: translate(+32%,-2.4%);
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .query-results {
+        transform: translate(+38%,-2.4%);
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    .query-results {
+        transform: translate(+45%,-2.4%);
+    }
+}
+
+
+@media screen and (max-width: 440px) {
+    .query-results {
+        transform: translate(+57%,-2.4%);
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .query-results {
+        display: none;
+    }
+}
+
+
 .inputBox input:valid~span,
 .inputBox input:focus~span{
     color: #00dfc4;

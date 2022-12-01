@@ -18,6 +18,20 @@
 }
 
 
+@media screen and (max-width: 950px) {
+    .possibility-image {
+        display: none;
+    }
+}
+
+
+@media screen and (max-width: 1280px) {
+    .possibility-content a {
+        margin-top: 100px;
+    }
+}
+
+
 .possibility-image img {
     width: 100%;
     height: 100%;

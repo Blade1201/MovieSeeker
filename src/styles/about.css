@@ -190,6 +190,42 @@
 }
 
 
+@media screen and (max-width: 1100px) {
+    .about-img {
+        width: 43%;
+    }
+
+
+    .about-img-roman {
+        width: 43%;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .about-img {
+        max-height: 550px;
+    }
+
+
+    .about-img-roman {
+        max-height: 550px;
+    }
+
+
+    .column {
+        padding-top: 10px;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .column {
+        padding-top: 15px;
+    }
+}
+
+
 .progress-bar{
     width: 80%;
     height: 8px;

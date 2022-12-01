@@ -177,6 +177,13 @@ body{
 }
 
 
+@media screen and (max-width: 1460px){
+    .mouse{
+        display: none;
+    }
+}
+
+
 @media screen and (max-width: 1050px) {
     .movieseeker-header {
         flex-direction: column;

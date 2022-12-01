@@ -93,7 +93,7 @@ const Navbar = () => {
                   <img src = { user } alt = "not-found"></img>
               </div>
 
-              <div className = {`menu ${ open? 'active' : 'inactive' }`}>
+              <div className = {`menu ${ open? 'active' : '' }`}>
                   <h3> Blade </h3>
                   <ul>
                       <li><img src = { user } alt="not-found"/> <button> Profilom </button> </li>
