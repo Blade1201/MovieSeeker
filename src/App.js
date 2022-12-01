@@ -23,7 +23,7 @@ const App = () => {
               <Route path = "/search" element = { <Home/> }/>
 
               <Route path = "/authentication" element = {
-                      <GuestRoute component={Authentication} />
+                      <GuestRoute component={ Authentication } />
               }/>
 
           </Routes>

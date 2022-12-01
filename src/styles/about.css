@@ -451,9 +451,14 @@
 }
 
 
-@media screen and (max-width: 850px){
+@media screen and (max-width: 1535px){
     .about{
         padding: 2rem 1rem 3rem 1rem;
+    }
+
+
+    .return-hub img {
+        transform: translate(0,-50%);
     }
 
 
@@ -464,13 +469,13 @@
 
 
     .about-img{
-        height: 390px;
+        height: 710px;
         margin-top: 3%;
     }
 
 
     .about-img-roman{
-        height: 390px;
+        height: 710px;
     }
 
 

@@ -12,22 +12,44 @@ const Navbar = () => {
 
     const [open, setOpen] = useState(false);
 
-    let menuRef = useRef();
+    let profileMenu = useRef();
 
 
     useEffect(() => {
-        let handler = (e)=>{
-            if(!menuRef.current.contains(e.target)){
+        let userHandler = (e)=>{
+            if(!profileMenu.current.contains(e.target)){
                 setOpen(false);
             }
         };
 
-        document.addEventListener("mousedown", handler);
+        document.addEventListener("mousedown", userHandler);
 
         return() =>{
-            document.removeEventListener("mousedown", handler);
+            document.removeEventListener("mousedown", userHandler);
         }
     });
+
+
+
+    const [clicked, setClicked] = useState(false);
+
+    let mobileMenu = useRef();
+
+
+    useEffect(() => {
+        let mobileHandler = (e)=>{
+            if(!mobileMenu.current.contains(e.target)){
+                setClicked(false);
+            }
+        };
+
+        document.addEventListener("mousedown", mobileHandler);
+
+        return() =>{
+            document.removeEventListener("mousedown", mobileHandler);
+        }
+    });
+
 
 
     const logout = () => {
@@ -50,7 +72,7 @@ const Navbar = () => {
 
         </div>
 
-        <div className = "movieseeker-navbar-links__container">
+        <div className = {`movieseeker-navbar-links__container ${ clicked? 'movieseeker-navbar-links__container active' : 'movieseeker-navbar-links__container' }`}>
 
           <a href = "#home"> Kezdőlap </a>
           <a href = "#movieseeker"> MovieSeeker? </a>
@@ -63,12 +85,12 @@ const Navbar = () => {
       </div>
 
 
-      <div className = "movieseeker-navbar__sign" ref = { menuRef }>
+      <div className = "movieseeker-navbar__sign" ref = { profileMenu }>
           <Link className = "login-button" to = "/authentication"> Bejelentkezés </Link>
 
 
                  <div className = "profile" onClick = { ()=>{ setOpen(!open) } }>
-                  <img src = {user} alt = "not-found"></img>
+                  <img src = { user } alt = "not-found"></img>
               </div>
 
               <div className = {`menu ${ open? 'active' : 'inactive' }`}>
@@ -76,12 +98,19 @@ const Navbar = () => {
                   <ul>
                       <li><img src = { user } alt="not-found"/> <button> Profilom </button> </li>
                       <li><img src = { edit } alt="not-found"/> <button > Szerkesztés </button> </li>
-                      <li><img src = { logout_image } alt="not-found"/> <button onClick = {logout}> Kilépés </button> </li>
+                      <li><img src = { logout_image } alt="not-found"/> <button onClick = { logout }> Kilépés </button> </li>
                   </ul>
               </div>
 
-
       </div>
+
+
+
+        <div ref = { mobileMenu }>
+        <div className = "mobile" onClick = { ()=>{ setClicked(!clicked) } }>
+            <i className = { clicked ? "fas fa-times" : "fas fa-bars" }> </i>
+        </div>
+        </div>
 
 
     </div>
