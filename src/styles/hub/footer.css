@@ -2,12 +2,13 @@
 
 
 
+
 .footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background:  #031B34;
+    background: #031B34;
 }
 
 
