@@ -114,6 +114,27 @@
 }
 
 
+.my-rating {
+    padding: 10px 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #FFF;
+    background: #445565;
+    border-radius: 8px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.4s ease-out;
+    display: inline-block;
+}
+
+
+.my-rating:hover {
+    background: #e8cd11;
+    color: #000000;
+}
+
+
 .content-plot {
     display: block;
     flex-wrap: wrap;
@@ -161,8 +182,6 @@
     background: #445565;
     border-radius: 8px;
     border: none;
-    outline: none;
-    appearance: none;
     cursor: pointer;
     transition: 0.4s ease-out;
 }

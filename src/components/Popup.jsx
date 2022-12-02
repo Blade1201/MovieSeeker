@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "../styles/popup.css";
 import ReplacementImage from '../images/image-not-found.jpg';
 import RatedX from '../images/rated-x.png';
@@ -12,10 +12,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import YouTube from "react-youtube";
+import Rating from "./Rating";
 
 
 
 const Popup = ({ selected, closePopup }) => {
+
+
+	const [activeModal,setModalActive] = useState(false)
+
 
 
 	const castCarouselSettings = {
@@ -87,9 +92,12 @@ const Popup = ({ selected, closePopup }) => {
 
 
 
+
+
+
 	return (
 
-		<section className = "popup">
+		<section className = "popup" onClick={ activeModal ? () => setModalActive(false) : ""}>
 			<div className = "popup-content">
                 
 				<h2>{ selected.Title } <span> ({ selected.Year })
@@ -111,6 +119,12 @@ const Popup = ({ selected, closePopup }) => {
 
 
 
+				<button className = "my-rating" onClick = { () => setModalActive(true) }> Értékelem </button>
+					<Rating active = { activeModal }/>
+
+
+
+
 				<div className = "content-plot">
 
 					{selected.Poster !== null ?
@@ -119,6 +133,7 @@ const Popup = ({ selected, closePopup }) => {
 
 						: <img className = "plot-image" alt = "not-found!" src = { ReplacementImage }/>
 					}
+
 
 
 
