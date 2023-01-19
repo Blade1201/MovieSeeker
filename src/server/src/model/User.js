@@ -1,8 +1,10 @@
 const {DataTypes, Model} = require('sequelize');
 const currentConnection = require("../services/ConnectionManager");
+const UserRanks = require("./UserRank");
 const sequelize = currentConnection();
 
-class User extends Model {}
+class User extends Model {
+}
 
 User.init({
     id: {
@@ -10,34 +12,32 @@ User.init({
         autoIncrement: true,
         primaryKey: true,
         allowNull: false,
-        unique: true
     },
     username: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
     },
     email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true
     },
     hash: {
         type: DataTypes.CHAR(60).BINARY,
         allowNull: false,
     },
-    type: {
-        type: DataTypes.CHAR(1),
-        allowNull: false,
-        defaultValue: "F",
-    },
-
 }, {
     sequelize, // We need to pass the connection instance
     modelName: 'User', // We need to choose the model name
 });
 
-User.sync({alter: true});
+UserRanks.hasOne(User, {
+    foreignKey: {
+        name: "rank",
+        defaultValue: 1
+    },
+    onUpdate: "RESTRICT",
+    onDelete: "RESTRICT"
+});
 
 module.exports = User;
 

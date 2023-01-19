@@ -1,9 +1,5 @@
 const bcrypt = require("bcrypt");
 const UserDTO = require("../../services/dto/UserDTO");
-const {isEmail} = require("validator");
-const jwt = require("jsonwebtoken");
-const {JWT_SECRET_KEY} = require("../../configs/authentication.config");
-const {noRawAttributes} = require("sequelize/lib/utils/deprecations");
 
 const comparePasswords = (password, hash) => {
     return bcrypt.compare(password, hash.toString());
@@ -24,7 +20,10 @@ module.exports = async (body) => {
     const success = await comparePasswords(password, dbUser["hash"]);
 
     if(success) {
-        return dbUser["id"]
+        return {
+            id: dbUser["id"],
+            username: dbUser["username"]
+        }
     }
     return null;
 }

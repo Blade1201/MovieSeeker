@@ -1,9 +1,7 @@
-const jwt = require("jsonwebtoken");
-const {JWT_SECRET_KEY} = require("../../configs/authentication.config");
 const createJWT = require("../../utils/authentication/createJTW");
 
 module.exports = (req, res) => {
-    const token = createJWT(req.userId);
+    const token = createJWT(req.userId, req.username);
 
     let result;
 

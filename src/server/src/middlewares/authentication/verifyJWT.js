@@ -10,9 +10,8 @@ module.exports = (req, res, next) => {
         });
 
     } else {
-        jwt.verify(token, JWT_SECRET_KEY, (err, decoded) => {
+        jwt.verify(token, JWT_SECRET_KEY, (err) => {
             if (!err) {
-                res.userId = decoded.id;
                 next();
             } else {
                 res.json({

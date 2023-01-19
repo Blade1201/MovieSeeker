@@ -8,6 +8,9 @@ const getConnection = () => {
         sequelieze = new Sequelize({
             ...databaseConfig,
             logging: false,
+            define: {
+                timestamps: false
+            }
         });
     }
 
