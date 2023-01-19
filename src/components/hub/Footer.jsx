@@ -21,7 +21,7 @@ const Footer = () => (
     <div className = "footer-links">
       <div className = "footer-links_logo">
         <h1> MovieSeeker </h1>
-        <p >Nyíregyháza 4400 <br /> Szabolcs-Szatmár-Bereg </p>
+        <p> Nyíregyháza 4400 <br /> Szabolcs-Szatmár-Bereg </p>
         <p className = "rights"> Minden jog fenntartva. </p>
       </div>
 

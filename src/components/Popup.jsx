@@ -97,7 +97,7 @@ const Popup = ({ selected, closePopup }) => {
 
 	return (
 
-		<section className = "popup" onClick={ activeModal ? () => setModalActive(false) : ""}>
+		<section className = "popup" onClick = { activeModal ? () => setModalActive(false) : null }>
 			<div className = "popup-content">
                 
 				<h2>{ selected.Title } <span> ({ selected.Year })
