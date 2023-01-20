@@ -34,7 +34,7 @@ const Features = () => (
     <div className = "what-movieseeker__features-heading">
       <h1 className = "gradient__text"> A jövő megérkezett, csak szembesülnie kell vele. Lépjen a jövőbe és tegye megtörténté még ma </h1>
 
-      <Link to = "/authentication"> Regisztráljunk a kezdéshez </Link>
+      <Link to = "/authentication"> Regisztráljon a kezdéshez </Link>
     </div>
 
 
