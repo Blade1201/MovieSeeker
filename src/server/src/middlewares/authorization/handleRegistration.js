@@ -1,17 +1,17 @@
 const userRegistration = require("../../utils/authorization/userRegistration");
 
 module.exports = async (req, res, next) => {
-    const newUserId = await userRegistration(req.body);
+    const {id, username} = await userRegistration(req.body);
 
-    if (newUserId !== undefined) {
-        req.userId = newUserId;
+    if (id) {
+        req.userId = id;
+        req.username = username;
         next();
-        return;
+    } else {
+        return res.status(500).json({
+            success: false,
+            blameUser: false,
+            reason: "Szerverhiba!"
+        });
     }
-
-    return res.status(500).json({
-        success: false,
-        blameUser: false,
-        reason: "Szerverhiba!"
-    });
 }

@@ -10,7 +10,14 @@ module.exports = async (reqBody) => {
     const hash = await bcrypt.hash(password, BCRYPT_SALT_ROUNDS);
 
     const registrationResult = await new UserDTO().create(username, email, hash);
+    
+    if (registrationResult) {
+        return {
+            id: registrationResult["id"],
+            username: registrationResult["username"]
+        }
+    }
 
-    return registrationResult.id;
+    return null;
 
 }
