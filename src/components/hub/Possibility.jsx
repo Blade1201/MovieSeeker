@@ -16,7 +16,7 @@ const Possibility = () => (
 
     <div className = "possibility-content">
 
-      <Link to = "/authentication"> Fizessünk elő a további lehetőségekért  </Link>
+      <Link to = "/authentication"> Fizessen elő a további lehetőségekért  </Link>
       <h1 className = "gradient__text"> A lehetőségek <br /> minden képzeletet felülmúlnak </h1>
 
       <p>
@@ -31,7 +31,7 @@ const Possibility = () => (
           />
       </p>
 
-        <Link to = "/authentication"> Fizessünk elő a további lehetőségekért  </Link>
+        <Link to = "/authentication"> Fizessen elő a további lehetőségekért  </Link>
     </div>
 
   </div>
