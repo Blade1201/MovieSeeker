@@ -72,10 +72,10 @@ const Navbar = () => {
                 <div
                     className={`movieseeker-navbar-links__container ${clicked ? 'movieseeker-navbar-links__container active' : 'movieseeker-navbar-links__container'}`}>
 
-                    <a href="frontend/src/components/hub/Navbar#home"> Kezdőlap </a>
-                    <a href="frontend/src/components/hub/Navbar#movieseeker"> MovieSeeker? </a>
-                    <a href="frontend/src/components/hub/Navbar#possibilities"> Lehetőségek </a>
-                    <a href="frontend/src/components/hub/Navbar#premium-account"> Előfizetői Lehetőségek </a>
+                    <a href="#home"> Kezdőlap </a>
+                    <a href="#movieseeker"> MovieSeeker? </a>
+                    <a href="#possibilities"> Lehetőségek </a>
+                    <a href="#premium-account"> Előfizetői Lehetőségek </a>
                     <Link className="about-team" to="/about"> A Csapat </Link>
                 </div>
 
