@@ -1,0 +1,59 @@
+{
+  "name": "movie_seeker_frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.2.3",
+    "debounce": "^1.2.1",
+    "jwt-decode": "^3.1.2",
+    "link": "^1.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.39.4",
+    "react-hooks-global-state": "^2.0.0",
+    "react-icons": "^4.6.0",
+    "react-iframe": "^1.8.5",
+    "react-router": "^6.4.3",
+    "react-router-dom": "^6.4.2",
+    "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
+    "react-youtube": "^10.0.0",
+    "slick-carousel": "^1.8.1",
+    "typewriter-effect": "^2.19.0",
+    "use-debounce": "^8.0.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "client": "react-scripts start",
+    "server": "nodemon ../backend/server.js"
+  },
+  "proxy": "http://localhost:3080",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
