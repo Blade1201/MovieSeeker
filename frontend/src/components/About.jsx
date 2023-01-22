@@ -260,7 +260,7 @@ const About = () => {
                                         <h3> Videójáték fejlesztés </h3>
                                         <div className = "progress">
                                             <div className = "progress-bar game-developer">
-                                                <span> 70% </span>
+                                                <span> 80% </span>
                                             </div>
                                         </div>
                                     </div>
@@ -284,7 +284,7 @@ const About = () => {
                                         <h3> PhysX </h3>
                                         <div className = "progress">
                                             <div className = "progress-bar physx">
-                                                <span> 60% </span>
+                                                <span> 70% </span>
                                             </div>
                                         </div>
                                     </div>
@@ -344,7 +344,7 @@ const About = () => {
                                         <h3> C++ </h3>
                                         <div className = "progress">
                                             <div className = "progress-bar cplus">
-                                                <span> 45% </span>
+                                                <span> 60% </span>
                                             </div>
                                         </div>
                                     </div>
