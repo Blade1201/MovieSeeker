@@ -24,7 +24,8 @@ Használati útmutató:
     • Sikeres telepítés után indítsuk el a XAMPP-ot, azon belül az Apache-t és a MySQL-t is indítsuk el. 
       Ezután a MySQL Admin gombját válasszuk.
 
-    • A phpMyAdmin-ban készítsünk egy "MovieSeeker" nevezetű adatbázist.
+    • A phpMyAdmin-ba importáljuk be az alábbi elérési útvonalon 
+      található adatbázist - backend/ src/ database/ movie_seeker.sql
 
     • Visual Studio Code-ban a Terminal megnyitásával és az " npm –i " paranccsal telepítsük fel 
       az összes szükséges modult. Ezután az " npm start " paranccsal indítsuk el az alkalmazást
