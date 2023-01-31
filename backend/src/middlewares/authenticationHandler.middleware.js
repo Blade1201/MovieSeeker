@@ -1,7 +1,7 @@
-const createJWT = require("../../utils/authentication/createJTW");
+import createJWT from "../utils/authentication/createJTW.authentication.util.js";
 
-module.exports = (req, res) => {
-    const token = createJWT(req.userId, req.username);
+const authenticationHandlerMiddleware = (req, res) => {
+    const token = createJWT(req.userId, req.username, req.rank);
 
     let result;
 
@@ -20,4 +20,6 @@ module.exports = (req, res) => {
     }
 
     res.json(result);
-}
+};
+
+export default authenticationHandlerMiddleware;

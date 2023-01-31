@@ -1,10 +1,14 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import jwtDecode from "jwt-decode";
+import userContext from "../contexts/user-context";
 
 
 
 const Register = ({ onFormSwitch, setRedirect }) => {
+
+    const {setLoggedIn, setName, setRank, setId} = useContext(userContext);
 
     const [formInput, setFormInput] = useState({
         username: "",
@@ -190,9 +194,13 @@ const Register = ({ onFormSwitch, setRedirect }) => {
             password
         }).then(res => res.data)
             .then(data => {
-                console.log(data);
                 if(data["success"]) {
                     localStorage.setItem("token", data["token"]);
+                    const jwtDecoded = jwtDecode(localStorage.getItem("token"));
+                    setLoggedIn(true);
+                    setName(jwtDecoded["username"]);
+                    setRank(jwtDecoded["rank"]);
+                    setId(jwtDecoded["id"]);
                     setRedirect(true);
                 }
             })

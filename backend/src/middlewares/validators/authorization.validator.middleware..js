@@ -1,6 +1,6 @@
-const {body} = require("express-validator");
+import {body} from "express-validator";
 
-exports.usernameHandlers = (credentialName) => {
+export const usernameHandlers = (credentialName) => {
     return body(credentialName)
         .exists()
         .bail()
@@ -13,7 +13,7 @@ exports.usernameHandlers = (credentialName) => {
         .withMessage("Csak alfanumerikus karaktereket tartalmazhat!")
 }
 
-exports.emailHandlers = (credentialName) => {
+export const emailHandlers = (credentialName) => {
     return body(credentialName)
         .exists()
         .bail()
@@ -23,7 +23,7 @@ exports.emailHandlers = (credentialName) => {
         .withMessage("Valós e-mail címet adjon meg!")
 }
 
-exports.passwordHandlers = () => {
+export const passwordHandlers = () => {
     return body("password")
         .exists()
         .bail()

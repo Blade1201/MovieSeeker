@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 const LANGUAGE = "hu";
 const POSTER_SIZE = "original";
@@ -18,7 +18,7 @@ const refreshBaseImageUrl = () => {
         .catch(console.error);
 }
 
-module.exports = {
+export {
     LANGUAGE,
     POSTER_SIZE,
     API_KEY,

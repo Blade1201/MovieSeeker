@@ -1,10 +1,11 @@
-const {DataTypes, Model} = require('sequelize');
-const currentConnection = require("../services/getConnection");
+import {DataTypes, Model} from "sequelize";
+import currentConnection from "../services/getConnection.service.js";
+
 const sequelize = currentConnection();
 
-class Comment extends Model {}
+class CommentModel extends Model {}
 
-Comment.init({
+CommentModel.init({
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -17,12 +18,16 @@ Comment.init({
         },
         imdbId: {
             type: DataTypes.STRING(255),
-            allowNull: false
+            allowNull: true,
         },
         content: {
             type: DataTypes.STRING(1024),
             allowNull: false
         },
+        dType: {
+            type: DataTypes.ENUM("C", "R"),
+            allowNull: false
+        }
     },
     {
         sequelize, // We need to pass the connection instance
@@ -30,4 +35,4 @@ Comment.init({
     });
 
 
-module.exports = Comment;
+export default CommentModel;

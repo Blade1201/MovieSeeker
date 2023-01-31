@@ -1,7 +1,7 @@
-const {validationResult} = require("express-validator");
-const retrieveValidationError = require("../utils/authorization/retrieveValidationError");
+import {validationResult} from "express-validator";
+import retrieveValidationError from "../utils/authorization/retrieveValidationError.authorization.util.js";
 
-module.exports = (req, res, next) => {
+const checkErrorsMiddleware = (req, res, next) => {
     const errors = validationResult(req)["errors"];
 
     if (errors.length === 0) {
@@ -16,3 +16,5 @@ module.exports = (req, res, next) => {
     });
 
 };
+
+export default checkErrorsMiddleware;

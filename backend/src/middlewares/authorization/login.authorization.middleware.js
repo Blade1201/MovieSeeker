@@ -1,11 +1,13 @@
-const userLogin = require("../../utils/authorization/userLogin");
+import {login} from "../../controllers/user.authorization.controller.js";
 
-module.exports = async (req, res, next) => {
-    const result = await userLogin(req.body);
+
+const loginAuthorizationMiddleware = async (req, res, next) => {
+    const result = await login(req.body);
 
     if (result) {
         req.userId = result.id;
         req.username = result.username;
+        req.rank = result.rank;
         next();
     } else {
         res.status(400).json({
@@ -15,3 +17,5 @@ module.exports = async (req, res, next) => {
         });
     }
 }
+
+export default loginAuthorizationMiddleware;

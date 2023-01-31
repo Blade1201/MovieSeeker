@@ -1,11 +1,10 @@
 import React, {useContext} from 'react';
 import '../../styles/hub/cta.css';
 import {Link} from "react-router-dom";
-import LoggedInContext from "../../contexts/loggedin-context";
-
+import userContext from "../../contexts/user-context";
 
 const CTA = () => {
-    const {loggedIn} = useContext(LoggedInContext);
+    const {loggedIn} = useContext(userContext);
 
     return (
 

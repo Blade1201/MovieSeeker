@@ -1,9 +1,10 @@
-const UserDTO = require("../../services/dao/UserDAO");
-const {usernameHandlers, emailHandlers, passwordHandlers} = require("./authorizationValidateHandlers");
-module.exports = [
+import UserDao from "../../dao/user.dao.js";
+import {emailHandlers, passwordHandlers, usernameHandlers} from "./authorization.validator.middleware..js";
+
+const registrationValidatorMiddleware = [
     usernameHandlers("username")
         .custom(value => {
-            return new UserDTO().findByUsername(value).then(user => {
+            return new UserDao().findByUsername(value).then(user => {
                 if (user) {
                     return Promise.reject("Foglalt felhasználónév!");
                 }
@@ -11,7 +12,7 @@ module.exports = [
         }),
     emailHandlers("email")
         .custom(value => {
-            return new UserDTO().findByEmail(value).then(user => {
+            return new UserDao().findByEmail(value).then(user => {
                 if (user) {
                     return Promise.reject("Foglalt email!");
                 }
@@ -19,3 +20,5 @@ module.exports = [
         }),
     passwordHandlers()
 ]
+
+export default registrationValidatorMiddleware;

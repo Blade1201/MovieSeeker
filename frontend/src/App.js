@@ -1,34 +1,73 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Home from "./components/Home";
 import Authentication from "./authentication/Authentication";
 import {Routes, Route, BrowserRouter} from "react-router-dom";
 import Hub from "./Hub";
 import About from "./components/About";
 import GuestRoute from "./components/GuestRoute";
+import UserContext from "./contexts/user-context";
+import isLoggedIn from "./helpers/isLoggedIn";
+import jwtDecode from "jwt-decode";
 
 
 
 const App = () => {
-  return (
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [name, setName] = useState("");
+    const [rank, setRank] = useState('G');
+    const [id, setId] = useState(0);
+    const user = {loggedIn, setLoggedIn, name, setName, rank, setRank, id, setId};
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        let loader;
+        isLoggedIn()
+            .then(success => {
+                setLoggedIn((prevValue) => {
+
+                    if (success === prevValue) {
+                        setLoading(false);
+                    } else {
+                        setLoggedIn(true);
+                        const jwtDecoded = jwtDecode(localStorage.getItem("token"));
+                        setName(jwtDecoded["username"]);
+                        setRank(jwtDecoded["rank"]);
+                        setId(jwtDecoded["id"]);
+                        loader = setTimeout(() => {
+                            setLoading(false);
+                        }, 800);
+                    }
+
+                    return success;
+                });
+
+            });
+        return () => clearTimeout(loader);
+    }, []);
+
+  return ( loading ? null :
     <div className = "App">
 
-        <BrowserRouter>
+        <UserContext.Provider value={user}>
+            <BrowserRouter>
 
-          <Routes>
+                <Routes>
 
-              <Route path = "/" element = { <Hub/> }/>
+                    <Route path = "/" element = { <Hub/> }/>
 
-              <Route path = "/about" element = { <About/> }/>
+                    <Route path = "/about" element = { <About/> }/>
 
-              <Route path = "/search" element = { <Home/> }/>
+                    <Route path = "/search" element = { <Home/> }/>
 
-              <Route path = "/authentication" element = {
-                      <GuestRoute component={ Authentication } />
-              }/>
+                    <Route path = "/authentication" element = {
+                        <GuestRoute component={ Authentication } />
+                    }/>
 
-          </Routes>
+                </Routes>
 
-      </BrowserRouter>
+            </BrowserRouter>
+        </UserContext.Provider>
 
     </div>
   );

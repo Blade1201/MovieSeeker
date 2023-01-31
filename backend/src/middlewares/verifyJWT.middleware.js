@@ -1,6 +1,6 @@
-const jwt = require("jsonwebtoken");
-const {JWT_SECRET_KEY} = require("../../configs/authentication.config");
-module.exports = (req, res, next) => {
+import jwt from "jsonwebtoken";
+import {JWT_SECRET_KEY} from "../configs/authentication.config.js";
+const verifyJWTMiddleware = (req, res, next) => {
     const token = req.headers["x-access-token"];
 
     if (!token) {
@@ -24,3 +24,5 @@ module.exports = (req, res, next) => {
     }
 
 }
+
+export default verifyJWTMiddleware;

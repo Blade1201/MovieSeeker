@@ -1,11 +1,11 @@
 import React, {useContext} from 'react';
 import '../../styles/hub/footer.css';
 import {Link} from "react-router-dom";
-import LoggedInContext from "../../contexts/loggedin-context";
+import userContext from "../../contexts/user-context";
 
 
 const Footer = () => {
-    const {loggedIn} = useContext(LoggedInContext);
+    const {loggedIn} = useContext(userContext);
 
     return (
         <div className = "footer section__padding">

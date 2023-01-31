@@ -4,13 +4,12 @@ import {Link} from "react-router-dom";
 import user from '../../images/user.png';
 import edit from '../../images/edit.png';
 import logout_image from '../../images/log-out.png';
-import LoggedInContext from "../../contexts/loggedin-context";
+import userContext from "../../contexts/user-context";
 
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const {loggedIn, setLoggedIn} = useContext(LoggedInContext);
-    const [username, setUsername] = useState(localStorage.getItem("username") ?? "");
+    const {loggedIn, setLoggedIn, name, setName, setRank, setId} = useContext(userContext);
 
     let profileMenu = useRef();
 
@@ -51,9 +50,11 @@ const Navbar = () => {
 
     const logout = () => {
         localStorage.removeItem("token")
-        localStorage.removeItem("username");
+        localStorage.removeItem("name");
         setLoggedIn(false);
-        setUsername("");
+        setName("");
+        setRank("G");
+        setId(0);
     }
 
 
@@ -91,7 +92,7 @@ const Navbar = () => {
                         </div>
 
                         <div className={`menu ${open ? 'active' : ''}`}>
-                            <h3>{username}</h3>
+                            <h3>{name}</h3>
                             <ul>
                                 <li><img src={user} alt="not-found"/>
                                     <button> Profilom</button>

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import "../styles/popup.css";
 import ReplacementImage from '../images/image-not-found.jpg';
 import RatedX from '../images/rated-x.png';
@@ -13,6 +13,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import YouTube from "react-youtube";
 import Rating from "./Rating";
+import Comments from "./comment-section/comments/Comments";
+import userContext from "../contexts/user-context";
 
 
 
@@ -21,7 +23,7 @@ const Popup = ({ selected, closePopup }) => {
 
 	const [activeModal,setModalActive] = useState(false)
 
-
+	const {id: userId} = useContext(userContext);
 
 	const castCarouselSettings = {
 		dots: false,
@@ -90,11 +92,6 @@ const Popup = ({ selected, closePopup }) => {
 		return videoCode;
 	};
 
-
-
-
-
-
 	return (
 
 		<section className = "popup" onClick = { activeModal ? () => setModalActive(false) : null }>
@@ -120,7 +117,7 @@ const Popup = ({ selected, closePopup }) => {
 
 
 				<button className = "my-rating" onClick = { () => setModalActive(true) }> Értékelem </button>
-					<Rating active = { activeModal }/>
+				{activeModal ? <Rating active={activeModal}/> : null}
 
 
 
@@ -254,6 +251,11 @@ const Popup = ({ selected, closePopup }) => {
 
 
 					<p className = "plot-paragraph"> { selected.Plot } </p>
+
+					<Comments
+						currentUserId={userId}
+						currentImdbId={selected.ImdbID}
+					/>
 
 				</div>
 

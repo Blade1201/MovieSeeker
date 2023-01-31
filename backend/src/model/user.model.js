@@ -1,21 +1,18 @@
-const {DataTypes, Model} = require('sequelize');
-const getConnection = require("../services/getConnection");
+import {DataTypes, Model} from "sequelize";
+import getConnection from "../services/getConnection.service.js";
 const sequelize = getConnection();
 
-class User extends Model {
-    async hasTheRightToModifyComment(comment) {
-        const hasComment = await this.hasComment(comment);
-
-        if (hasComment) {
+class UserModel extends Model {
+    async hasTheEligibilityToModifyComment(comment) {
+        if (this["rank"] === "A") {
             return true;
         }
-        const rank = await this.getRank();
-
-        return rank["name"] === "Admin";
+        const hasComment = await this.hasComment(comment);
+        return !!hasComment;
     }
 }
 
-User.init({
+UserModel.init({
     id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -34,10 +31,15 @@ User.init({
         type: DataTypes.CHAR(60).BINARY,
         allowNull: false,
     },
+    rank: {
+        type: DataTypes.ENUM('U', 'A', 'S'),
+        allowNull: false,
+        defaultValue: "U"
+    }
 }, {
     sequelize, // We need to pass the connection instance
     modelName: "User", // We need to choose the model name
 });
 
-module.exports = User;
+export default UserModel;
 

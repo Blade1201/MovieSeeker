@@ -1,16 +1,17 @@
-const express = require("express");
-const apiRouter = require("./src/routes/api");
-const authorizationRouter = require("./src/routes/authorization");
-const authenticationRouter = require("./src/routes/authentication");
-const commentRouter = require("./src/routes/comment");
-const {PORT} = require("./src/configs/server.config");
+import express from "express";
+import apiRouter from "./src/routes/api.route.js";
+import authorizationRouter from "./src/routes/authorization.route.js";
+import authenticationRouter from "./src/routes/authentication.route.js";
+import commentsRouter from "./src/routes/comments.route.js";
+import {PORT} from "./src/configs/server.config.js";
+import associationsInitializer from "./src/utils/assocationsInitalizer.util.js";
+associationsInitializer();
 const app = express();
-require("./src/services/assocationsInitalizer")
 
 app.use("/api", apiRouter);
 app.use("/authorization", authorizationRouter);
 app.use("/authentication", authenticationRouter);
-app.use("/comment", commentRouter);
+app.use("/comments", commentsRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`)

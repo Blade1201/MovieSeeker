@@ -1,5 +1,4 @@
 import axios from "axios";
-import jwt from "jwt-decode";
 
 
 const isLoggedIn = async () => {
@@ -14,8 +13,6 @@ const isLoggedIn = async () => {
         }
     }).then(res => {
         if (res["data"]["success"]) {
-            const token = localStorage.getItem("token");
-            localStorage.setItem("username", jwt(token).username);
             return true;
         } else {
             localStorage.removeItem("token");

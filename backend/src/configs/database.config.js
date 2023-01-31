@@ -1,4 +1,4 @@
-module.exports = {
+const databaseConfig =  {
   "host": "localhost",
   "port": "3306",
   "database": "movie_seeker",
@@ -6,3 +6,5 @@ module.exports = {
   "password": "",
   "dialect": "mysql"
 }
+
+export default databaseConfig;
