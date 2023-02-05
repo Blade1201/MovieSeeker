@@ -8,13 +8,14 @@ import editCommentValidatorMiddleware
     from "../middlewares/validators/comment/edit.comment.validator.middleware.js";
 import deleteCommentValidatorMiddleware
     from "../middlewares/validators/comment/delete.comment.validator.middleware.js";
-import {imdbIdValidator} from "../middlewares/validators/comment/other.comment.validator.middleware..js";
+import imdbIdValidatorMiddleware from "../middlewares/validators/imdbId.validator.middleware.js";
+
 const commentsRouter = express.Router();
 
 commentsRouter.use(express.json());
 
 commentsRouter.get("/:imdbId",
-    imdbIdValidator(),
+    imdbIdValidatorMiddleware(),
     checkErrorsMiddleware,
     commentController.get
 );

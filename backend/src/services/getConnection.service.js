@@ -10,7 +10,6 @@ const getConnectionService = () => {
             logging: false,
             define: {
                 underscored: true,
-                paranoid: true
             }
         });
     }

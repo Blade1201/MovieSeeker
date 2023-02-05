@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useMemo, useState} from "react";
 import '../styles/home.css';
 import Back from "../images/back-arrow.png";
 import axios from "axios";
@@ -7,6 +7,7 @@ import Results from "./Results";
 import Popup from "./Popup";
 import Queries from "./Queries";
 import {Link} from "react-router-dom";
+import {debounce} from "lodash";
 
 
 
@@ -61,33 +62,44 @@ const Home = () => {
 
 
 
-    const handleInput = (intake) => {
-        let typedIntake = intake.target.value;
 
+    const handleInput = ({target: {value: intake}}) => {
         setState(prevState => {
-            return {...prevState, search: typedIntake}
+            return {...prevState, search: intake}
         });
 
 
-        if(typedIntake.length !==0){
+        if(intake.length !==0){
 
-       axios(API_URL + "&s=" + typedIntake)
-            .then(({ data }) => {
+            axios(API_URL + "&s=" + intake)
+                .then(({ data }) => {
 
-                let gainedData = data;
+                    let gainedData = data;
 
-                setState(prevState => {
-                    return { ...prevState, query: gainedData }
-                });
+                    setState(prevState => {
+                        return { ...prevState, query: gainedData }
+                    });
 
-                setIsVisible(true)
+                    setIsVisible(true)
 
-            });}
+                });}
+        else {
+            setIsVisible(false);
+            setState(prevState => {
+                return { ...prevState, query: "", results: []}
+            });
+        }
+    }
 
+    const debouncedHandleInput = useMemo(() => {
+        return debounce(handleInput, 200);
+    }, []);
 
-    };
-
-
+    useEffect(() => {
+        return () => {
+            debouncedHandleInput.cancel();
+        };
+    });
 
     const handleClick = () => {
         setIsVisible(false);
@@ -127,7 +139,7 @@ return(
             <Link to = "/"> <img className = 'logo' alt = 'back-to-hub' src = { Back } /> </Link>
 
 
-            <Search handleInput = { handleInput } search = { searchWithEnter } button = { searchWithButton }/>
+            <Search handleInput = { debouncedHandleInput } search = { searchWithEnter } button = { searchWithButton }/>
 
 
 

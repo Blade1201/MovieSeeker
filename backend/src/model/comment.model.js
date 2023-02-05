@@ -12,27 +12,19 @@ CommentModel.init({
             primaryKey: true,
             allowNull: false,
         },
-        parentId: {
-            type: DataTypes.INTEGER,
-            allowNull: true,
-        },
-        imdbId: {
-            type: DataTypes.STRING(255),
-            allowNull: true,
-        },
         content: {
             type: DataTypes.STRING(1024),
             allowNull: false
         },
-        dType: {
-            type: DataTypes.ENUM("C", "R"),
-            allowNull: false
+        parentId: {
+            type: DataTypes.INTEGER,
+            defaultValue: null
         }
     },
     {
         sequelize, // We need to pass the connection instance
         modelName: "Comment",
+        paranoid: true
     });
-
 
 export default CommentModel;

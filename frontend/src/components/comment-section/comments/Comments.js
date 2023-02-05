@@ -9,6 +9,7 @@ import {
 } from "../api";
 
 import "../../../styles/comments.css"
+import {Link} from "react-router-dom";
 
 const Comments = ({currentUserId, currentImdbId }) => {
   const [backendComments, setBackendComments] = useState([]);
@@ -62,7 +63,12 @@ const Comments = ({currentUserId, currentImdbId }) => {
           <div className="comments">
             <h3 className="comments-title">Hozzászólások</h3>
             <div className="comment-form-title">Szólj hozzá!</div>
-            <CommentForm submitLabel="Küldés" handleSubmit={addComment} />
+            {
+              currentUserId ?
+                <CommentForm submitLabel="Küldés" handleSubmit={addComment}/>
+                :
+                <Link to="/authentication">A hozzászóláshoz jelentkezz be!</Link>
+            }
             <div className="comments-container">
               {rootComments.map((rootComment) => (
                   <Comment

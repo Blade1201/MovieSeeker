@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import "../styles/popup.css";
 import ReplacementImage from '../images/image-not-found.jpg';
 import RatedX from '../images/rated-x.png';
@@ -15,255 +15,304 @@ import YouTube from "react-youtube";
 import Rating from "./Rating";
 import Comments from "./comment-section/comments/Comments";
 import userContext from "../contexts/user-context";
+import axios from "axios";
+import {Link} from "react-router-dom";
 
 
+const Popup = ({selected, closePopup}) => {
 
-const Popup = ({ selected, closePopup }) => {
+    console.log(selected);
 
+    const [activeModal, setModalActive] = useState(false);
 
-	const [activeModal,setModalActive] = useState(false)
+    const [selectedRate, setSelectedRate] = useState(null);
 
-	const {id: userId} = useContext(userContext);
+    const [overallRate, setOverallRate] = useState(selected.Ratings);
 
-	const castCarouselSettings = {
-		dots: false,
-		infinite: true,
-		speed: 500,
-		slidesToShow: 5,
-		slidesToScroll: 1,
-		accessibility: true,
-		arrows: false,
-		autoplay: true,
-		autoplaySpeed: 1500,
-		focusOnSelect: false,
-		pauseOnDotsHover: true,
-		swipeToSlide: true,
-	};
+    const {id: userId} = useContext(userContext);
 
-
-	const reducedCastCarouselSettings = {
-		dots: false,
-		infinite: true,
-		speed: 1500,
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		accessibility: true,
-		arrows: false,
-		autoplay: true,
-		autoplaySpeed: 1000,
-		focusOnSelect: false,
-		pauseOnDotsHover: true,
-		swipeToSlide: true,
-	};
+    useEffect(() => {
+        if (selected.ImdbID) {
+            axios.get(`/rating/${selected.ImdbID}`, {
+                headers: {
+                    "x-access-token": localStorage.getItem("token")
+                }
+            })
+                .then(res => res.data)
+                .then(res => {
+                    if (res["success"]) {
+                        setSelectedRate(res["ratingScore"])
+                    }
+                })
+                .catch(err => console.error(err));
+        }
+    }, [selected.ImdbID]);
 
 
-	const providerCarouselSettings = {
-		dots: false,
-		infinite: false,
-		slidesToShow: 5,
-		slidesToScroll: 1,
-		accessibility: true,
-		arrows: false,
-		focusOnSelect: false,
-		pauseOnDotsHover: true,
-		swipeToSlide: true
-	};
+    const castCarouselSettings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        accessibility: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 1500,
+        focusOnSelect: false,
+        pauseOnDotsHover: true,
+        swipeToSlide: true,
+    };
 
 
-	const videoOptions = {
-		height: '390',
-		width: '640'
-	};
+    const reducedCastCarouselSettings = {
+        dots: false,
+        infinite: true,
+        speed: 1500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        accessibility: true,
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 1000,
+        focusOnSelect: false,
+        pauseOnDotsHover: true,
+        swipeToSlide: true,
+    };
 
 
+    const providerCarouselSettings = {
+        dots: false,
+        infinite: false,
+        slidesToShow: 5,
+        slidesToScroll: 1,
+        accessibility: true,
+        arrows: false,
+        focusOnSelect: false,
+        pauseOnDotsHover: true,
+        swipeToSlide: true
+    };
 
-	const videoData = () => {
-		const video = [];
-		let videoCode;
 
-		if (selected.Videos !== null) {
-			selected.Videos.forEach(data => video.push( data.Url ))
-		}
+    const videoOptions = {
+        height: '390',
+        width: '640'
+    };
 
-		for (let i = 0; i < video.length; i++) {
-			videoCode = video[0];
-		}
 
-		return videoCode;
-	};
+    const videoData = () => {
+        const video = [];
+        let videoCode;
 
-	return (
+        if (selected.Videos !== null) {
+            selected.Videos.forEach(data => video.push(data.Url))
+        }
 
-		<section className = "popup" onClick = { activeModal ? () => setModalActive(false) : null }>
-			<div className = "popup-content">
-                
-				<h2>{ selected.Title } <span> ({ selected.Year })
+        for (let i = 0; i < video.length; i++) {
+            videoCode = video[0];
+        }
 
-					{selected.Certification === "X" ? <img className = "movie-ratings" alt = "not-found!" src = { RatedX }/>
-						: selected.Certification === "18" ? <img className = "movie-ratings" alt = "not-found!" src = { Rated18 }/>
-						: selected.Certification === "16" ? <img className = "movie-ratings" alt = "not-found!" src = { Rated16 }/>
-						: selected.Certification === "12" ? <img className = "movie-ratings" alt = "not-found!" src = { Rated12 }/>
-						: selected.Certification === "6" || selected.Certification === "Children" ? <img className = "movie-ratings" alt = "not-found!" src = { Rated6 }/>
-						: selected.Certification === "NR" || selected.Certification === "KN" ? <img className = "movie-ratings" alt = "not-found!" src = { RatedEveryone }/>
-						: ""}
+        return videoCode;
+    };
+
+    return (
+
+        <section className="popup" onClick={activeModal ? () => setModalActive(false) : null}>
+            <div className="popup-content">
+
+                <h2>{selected.Title} <span> ({selected.Year})
+
+                    {selected.Certification === "X" ? <img className="movie-ratings" alt="not-found!" src={RatedX}/>
+                        : selected.Certification === "18" ?
+                            <img className="movie-ratings" alt="not-found!" src={Rated18}/>
+                            : selected.Certification === "16" ?
+                                <img className="movie-ratings" alt="not-found!" src={Rated16}/>
+                                : selected.Certification === "12" ?
+                                    <img className="movie-ratings" alt="not-found!" src={Rated12}/>
+                                    : selected.Certification === "6" || selected.Certification === "Children" ?
+                                        <img className="movie-ratings" alt="not-found!" src={Rated6}/>
+                                        : selected.Certification === "NR" || selected.Certification === "KN" ?
+                                            <img className="movie-ratings" alt="not-found!" src={RatedEveryone}/>
+                                            : ""}
 
 				</span></h2>
 
 
-				{ selected.Ratings !== null ? <p className = "rating"> Értékelés: { selected.Ratings } <img className = "rating-star" alt = "not-found!" src = { Star }/></p> : ""}
-				{ selected.Ratings !== null ? <p className = "genre"> Műfaj: { selected.Genre } </p> : ""}
-				{ selected.Ratings !== null ? <p className = "runtime"> Játékidő: { selected.Runtime } perc </p> : ""}
+                {selected.Ratings !== null ?
+                    <p className="rating"> Értékelés: {overallRate} <img className="rating-star" alt="not-found!"
+                                                                              src={Star}/></p> : ""}
+                {selected.Ratings !== null ? <p className="genre"> Műfaj: {selected.Genre} </p> : ""}
+                {selected.Ratings !== null ? <p className="runtime"> Játékidő: {selected.Runtime} perc </p> : ""}
 
 
+                {
+                    selected.ImdbID ?
+                        userId ?
+                            <button className="my-rating" onClick={() => setModalActive(true)}> Értékelem</button>
+                            :
+                            <Link className="my-rating" to="/authentication">Az értékeléshez jelentkezz be!</Link>
+                        :
+                        null
+                }
 
-				<button className = "my-rating" onClick = { () => setModalActive(true) }> Értékelem </button>
-				{activeModal ? <Rating active={activeModal}/> : null}
+                {
+                    activeModal ?
+                    <Rating
+                        active={activeModal}
+                        selectedRate={selectedRate}
+                        setSelectedRate={setSelectedRate}
+                        imdbId={selected.ImdbID}
+                        setOverallRate={setOverallRate}
+                    />
+                    :
+                    null
+                }
 
 
+                <div className="content-plot">
 
+                    {selected.Poster !== null ?
+                        <img className="plot-image" src={selected.Poster} alt={selected.Title}
+                             onError={e => e.target.src = ReplacementImage}/>
 
-				<div className = "content-plot">
+                        : <img className="plot-image" alt="not-found!" src={ReplacementImage}/>
+                    }
 
-					{selected.Poster !== null ?
-						<img className = "plot-image" src = { selected.Poster } alt = { selected.Title }
-							 onError = { e => e.target.src = ReplacementImage }/>
 
-						: <img className = "plot-image" alt = "not-found!" src = { ReplacementImage }/>
-					}
+                    <div className="carousel-container">
 
+                        <div className="provider-paragraph">
 
+                            <h1> Sugározható </h1>
 
+                        </div>
 
+                        <Slider {...providerCarouselSettings}>
 
-						<div className="carousel-container">
+                            {selected.Providers !== null ? selected.Providers.map(item => (
 
-							<div className = "provider-paragraph">
+                                <div className="carousel-size">
 
-								<h1> Sugározható </h1>
+                                    {item.Name === "HBO Max" ? <a target="blank" href="https://www.hbomax.com/hu/hu">
+                                            <img className="provider-image" src={item.Logo} alt={item.Name}
+                                                 onError={e => e.target.src = ReplacementImage}/> </a>
 
-							</div>
+                                        : item.Name === "Netflix" ?
+                                            <a target="blank" href="frontend/src/components/Popup">
+                                                <img className="provider-image" src={item.Logo} alt={item.Name}
+                                                     onError={e => e.target.src = ReplacementImage}/> </a>
 
-							<Slider {...providerCarouselSettings}>
+                                            : item.Name === "Disney Plus" ?
+                                                <a target="blank" href="https://www.disneyplus.com/hu-hu">
+                                                    <img className="provider-image" src={item.Logo} alt={item.Name}
+                                                         onError={e => e.target.src = ReplacementImage}/> </a>
 
-								{selected.Providers !== null ? selected.Providers.map(item => (
+                                                : item.Name === "Amazon Prime Video" ?
+                                                    <a target="blank" href="frontend/src/components/Popup">
+                                                        <img className="provider-image" src={item.Logo} alt={item.Name}
+                                                             onError={e => e.target.src = ReplacementImage}/> </a>
 
-									<div className="carousel-size">
+                                                    : item.Name === "Apple TV Plus" ?
+                                                        <a target="blank" href="frontend/src/components/Popup">
+                                                            <img className="provider-image" src={item.Logo}
+                                                                 alt={item.Name}
+                                                                 onError={e => e.target.src = ReplacementImage}/> </a>
 
-										{ item.Name === "HBO Max" ? <a target = "blank" href = "https://www.hbomax.com/hu/hu">
-											<img className = "provider-image" src = { item.Logo } alt = { item.Name }
-												 onError = { e => e.target.src = ReplacementImage } /> </a>
+                                                        :
+                                                        <img className="provider-image" src={item.Logo} alt={item.Name}
+                                                             onError={e => e.target.src = ReplacementImage}/>}
 
-											: item.Name === "Netflix" ? <a target = "blank" href = "frontend/src/components/Popup">
-						     				<img className = "provider-image" src = { item.Logo } alt = { item.Name }
-												 onError = { e => e.target.src = ReplacementImage } /> </a>
 
-				  							: item.Name === "Disney Plus" ? <a target = "blank" href = "https://www.disneyplus.com/hu-hu">
-											<img className = "provider-image" src = { item.Logo } alt = { item.Name }
-												 onError = { e => e.target.src = ReplacementImage } /> </a>
+                                    <p className="provider-name"> {item.Name} </p>
 
-											: item.Name === "Amazon Prime Video" ? <a target = "blank" href = "frontend/src/components/Popup">
-											<img className = "provider-image" src = { item.Logo } alt = { item.Name }
-												 onError = { e => e.target.src = ReplacementImage } /> </a>
+                                </div>
 
-											: item.Name === "Apple TV Plus" ? <a target = "blank" href = "frontend/src/components/Popup">
-											<img className = "provider-image" src = { item.Logo } alt = { item.Name }
-												 onError = { e => e.target.src = ReplacementImage } /> </a>
+                            )) : <p className="content-not-found"> A műsor nem található! </p>}
 
-											: <img className = "provider-image" src = { item.Logo } alt = { item.Name }
-												   onError = { e => e.target.src = ReplacementImage } />}
+                        </Slider>
 
+                    </div>
 
-													<p className = "provider-name"> { item.Name } </p>
 
-									</div>
+                    <div className="carousel-container">
 
-								)) : <p className="content-not-found"> A műsor nem található! </p>}
+                        <div className="cast-paragraph">
 
-							</Slider>
+                            <h1> Szereplők </h1>
 
-						</div>
+                        </div>
 
 
+                        {selected.Cast === null ? <p className="content-not-found"> A szereplők nem találhatóak! </p>
+                            : selected.Cast.length > 4 ?
 
+                                <Slider {...castCarouselSettings}>
 
+                                    {selected.Cast.map(item => (
 
-					<div className="carousel-container">
+                                        <div className="carousel-size">
 
-						<div className = "cast-paragraph">
+                                            <a target="blank" href={`https://www.google.hu/search?q=${item.Name}`}>
+                                                <img className="cast-image" src={item.Image} alt={item.Name}
+                                                     onError={e => e.target.src = ReplacementImage}
+                                                /></a>
 
-							<h1> Szereplők </h1>
+                                            <p className="cast-name">{item.Name}</p>
 
-						</div>
+                                        </div>
 
+                                    ))}
 
-						{selected.Cast === null ? <p className="content-not-found"> A szereplők nem találhatóak! </p>
-							: selected.Cast.length > 4 ?
+                                </Slider>
 
-							<Slider {...castCarouselSettings}>
+                                : <Slider {...reducedCastCarouselSettings}>
 
-								{selected.Cast.map(item => (
+                                    {selected.Cast.map(item => (
 
-									<div className="carousel-size">
+                                        <div className="carousel-size">
 
-										<a target="blank" href={`https://www.google.hu/search?q=${item.Name}`}>
-											<img className="cast-image" src={item.Image} alt={item.Name}
-												 onError={e => e.target.src = ReplacementImage}
-											/></a>
+                                            <a target="blank" href={`https://www.google.hu/search?q=${item.Name}`}>
+                                                <img className="cast-image" src={item.Image} alt={item.Name}
+                                                     onError={e => e.target.src = ReplacementImage}
+                                                /></a>
 
-										<p className="cast-name">{item.Name}</p>
+                                            <p className="cast-name">{item.Name}</p>
 
-									</div>
+                                        </div>
 
-								)) }
+                                    ))}
 
-							</Slider>
+                                </Slider>
+                        }
 
-						: <Slider {...reducedCastCarouselSettings}>
 
-								{selected.Cast.map(item => (
+                    </div>
 
-									<div className="carousel-size">
 
-										<a target="blank" href={`https://www.google.hu/search?q=${item.Name}`}>
-											<img className="cast-image" src={item.Image} alt={item.Name}
-												 onError={e => e.target.src = ReplacementImage}
-											/></a>
+                    <YouTube
+                        videoId={videoData()}
+                        opts={videoOptions}
+                        className="video-player"
+                    />
 
-										<p className="cast-name">{item.Name}</p>
 
-									</div>
+                    <p className="plot-paragraph"> {selected.Plot} </p>
 
-								)) }
+                    {
+                        selected.ImdbID &&
+                        <Comments
+                            currentUserId={userId}
+                            currentImdbId={selected.ImdbID}
+                        />
+                    }
 
-								</Slider>
-						}
+                </div>
 
+                <button className="close" onClick={closePopup}> Bezárás</button>
 
-					</div>
-
-
-
-					<YouTube
-						videoId = { videoData() }
-						opts = { videoOptions }
-						className = "video-player"
-					/>
-
-
-					<p className = "plot-paragraph"> { selected.Plot } </p>
-
-					<Comments
-						currentUserId={userId}
-						currentImdbId={selected.ImdbID}
-					/>
-
-				</div>
-
-				<button className = "close" onClick = { closePopup }> Bezárás </button>
-
-			</div>
-		</section>
-	);
+            </div>
+        </section>
+    );
 };
 
 export default Popup;

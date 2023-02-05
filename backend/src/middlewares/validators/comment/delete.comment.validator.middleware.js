@@ -1,15 +1,16 @@
 import {
-    generalIdValidator,
-    customCommentExistValidator,
-    customUserExistValidator, customCommentEligibilityValidator
+    commentExistValidator,
+    commentEligibilityValidator
 } from "./other.comment.validator.middleware..js";
+import userExistValidatorMiddleware from "../userExist.validator.middleware.js";
+import generalNumberValidatorMiddleware from "../generalNumber.validator.middleware.js";
 
 const deleteCommentValidatorMiddleware = [
-    generalIdValidator("id")
-        .custom(customCommentExistValidator),
-    generalIdValidator("userId")
-        .custom(customUserExistValidator)
-        .custom(customCommentEligibilityValidator)
+    generalNumberValidatorMiddleware("id")
+        .custom(commentExistValidator),
+    generalNumberValidatorMiddleware("userId")
+        .custom(userExistValidatorMiddleware)
+        .custom(commentEligibilityValidator)
 ];
 
 export default deleteCommentValidatorMiddleware;

@@ -12,9 +12,13 @@ const checkExistOfImdbIdCommentUtil = (imdbId) => {
 
     return axios.get(detailsURL)
         .then(res => {
-            return res?.data?.movie_results?.length > 0;
+            let movie_result = res?.data?.movie_results?.[0];
+
+            if (movie_result) return movie_result;
+
+            return res?.data?.tv_results?.[0];
         })
-        .catch(false)
+        .catch(() => false);
 };
 
 export default checkExistOfImdbIdCommentUtil;

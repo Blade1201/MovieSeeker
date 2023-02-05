@@ -38,7 +38,8 @@ UserModel.init({
     }
 }, {
     sequelize, // We need to pass the connection instance
-    modelName: "User", // We need to choose the model name
+    modelName: "User", // We need to choose the model name,
+    paranoid: true
 });
 
 export default UserModel;

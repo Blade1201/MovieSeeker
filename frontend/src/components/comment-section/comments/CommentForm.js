@@ -30,7 +30,7 @@ const CommentForm = ({
           className="comment-form-button comment-form-cancel-button"
           onClick={handleCancel}
         >
-          Cancel
+          Mégse
         </button>
       )}
     </form>

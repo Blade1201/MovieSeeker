@@ -1,19 +1,21 @@
 import {
-    generalIdValidator,
-    contentValidator,
-    imdbIdValidator,
-    customUserExistValidator, customCommentExistValidator, customCommentNestingValidator
+    contentValidator, commentExistValidator, commentNestingValidator
 } from "./other.comment.validator.middleware..js";
+import imdbIdValidatorMiddleware from "../imdbId.validator.middleware.js";
+import userExistValidatorMiddleware from "../userExist.validator.middleware.js";
+import generalNumberValidatorMiddleware from "../generalNumber.validator.middleware.js";
+import mediaValidatorMiddleware from "../media.validator.middleware.js";
 
 const createCommentValidatorMiddleware = [
-    generalIdValidator("userId")
-        .custom(customUserExistValidator),
-    imdbIdValidator(),
+    generalNumberValidatorMiddleware("userId")
+        .custom(userExistValidatorMiddleware),
+    imdbIdValidatorMiddleware()
+        .custom(mediaValidatorMiddleware),
     contentValidator(),
-    generalIdValidator("parentId")
+    generalNumberValidatorMiddleware("parentId")
         .optional()
-        .custom(customCommentExistValidator)
-        .custom(customCommentNestingValidator)
+        .custom(commentExistValidator)
+        .custom(commentNestingValidator)
 ]
 
 export default createCommentValidatorMiddleware;

@@ -1,5 +1,6 @@
 import axios from "axios";
 import {API_KEY, LANGUAGE, imageAbsolutePath, refreshBaseImageUrl} from "../../configs/outer.api.config.js";
+import {getAverageScoreByImdbId} from "../../controllers/rating.controller.js";
 
 const BASIC_DETAILS = ["external_ids", "watch/providers", "credits", "videos&include_video_language=hu,en"];
 
@@ -118,17 +119,16 @@ const getTVCertification = content_ratings => {
     return huCertificationDetails["rating"];
 }
 
-const filterDetails = details => {
+const filterDetails = async details => {
     return {
-        Title : details["title"] ?? details["name"] ?? null,
+        Title: details["title"] ?? details["name"] ?? null,
         ImdbID: details["external_ids"]["imdb_id"] ?? null,
         Year: details["first_air_date"] ?? details["release_date"] ?? null,
-        Ratings: details["vote_average"] ?
-            Math.round((details["vote_average"] + Number.EPSILON) * 10) / 10 : null,
+        Ratings: await getAverageScoreByImdbId(details["external_ids"]["imdb_id"] ?? null),
         Genre: details["genres"]?.map(genre => genre.name).join(", ") || null,
         Runtime: details["runtime"] || details?.episode_run_time?.[0] || null,
         Poster: details["poster_path"] ? imageAbsolutePath(details["poster_path"]) : null,
-        Plot:  details["overview"] || null,
+        Plot: details["overview"] || null,
         Providers: getWatchProviders(details["watch/providers"]),
         Videos: getVideos(details["videos"]),
         Cast: reduceArraySize(getCast(details["credits"]), 25),

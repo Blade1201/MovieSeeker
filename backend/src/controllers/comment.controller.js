@@ -1,31 +1,11 @@
 import CommentDao from "../dao/comment.dao.js";
-
-const formatComments = (comments) => {
-    const results = [];
-    for (const comment of comments) {
-        const {id, content : body, UserId: userId, parentId, createdAt, updatedAt} = comment;
-        const username = comment["User"]["username"];
-        results.push({id, body, username, userId, parentId, createdAt, updatedAt});
-    }
-    return results;
-}
-
+import MediaDao from "../dao/media.dao.js";
 
 const create = async (req, res, next) => {
-    const {user, content} = req.body;
+    const {user, media, content} = req.body;
     const parentId = req.body.parentId ?? null;
-    let imdbId;
-    let dType;
 
-    if (parentId) {
-        imdbId = null;
-        dType = "R";
-    } else {
-        imdbId = req.body.imdbId;
-        dType = "C";
-    }
-
-    const result = await new CommentDao().create(user, imdbId, content, parentId, dType);
+    const result = await new CommentDao().create(user["id"], media["id"], content, parentId);
     if (result) {
         next();
     } else {
@@ -54,10 +34,18 @@ const destroy = async (req, res, next) => {
 }
 
 const get = async (req, res) => {
-    const results = await new CommentDao().findByImdbId(req.params.imdbId);
+    const {imdbId} = req.params;
+    const media = await new MediaDao().findByImdb(imdbId);
+
+    if (!media) {
+        res.json([]);
+        return ;
+    }
+
+    const results = await new CommentDao().findByMediaId(media["id"]);
 
     if (results) {
-        res.json(formatComments(results));
+        res.json(results);
     } else {
         res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }

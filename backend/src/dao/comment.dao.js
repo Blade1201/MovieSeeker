@@ -7,35 +7,44 @@ class CommentDao {
         return await CommentModel.findByPk(id);
     }
 
-    async findByImdbId(imdbId) {
+    async findByMediaId(mediaId) {
         const comments = await CommentModel.findAll({
             where: {
-                imdbId,
-                dType: "C",
+                MediaId: mediaId,
+                parentId: null
             },
-            include: UserModel
+            include: [UserModel, {
+                model: CommentModel,
+                as: "Replies",
+                include: UserModel
+            }]
         });
 
-        const commentsId = comments.map(comment => comment["id"]);
+        const results = [];
 
-        const replies = await CommentModel.findAll({
-            where: {
-                parentId: commentsId
-            },
-            include: UserModel
-        });
+        for (const comment of comments) {
+            const {id, content: body, UserId: userId, parentId, createdAt} = comment;
+            const username = comment["User"]["username"];
+            results.push({id, body, username, userId, parentId, createdAt});
 
-        return comments.concat(replies);
+            for (const reply of comment["Replies"]) {
+                const {id, content: body, UserId: userId, parentId, createdAt} = reply;
+                const username = reply["User"]["username"];
+                results.push({id, body, username, userId, parentId, createdAt});
+            }
+        }
+
+        return results;
     }
 
     async findByUser(user) {
         return user.getComments();
     }
 
-    async create(user, imdbId, content, parentId, dType) {
+    async create(userId, mediaId, content, parentId) {
         const transaction = await getConnection().transaction();
         try {
-            await CommentModel.create({imdbId, content, parentId, dType, UserId: user["id"]}, {transaction});
+            await CommentModel.create({content, parentId, MediaId: mediaId, UserId: userId}, {transaction});
             await transaction.commit();
             return true;
         } catch (e) {
@@ -69,10 +78,6 @@ class CommentDao {
             await transaction.rollback();
             return false;
         }
-    }
-
-    async save(comment) {
-        return await comment.save();
     }
 }
 
