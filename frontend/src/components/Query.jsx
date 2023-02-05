@@ -1,6 +1,6 @@
 import React from 'react';
 import ReplacementImage from '../images/image-not-found.jpg';
-import Star from "../images/star.png";
+//import Star from "../images/star.png";
 
 
 const Result = ({ result, openPopup }) => {
@@ -15,8 +15,8 @@ const Result = ({ result, openPopup }) => {
                 : <img alt = { result.Title } src = { ReplacementImage }/>
             }
 
-                <h3> { result.Title } <span> Értékelés: {result.Ratings}
-                    <img alt = "not-found!" src = { Star } /></span>
+                <h3> { result.Title } <span> {/*Értékelés: {result.Ratings}
+                    <img alt = "not-found!" src = { Star } />*/}</span>
                     <span> Megjelenés: {result.Year} </span></h3>
 
             </div>
