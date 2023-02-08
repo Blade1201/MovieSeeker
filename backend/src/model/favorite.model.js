@@ -3,9 +3,9 @@ import currentConnection from "../services/getConnection.service.js";
 
 const sequelize = currentConnection();
 
-class WatchModel extends Model {}
+class FavoriteModel extends Model {}
 
-WatchModel.init({
+FavoriteModel.init({
     UserId: {
         type: DataTypes.INTEGER,
         references: {
@@ -23,9 +23,8 @@ WatchModel.init({
 
 }, {
     sequelize,
-    modelName: "Watch",
-    tableName: "watchlist",
+    modelName: "Favorite",
     updatedAt: false
 });
 
-export default WatchModel;
+export default FavoriteModel;

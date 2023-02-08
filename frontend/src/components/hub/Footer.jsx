@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 import '../../styles/hub/footer.css';
 import {Link} from "react-router-dom";
-import userContext from "../../contexts/user-context";
+import userContext from "../../contexts/userContext";
 
 
 const Footer = () => {

@@ -8,6 +8,7 @@ import Popup from "./Popup";
 import Queries from "./Queries";
 import {Link} from "react-router-dom";
 import {debounce} from "lodash";
+import {Favorite} from "../contexts/favoriteContext";
 
 
 
@@ -129,9 +130,6 @@ const Home = () => {
         });
     };
 
-
-
-
 return(
         <div className = "main-home" onClick = { handleClick }>
         <div className = "home">
@@ -157,7 +155,10 @@ return(
 
     <main>
         <Results results = { state.results } openPopup = { openPopup }/>
-        {(typeof state.selected.Title != "undefined") ? <Popup selected = { state.selected } closePopup = { closePopup } /> : false}
+        {(typeof state.selected.Title != "undefined") ?
+            <Favorite><Popup selected = { state.selected } closePopup = { closePopup } /></Favorite>
+            :
+            false}
     </main>
 
         </div>

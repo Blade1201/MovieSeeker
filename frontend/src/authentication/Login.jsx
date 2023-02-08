@@ -1,7 +1,7 @@
 import React, {useContext, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import userContext from "../contexts/user-context";
+import userContext from "../contexts/userContext";
 import jwtDecode from "jwt-decode";
 
 

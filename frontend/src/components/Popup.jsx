@@ -14,14 +14,13 @@ import "slick-carousel/slick/slick-theme.css";
 import YouTube from "react-youtube";
 import Rating from "./Rating";
 import Comments from "./comment-section/comments/Comments";
-import userContext from "../contexts/user-context";
+import userContext from "../contexts/userContext";
 import axios from "axios";
 import {Link} from "react-router-dom";
+import {FavoriteContext} from "../contexts/favoriteContext";
 
 
 const Popup = ({selected, closePopup}) => {
-
-    console.log(selected);
 
     const [activeModal, setModalActive] = useState(false);
 
@@ -29,7 +28,22 @@ const Popup = ({selected, closePopup}) => {
 
     const [overallRate, setOverallRate] = useState(selected.Ratings);
 
+    const {inFavorites, handleCreate, handleDelete} = useContext(FavoriteContext);
+
+    const [isFavorite, setFavorite] = useState(inFavorites(selected));
+
     const {id: userId} = useContext(userContext);
+
+
+    const addToFavorites = async () => {
+        await handleCreate(selected);
+        setFavorite(true);
+    }
+
+    const deleteFromFavorites = async () => {
+        await handleDelete(selected);
+        setFavorite(false);
+    }
 
     useEffect(() => {
         if (selected.ImdbID) {
@@ -166,6 +180,16 @@ const Popup = ({selected, closePopup}) => {
                     />
                     :
                     null
+                }
+
+                {
+                    userId ?
+                        isFavorite ?
+                            <button className="delete-from-favorites" onClick={deleteFromFavorites}>Kedvencekből töröl</button>
+                            :
+                            <button className="add-to-favorites" onClick={addToFavorites}>Kedvencekhez ad</button>
+                        :
+                        null
                 }
 
 

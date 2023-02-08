@@ -1,6 +1,7 @@
 import * as MediaController from "../../controllers/media.controller.js";
 
 const mediaValidatorMiddleware = async (imdbId, {req}) => {
+
     try {
         await MediaController.createMediaIfNotExistAndGet(req);
         return Promise.resolve();

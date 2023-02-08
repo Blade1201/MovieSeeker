@@ -2,7 +2,7 @@ import CommentModel from "../model/comment.model.js";
 import UserModel from "../model/user.model.js";
 import SubscriptionModel from "../model/subscription.model.js";
 import MediaModel from "../model/media.model.js";
-import WatchModel from "../model/watch.model.js";
+import FavoriteModel from "../model/favorite.model.js";
 import RatingModel from "../model/rating.model.js";
 
 const associationsInitializer = () => {
@@ -33,11 +33,13 @@ const associationsInitializer = () => {
     SubscriptionModel.belongsTo(UserModel);
 
     UserModel.belongsToMany(MediaModel, {
-        through: WatchModel,
+        through: FavoriteModel,
+        as: "favoriteMedia"
     });
     MediaModel.belongsToMany(UserModel, {
-        through: WatchModel,
-        foreignKey: "MediaId"
+        through: FavoriteModel,
+        foreignKey: "MediaId",
+        as: "favoriteUsers"
     });
 
     UserModel.belongsToMany(MediaModel, {

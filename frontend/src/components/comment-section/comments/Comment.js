@@ -1,6 +1,6 @@
 import CommentForm from "./CommentForm";
 import {useContext} from "react";
-import userContext from "../../../contexts/user-context";
+import userContext from "../../../contexts/userContext";
 
 const Comment = ({
   comment,

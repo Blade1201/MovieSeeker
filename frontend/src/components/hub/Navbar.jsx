@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import user from '../../images/user.png';
 import edit from '../../images/edit.png';
 import logout_image from '../../images/log-out.png';
-import userContext from "../../contexts/user-context";
+import userContext from "../../contexts/userContext";
 
 
 const Navbar = () => {
@@ -72,7 +72,6 @@ const Navbar = () => {
 
                 <div
                     className={`movieseeker-navbar-links__container ${clicked ? 'movieseeker-navbar-links__container active' : 'movieseeker-navbar-links__container'}`}>
-
                     <a href="#home"> Kezdőlap </a>
                     <a href="#movieseeker"> MovieSeeker? </a>
                     <a href="#possibilities"> Lehetőségek </a>

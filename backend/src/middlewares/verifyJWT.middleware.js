@@ -4,7 +4,7 @@ const verifyJWTMiddleware = (req, res, next) => {
     const token = req.headers["x-access-token"];
 
     if (!token) {
-        res.json({
+        res.status(400).json({
             success: false,
             reason: "Nem szolgáltatott tokent!"
         });
@@ -15,7 +15,7 @@ const verifyJWTMiddleware = (req, res, next) => {
                 req.body.userId = decoded.id;
                 next();
             } else {
-                res.json({
+                res.status(500).json({
                     success: false,
                     reason: "Hiba történt a token érvenyesítése közben!"
                 });

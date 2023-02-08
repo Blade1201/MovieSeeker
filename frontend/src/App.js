@@ -5,9 +5,11 @@ import {Routes, Route, BrowserRouter} from "react-router-dom";
 import Hub from "./Hub";
 import About from "./components/About";
 import GuestRoute from "./components/GuestRoute";
-import UserContext from "./contexts/user-context";
+import UserContext from "./contexts/userContext";
 import isLoggedIn from "./helpers/isLoggedIn";
 import jwtDecode from "jwt-decode";
+import GetFavorites from "./components/GetFavorites";
+import {Favorite} from "./contexts/favoriteContext";
 
 
 
@@ -59,6 +61,8 @@ const App = () => {
                     <Route path = "/about" element = { <About/> }/>
 
                     <Route path = "/search" element = { <Home/> }/>
+
+                    <Route path = "/favorite" element={<Favorite><GetFavorites /></Favorite>} />
 
                     <Route path = "/authentication" element = {
                         <GuestRoute component={ Authentication } />

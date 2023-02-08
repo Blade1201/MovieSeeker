@@ -114,7 +114,7 @@
 }
 
 
-.my-rating {
+.my-rating, .add-to-favorites, .delete-from-favorites {
     padding: 10px 10px;
     font-size: 18px;
     margin-bottom: 20px;
@@ -129,9 +129,17 @@
 }
 
 
-.my-rating:hover {
+.my-rating:hover, .add-to-favorites:hover, .delete-from-favorites:hover {
     background: #e8cd11;
     color: #000000;
+}
+
+.add-to-favorites {
+    background-color: green;
+}
+
+.delete-from-favorites {
+    background-color: red;
 }
 
 
