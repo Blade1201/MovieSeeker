@@ -4,12 +4,6 @@ import userContext from "./userContext";
 
 export const FavoriteContext = createContext();
 
-const CONFIG = {
-    headers: {
-        "x-access-token" : localStorage.getItem("token")
-    }
-}
-
 const getData = (favorite) => {
     return {
         imdbId: favorite["ImdbID"]
@@ -24,7 +18,11 @@ export const Favorite = ({children}) => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get("/favorite", CONFIG);
+            const res = await axios.get("/favorite", {
+                headers: {
+                    "x-access-token" : localStorage.getItem("token")
+                }
+            });
             setFavorites(res["data"]);
         } catch ({response: {data}}) {
             alert(data);
@@ -35,11 +33,15 @@ export const Favorite = ({children}) => {
         if (id) {
             fetchData();
         }
-    }, []);
+    }, [id]);
 
     const handleCreate = async (favorite) => {
         try {
-            await axios.post("/favorite", getData(favorite), CONFIG);
+            await axios.post("/favorite", getData(favorite), {
+                headers: {
+                    "x-access-token" : localStorage.getItem("token")
+                }
+            });
             setFavorites([...favorites, favorite]);
         } catch ({response: {data}}) {
             alert(data["reason"]);
@@ -49,7 +51,9 @@ export const Favorite = ({children}) => {
     const handleDelete = async (favorite) => {
         try {
             await axios.delete("/favorite", {
-                ...CONFIG,
+                headers: {
+                    "x-access-token" : localStorage.getItem("token")
+                },
                 data: getData(favorite)
             });
             setFavorites(favorites.filter(value => value.ImdbID !== favorite.ImdbID));
