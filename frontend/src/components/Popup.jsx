@@ -1,12 +1,6 @@
 import React, {useContext, useEffect, useState} from 'react';
 import "../styles/popup.css";
 import ReplacementImage from '../images/image-not-found.jpg';
-import RatedX from '../images/rated-x.png';
-import Rated18 from '../images/rated-18.png';
-import Rated16 from '../images/rated-16.png';
-import Rated12 from '../images/rated-12.png';
-import Rated6 from '../images/rated-6.png';
-import RatedEveryone from '../images/rated-everyone.png';
 import Star from '../images/star.png';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -62,6 +56,14 @@ const Popup = ({selected, closePopup}) => {
         }
     }, [selected.ImdbID]);
 
+    const getCertificationPath = (cert) => {
+        try {
+            return require(`../images/rated-${cert.toLowerCase()}.png`);
+        } catch (e) {
+            return require("../images/rated-everyone.png");
+        }
+    }
+
 
     const castCarouselSettings = {
         dots: false,
@@ -110,23 +112,15 @@ const Popup = ({selected, closePopup}) => {
 
     const videoOptions = {
         height: '390',
-        width: '640'
+        width: '640',
+        playerVars: {
+            origin: window.location
+        }
     };
 
 
     const videoData = () => {
-        const video = [];
-        let videoCode;
-
-        if (selected.Videos !== null) {
-            selected.Videos.forEach(data => video.push(data.Url))
-        }
-
-        for (let i = 0; i < video.length; i++) {
-            videoCode = video[0];
-        }
-
-        return videoCode;
+        return selected.Videos?.length ? selected.Videos[0].Url : null;
     };
 
     return (
@@ -135,20 +129,8 @@ const Popup = ({selected, closePopup}) => {
             <div className="popup-content">
 
                 <h2>{selected.Title} <span> ({selected.Year})
-
-                    {selected.Certification === "X" ? <img className="movie-ratings" alt="not-found!" src={RatedX}/>
-                        : selected.Certification === "18" ?
-                            <img className="movie-ratings" alt="not-found!" src={Rated18}/>
-                            : selected.Certification === "16" ?
-                                <img className="movie-ratings" alt="not-found!" src={Rated16}/>
-                                : selected.Certification === "12" ?
-                                    <img className="movie-ratings" alt="not-found!" src={Rated12}/>
-                                    : selected.Certification === "6" || selected.Certification === "Children" ?
-                                        <img className="movie-ratings" alt="not-found!" src={Rated6}/>
-                                        : selected.Certification === "NR" || selected.Certification === "KN" ?
-                                            <img className="movie-ratings" alt="not-found!" src={RatedEveryone}/>
-                                            : ""}
-
+                    <img className="movie-ratings" alt="not-found!"
+                         src={getCertificationPath(selected.Certification)}/>
 				</span></h2>
 
 
@@ -213,9 +195,9 @@ const Popup = ({selected, closePopup}) => {
 
                         <Slider {...providerCarouselSettings}>
 
-                            {selected.Providers !== null ? selected.Providers.map(item => (
+                            {selected.Providers !== null ? selected.Providers.map((item, index) => (
 
-                                <div className="carousel-size">
+                                <div className="carousel-size" key={index}>
 
                                     {item.Name === "HBO Max" ? <a target="blank" href="https://www.hbomax.com/hu/hu">
                                             <img className="provider-image" src={item.Logo} alt={item.Name}
@@ -272,13 +254,12 @@ const Popup = ({selected, closePopup}) => {
 
                                 <Slider {...castCarouselSettings}>
 
-                                    {selected.Cast.map(item => (
+                                    {selected.Cast.map((item, index) => (
 
-                                        <div className="carousel-size">
+                                        <div className="carousel-size" key={index}>
 
                                             <a target="blank" href={`https://www.google.hu/search?q=${item.Name}`}>
-                                                <img className="cast-image" src={item.Image} alt={item.Name}
-                                                     onError={e => e.target.src = ReplacementImage}
+                                                <img className="cast-image" src={item.Image ?? ReplacementImage} alt={item.Name}
                                                 /></a>
 
                                             <p className="cast-name">{item.Name}</p>
@@ -291,13 +272,12 @@ const Popup = ({selected, closePopup}) => {
 
                                 : <Slider {...reducedCastCarouselSettings}>
 
-                                    {selected.Cast.map(item => (
+                                    {selected.Cast.map((item, index) => (
 
-                                        <div className="carousel-size">
+                                        <div className="carousel-size" key={index}>
 
                                             <a target="blank" href={`https://www.google.hu/search?q=${item.Name}`}>
-                                                <img className="cast-image" src={item.Image} alt={item.Name}
-                                                     onError={e => e.target.src = ReplacementImage}
+                                                <img className="cast-image" src={item.Image ?? ReplacementImage} alt={item.Name}
                                                 /></a>
 
                                             <p className="cast-name">{item.Name}</p>

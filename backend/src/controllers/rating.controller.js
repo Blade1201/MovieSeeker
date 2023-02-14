@@ -102,7 +102,7 @@ const get = async (req, res) => {
     if (result) {
         res.json({success: true, ratingScore: result["rating"]});
     } else {
-        res.status(500).json({success: true, ratingScore: null});
+        res.json({success: true, ratingScore: null});
     }
 }
 

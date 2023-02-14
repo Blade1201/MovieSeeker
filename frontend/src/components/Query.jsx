@@ -3,10 +3,10 @@ import ReplacementImage from '../images/image-not-found.jpg';
 //import Star from "../images/star.png";
 
 
-const Result = ({ result, openPopup }) => {
+const Query = ({ result, openPopup}) => {
 
     return (
-        <div className = "result" onClick={() => openPopup({ id: result.Id, type: result.Type })}>
+        <div className = "result" onClick={() => openPopup({ id: result.Id, type: result.Type })} >
 
             {result.Poster !== null ?
                 <img alt = { result.Title } src = { result.Poster }
@@ -23,4 +23,4 @@ const Result = ({ result, openPopup }) => {
     );
 };
 
-export default Result;
+export default Query;

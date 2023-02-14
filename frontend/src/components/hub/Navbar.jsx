@@ -5,6 +5,7 @@ import user from '../../images/user.png';
 import edit from '../../images/edit.png';
 import logout_image from '../../images/log-out.png';
 import userContext from "../../contexts/userContext";
+import {HashLink} from "react-router-hash-link";
 
 
 const Navbar = () => {
@@ -33,7 +34,7 @@ const Navbar = () => {
     let mobileMenu = useRef();
 
 
-    useEffect(() => {
+    /*useEffect(() => {
         let mobileHandler = (e) => {
             if (!mobileMenu.current.contains(e.target)) {
                 setClicked(false);
@@ -45,7 +46,7 @@ const Navbar = () => {
         return () => {
             document.removeEventListener("mousedown", mobileHandler);
         }
-    });
+    });*/
 
 
     const logout = () => {
@@ -70,12 +71,11 @@ const Navbar = () => {
 
                 </div>
 
-                <div
-                    className={`movieseeker-navbar-links__container ${clicked ? 'movieseeker-navbar-links__container active' : 'movieseeker-navbar-links__container'}`}>
-                    <a href="#home"> Kezdőlap </a>
-                    <a href="#movieseeker"> MovieSeeker? </a>
-                    <a href="#possibilities"> Lehetőségek </a>
-                    <a href="#premium-account"> Előfizetői Lehetőségek </a>
+                <div className={`movieseeker-navbar-links__container ${clicked ? "active" : ""}`}>
+                    <HashLink to="#home" onClick={() => setClicked(false)}>Kezdőlap</HashLink>
+                    <HashLink to="#movieseeker" onClick={() => setClicked(false)}>MovieSeeker</HashLink>
+                    <HashLink to="#possibilities" onClick={() => setClicked(false)}>Lehetőségek</HashLink>
+                    <HashLink to="#premium-account" onClick={() => setClicked(false)}>Előfizetői Lehetőségek</HashLink>
                     <Link className="about-team" to="/about"> A Csapat </Link>
                 </div>
 

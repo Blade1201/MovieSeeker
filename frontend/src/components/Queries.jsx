@@ -6,9 +6,9 @@ function Queries({ results, openPopup }) {
         <div className="query-results">
 
             {
-                results.slice(0,3).map(result => (
+                results.slice(0,3).map((result, index) => (
 
-                        <Query key = { result.ImdbID } result = { result } openPopup = { openPopup } />
+                        <Query key = { index } result = { result } openPopup = { openPopup } />
                     ))}
         </div>
     );

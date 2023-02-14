@@ -19,17 +19,18 @@ const Possibility = () => (
       <Link to = "/authentication"> Fizessen elő a további lehetőségekért  </Link>
       <h1 className = "gradient__text"> A lehetőségek <br /> minden képzeletet felülmúlnak </h1>
 
-      <p>
-          <Typewriter
-              options={{
-                  strings: ['Top 50 média tartalom', 'Média tartalom értékelése','Nézőlista','Megnézettek listája'],
-                  autoStart: true,
-                  loop: true,
-                  delay: 55,
-                  deleteSpeed: 30
-              }}
-          />
-      </p>
+          <div className="typewriter">
+              <Typewriter
+                  options={{
+                      strings: ['Top 50 média tartalom', 'Média tartalom értékelése','Nézőlista','Megnézettek listája'],
+                      autoStart: true,
+                      loop: true,
+                      delay: 55,
+                      deleteSpeed: 30
+                  }}
+              />
+          </div>
+
 
         <Link to = "/authentication"> Fizessen elő a további lehetőségekért  </Link>
     </div>

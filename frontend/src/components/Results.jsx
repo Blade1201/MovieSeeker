@@ -7,9 +7,9 @@ const Results = ({ results, openPopup }) => {
 		<section className = "results">
 			{
 				!results ?   <p className = "movie-not-found-error-message"> Nincs találat, kérem keressen újra! </p>:
-					results.map(result => (
+					results.map((result, index) => (
 
-						<Result key = { result.ImdbID } result = { result } openPopup = { openPopup } />
+						<Result key = { index } result = { result } openPopup = { openPopup } />
 					))}
 		</section>
 	);

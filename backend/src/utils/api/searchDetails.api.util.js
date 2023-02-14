@@ -75,7 +75,7 @@ const getCast = credits => {
     return cast.map(c => {
         return {
             Name: c["original_name"],
-            Image: imageAbsolutePath(c["profile_path"]),
+            Image: c["profile_path"] ? imageAbsolutePath(c["profile_path"]) : null,
         }
     });
 };
@@ -92,14 +92,20 @@ const getMovieCertification = release_dates => {
 
     const huCertificationsDetails = results.find(result => result["iso_3166_1"] === "HU");
 
-    if (!huCertificationsDetails) {
-        const deCertificationsDetails = results.find(result => result["iso_3166_1"] === "DE");
-        if (!deCertificationsDetails) return null;
-
-        return deCertificationsDetails["release_dates"][0]["certification"];
+    if (huCertificationsDetails) {
+        const result = huCertificationsDetails["release_dates"].find(release => release["certification"]);
+        if (result?.certification) {
+            return result["certification"];
+        }
     }
 
-    return huCertificationsDetails["release_dates"][0]["certification"];
+    const deCertificationsDetails = results.find(result => result["iso_3166_1"] === "DE");
+    if (!deCertificationsDetails) return null;
+
+    const result = deCertificationsDetails["release_dates"].find(release => release["certification"]);
+
+    return result?.certification ?? null;
+
 }
 
 const getTVCertification = content_ratings => {
@@ -109,14 +115,14 @@ const getTVCertification = content_ratings => {
 
     const huCertificationDetails = results.find(result => result["iso_3166_1"] === "HU");
 
-    if (!huCertificationDetails) {
-        const deCertificationDetails = results.find(result => result["iso_3166_1"] === "DE");
-        if (!deCertificationDetails) return null;
-        
-        return deCertificationDetails["rating"];
+    if (huCertificationDetails) {
+        return huCertificationDetails["rating"];
     }
 
-    return huCertificationDetails["rating"];
+    const deCertificationDetails = results.find(result => result["iso_3166_1"] === "DE");
+    if (!deCertificationDetails) return null;
+
+    return deCertificationDetails["rating"];
 }
 
 const filterDetails = async details => {
