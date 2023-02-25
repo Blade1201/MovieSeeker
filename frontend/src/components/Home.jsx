@@ -130,6 +130,7 @@ const Home = () => {
         });
     };
 
+
 return(
         <div className = "main-home" onClick = { handleClick }>
         <div className = "home">
@@ -139,7 +140,7 @@ return(
 
             <Search handleInput = { debouncedHandleInput } search = { searchWithEnter } button = { searchWithButton }/>
 
-
+            <Link to = "/favorite" className="getFavoritePosition"> <button className="getFavorites"> Kedvenceim </button> </Link>
 
         </div>
             <div className = {isVisible ? 'visible' : 'hidden'}>

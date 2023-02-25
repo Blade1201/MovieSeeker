@@ -15,11 +15,11 @@ const Footer = () => {
             </div>
 
 
-            <div className = "footer-button">
+            <div>
                 {loggedIn ?
-                    null
+                    <div className="logged-footer"></div>
                     :
-                    <Link to = "/authentication"> Belépek </Link>
+                    <Link className="footer-button" to = "/authentication"> Belépek </Link>
                 }
             </div>
 

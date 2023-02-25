@@ -1,4 +1,14 @@
-h1 {
+.myFavorites {
     color: white;
     text-align: center;
+    margin: 10px 10px;
+}
+
+
+.backToSearch {
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    margin-left: 10px;
+    border-radius: 20px;
 }

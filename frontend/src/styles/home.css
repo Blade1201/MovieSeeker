@@ -54,6 +54,32 @@ body {
 }
 
 
+.getFavorites{
+    padding: 10px 10px;
+    position: absolute;
+    font-size: 18px;
+    font-weight: 700;
+    color: #FFF;
+    background: #445565;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.4s ease-out;
+}
+
+
+.getFavoritePosition {
+    position: absolute;
+    margin-left: 1650px;
+    margin-top: 5px;
+}
+
+
+.getFavorites:hover {
+    background: #e8cd11;
+    color: #000000;
+}
+
+
 main {
     width: 100%;
     max-width: 960px;
@@ -171,13 +197,19 @@ section .movie-not-found-error-message {
 }
 
 .result .delete-button {
-    background-color: red;
+    background-color: #811b1b;
     color: white;
-    padding: 5px 10px;
+    padding: 7px 10px;
     margin-top: 10px;
     cursor: pointer;
     align-self: flex-end;
+    border-radius: 8px;
 }
+
+.result .delete-button:hover {
+    background-color: #ff0000;
+}
+
 
 .results {
     display: flex;

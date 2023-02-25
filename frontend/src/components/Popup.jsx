@@ -146,7 +146,7 @@ const Popup = ({selected, closePopup}) => {
                         userId ?
                             <button className="my-rating" onClick={() => setModalActive(true)}> Értékelem</button>
                             :
-                            <Link className="my-rating" to="/authentication">Az értékeléshez jelentkezz be!</Link>
+                            <Link className="my-rating" to="/authentication">Az értékeléshez jelentkezzen be!</Link>
                         :
                         null
                 }

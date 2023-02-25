@@ -4,6 +4,8 @@ import axios from "axios";
 import Popup from "./Popup";
 import FavoriteResults from "./FavoriteResults";
 import {FavoriteContext} from "../contexts/favoriteContext";
+import Back from "../images/back-arrow.png";
+import {Link} from "react-router-dom";
 
 const GetFavorites = () => {
 
@@ -38,7 +40,8 @@ const GetFavorites = () => {
 
     return (
         <Fragment>
-            <h1>Kedvencei: </h1>
+            <Link to = "/search"> <img className = 'backToSearch' alt = 'back-to-hub' src = { Back } /> </Link>
+            <h1 className="myFavorites">Kedvencei: </h1>
             <main>
                 <FavoriteResults results = { favorites } openPopup = { openPopup } />
                 {(typeof state.selected.Title != "undefined") ? <Popup selected = { state.selected } closePopup = { closePopup } /> : false}
