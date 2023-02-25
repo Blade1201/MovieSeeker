@@ -48,6 +48,21 @@ const Navbar = () => {
         }
     });*/
 
+        const [imageSrc, setImageSrc] = useState(null);
+        const inputRef = useRef(null);
+
+        function handleImageChange(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                setImageSrc(event.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function handleChooseFileClick() {
+             inputRef.current.click();
+         }
 
     const logout = () => {
         localStorage.removeItem("token")
@@ -87,17 +102,21 @@ const Navbar = () => {
                         <div className="profile" onClick={() => {
                             setOpen(!open)
                         }}>
-                            <img src={user} alt="not-found"></img>
+                            { imageSrc ? <img src={imageSrc} alt="not-found"></img> : <img src={user} alt="not-found"></img>}
                         </div>
 
                         <div className={`menu ${open ? 'active' : ''}`}>
                             <h3>{name}</h3>
                             <ul>
-                                <li><img src={user} alt="not-found"/>
-                                    <button> Profilom</button>
-                                </li>
                                 <li><img src={edit} alt="not-found"/>
-                                    <button> Szerkesztés</button>
+                                    <button onClick={handleChooseFileClick}> Szerkesztés </button>
+                                    <input
+                                        ref={inputRef}
+                                        type="file"
+                                        accept="image/*"
+                                        onChange={handleImageChange}
+                                        style={{ display: 'none' }}
+                                    />
                                 </li>
                                 <li><img src={logout_image} alt="not-found"/>
                                     <button onClick={logout}> Kilépés</button>
