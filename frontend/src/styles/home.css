@@ -69,8 +69,8 @@ body {
 
 .getFavoritePosition {
     position: absolute;
-    margin-left: 1650px;
-    margin-top: 5px;
+    top: 5px;
+    right: 250px;
 }
 
 
