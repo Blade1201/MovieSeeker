@@ -48,7 +48,22 @@ const register = async (body) => {
     return null;
 }
 
+const get = async (req, res) => {
+    const {userId} = req.body;
+
+    const result = await new UserDao().findById(userId);
+
+    if (result) {
+        const {id, username, email, rank} = result;
+        res.json({id, username, email, rank});
+    } else {
+        res.sendStatus(500);
+    }
+
+}
+
 export {
     register,
-    login
+    login,
+    get
 }

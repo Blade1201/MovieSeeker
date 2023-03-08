@@ -1,15 +1,15 @@
 import createJWT from "../utils/authentication/createJTW.authentication.util.js";
 
 const authenticationHandlerMiddleware = (req, res) => {
-    const token = createJWT(req.userId, req.username, req.rank);
+    const {userId, username, rank} = req;
+
+    const token = createJWT(userId, username, rank);
 
     let result;
 
     if (token) {
-        result = {
-            success: true,
-            token
-        }
+        res.cookie("access-token", token, {httpOnly: true});
+        res.json({userId, username, rank});
     } else {
         result = {
             success: false,

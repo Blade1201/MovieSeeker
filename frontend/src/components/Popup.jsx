@@ -165,7 +165,7 @@ const Popup = ({selected, closePopup}) => {
                 }
 
                 {
-                    userId ?
+                    selected.ImdbID && userId ?
                         isFavorite ?
                             <button className="delete-from-favorites" onClick={deleteFromFavorites}>Kedvencekből töröl</button>
                             :

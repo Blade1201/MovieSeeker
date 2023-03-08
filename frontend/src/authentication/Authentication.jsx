@@ -13,8 +13,6 @@ const Authentication = ({ setRedirect }) => {
         setCurrentForm(formName);
     };
 
-
-
     return(
 
         <div className = "form">

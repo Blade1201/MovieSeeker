@@ -7,7 +7,6 @@ import About from "./components/About";
 import GuestRoute from "./components/GuestRoute";
 import UserContext from "./contexts/userContext";
 import isLoggedIn from "./helpers/isLoggedIn";
-import jwtDecode from "jwt-decode";
 import GetFavorites from "./components/GetFavorites";
 import {Favorite} from "./contexts/favoriteContext";
 
@@ -25,28 +24,28 @@ const App = () => {
     useEffect(() => {
         let loader;
         isLoggedIn()
-            .then(success => {
+            .then(result => {
                 setLoggedIn((prevValue) => {
-
-                    if (success === prevValue) {
+                    if (prevValue === !!result) {
                         setLoading(false);
+                        return prevValue;
                     } else {
-                        setLoggedIn(true);
-                        const jwtDecoded = jwtDecode(localStorage.getItem("token"));
-                        setName(jwtDecoded["username"]);
-                        setRank(jwtDecoded["rank"]);
-                        setId(jwtDecoded["id"]);
                         loader = setTimeout(() => {
                             setLoading(false);
-                        }, 800);
+                        }, 200);
+                        setName(result["username"]);
+                        setRank(result["rank"]);
+                        setId(result["id"]);
+                        return true;
                     }
-
-                    return success;
-                });
-
+                })
             });
         return () => clearTimeout(loader);
     }, []);
+
+    useEffect(() => {
+        console.log(loggedIn);
+    }, [loggedIn]);
 
   return ( loading ? null :
     <div className = "App">

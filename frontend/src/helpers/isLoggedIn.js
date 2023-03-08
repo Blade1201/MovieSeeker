@@ -2,23 +2,15 @@ import axios from "axios";
 
 
 const isLoggedIn = async () => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-        return false;
-    }
-
     return axios.get("/authentication", {
-        headers: {
-            "x-access-token": token
-        }
+        withCredentials: true
     }).then(res => {
-        if (res["data"]["success"]) {
-            return true;
+        if (res.status === 200) {
+            return res.data;
         } else {
-            localStorage.removeItem("token");
-            return false;
+            return null;
         }
-    });
+    }).catch(() => null);
 }
 
 export default isLoggedIn;

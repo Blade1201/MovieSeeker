@@ -1,7 +1,8 @@
 import searchMedia from "../utils/api/searchMedia.api.util.js";
 import searchDetails from "../utils/api/searchDetails.api.util.js";
+import getPopularApiUtil from "../utils/api/getPopular.api.util.js";
 
-const apiSearchController =  async (req, res) => {
+const search =  async (req, res) => {
     let {s, m, i} = req.query;
 
     let json = "";
@@ -28,4 +29,15 @@ const apiSearchController =  async (req, res) => {
     res.json(json);
 }
 
-export default apiSearchController;
+const popular = async (req, res) => {
+    const {type} = req.params;
+
+    const result = await getPopularApiUtil(type);
+
+    res.json(result.slice(0, 50));
+}
+
+export {
+    search,
+    popular
+}

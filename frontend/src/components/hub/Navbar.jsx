@@ -6,6 +6,7 @@ import edit from '../../images/edit.png';
 import logout_image from '../../images/log-out.png';
 import userContext from "../../contexts/userContext";
 import {HashLink} from "react-router-hash-link";
+import axios from "axios";
 
 
 const Navbar = () => {
@@ -65,8 +66,7 @@ const Navbar = () => {
          }
 
     const logout = () => {
-        localStorage.removeItem("token")
-        localStorage.removeItem("name");
+        axios.delete("/authentication", {withCredentials: true});
         setLoggedIn(false);
         setName("");
         setRank("G");

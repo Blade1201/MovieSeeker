@@ -2,9 +2,6 @@ import React, {useContext, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import userContext from "../contexts/userContext";
-import jwtDecode from "jwt-decode";
-
-
 
 const Login = ({ onFormSwitch, setRedirect}) => {
 
@@ -19,15 +16,15 @@ const Login = ({ onFormSwitch, setRedirect}) => {
         axios.post("/authorization/login", {
             credential,
             password
-        }).then(res => res.data)
-            .then(data => {
-                if (data["success"]) {
-                    localStorage.setItem("token", data["token"]);
-                    const jwtDecoded = jwtDecode(localStorage.getItem("token"));
+        }, {withCredentials: true})
+            .then(res => {
+                if (res.status === 200) {
+                    const data = res.data;
+                    console.log(data)
                     setLoggedIn(true);
-                    setName(jwtDecoded["username"]);
-                    setRank(jwtDecoded["rank"]);
-                    setId(jwtDecoded["id"]);
+                    setName(data["username"]);
+                    setRank(data["rank"]);
+                    setId(data["userId"]);
                     setRedirect(true);
                 }
             })

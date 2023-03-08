@@ -1,6 +1,6 @@
 import RatingModel from "../model/rating.model.js";
 import getConnection from "../services/getConnection.service.js";
-const sequlieze = getConnection();
+const sequelize = getConnection();
 
 class RatingDao {
     findByPk(userId, mediaId) {
@@ -50,7 +50,7 @@ class RatingDao {
     async getAverageScore(media) {
         return RatingModel.findAll({
             where: {MediaId: media["id"]},
-            attributes: [[sequlieze.fn("avg", sequlieze.col("rating")), 'avgScore']]
+            attributes: [[sequelize.fn("avg", sequelize.col("rating")), 'avgScore']]
         });
     }
 

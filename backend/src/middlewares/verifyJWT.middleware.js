@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
 import {JWT_SECRET_KEY} from "../configs/authentication.config.js";
 const verifyJWTMiddleware = (req, res, next) => {
-    const token = req.headers["x-access-token"];
+    const token = req.cookies["access-token"];
+
 
     if (!token) {
         res.status(400).json({
