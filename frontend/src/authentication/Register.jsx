@@ -218,6 +218,8 @@ const Register = ({ onFormSwitch, setRedirect }) => {
     return (
         <div className = "authentication-form-container">
 
+            <span className="icon-close"><Link to = "/"> <ion-icon name="close"></ion-icon> </Link> </span>
+
             <h2> Regisztráció </h2>
 
             <form className = "register-form" onSubmit = { handleSubmit }>
@@ -299,8 +301,7 @@ const Register = ({ onFormSwitch, setRedirect }) => {
             </form>
 
 
-            <button className = "link-button" onClick={ () => onFormSwitch('login') }> Van már felhasználói fiókja? Jelentkezzen be. </button>
-            <Link className = "link-button-return" to = "/"> Mégsem </Link>
+            <button className = "link-button" onClick={ () => onFormSwitch('login') }> Van már felhasználói fiókja? Jelentkezzen be </button>
 
         </div>
     );

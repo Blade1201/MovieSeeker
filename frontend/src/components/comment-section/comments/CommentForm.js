@@ -8,12 +8,16 @@ const CommentForm = ({
   initialText = "",
 }) => {
   const [text, setText] = useState(initialText);
+
   const isTextareaDisabled = text.length < 5;
+
   const onSubmit = (event) => {
     event.preventDefault();
     handleSubmit(text);
     setText("");
   };
+
+
   return (
     <form onSubmit={onSubmit}>
       <textarea

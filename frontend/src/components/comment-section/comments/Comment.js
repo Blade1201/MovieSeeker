@@ -19,16 +19,20 @@ const Comment = ({
     activeComment &&
     activeComment.id === comment.id &&
     activeComment.type === "editing";
+
   const isReplying =
     activeComment &&
     activeComment.id === comment.id &&
     activeComment.type === "replying";
+
   const canDelete =
     currentUserId === comment.userId || rank === "A";
+
   const canReply = Boolean(currentUserId);
   const canEdit = currentUserId === comment.userId || rank === "A";
   const replyId = parentId ? parentId : comment.id;
   const createdAt = new Date(comment.createdAt).toLocaleDateString();
+
   return (
     <div key={comment.id} className="comment">
       <div className="comment-image-container">
@@ -37,7 +41,7 @@ const Comment = ({
       <div className="comment-right-part">
         <div className="comment-content">
           <div className="comment-author">{comment.username}</div>
-          <div>{createdAt}</div>
+          <div className="comment-time">{createdAt}</div>
         </div>
         {!isEditing && <div className="comment-text">{comment.body}</div>}
         {isEditing && (

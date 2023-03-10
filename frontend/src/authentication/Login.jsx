@@ -45,20 +45,22 @@ const Login = ({ onFormSwitch, setRedirect}) => {
 
         <div className = "authentication-form-container">
 
+            <span className="icon-close"><Link to = "/"> <ion-icon name="close"></ion-icon> </Link> </span>
+
             <h2> Bejelentkezés </h2>
 
             <form className = "login-form" onSubmit = { handleSubmit }>
 
                 <label className = "label-form" htmlFor = "credential"> E-mail / Felhasználónév </label>
 
-                <input
-                    value={ credential }
-                    onChange={(e) => setCredential( e.target.value )}
-                    type = "text"
-                    name = "credential"
-                    placeholder = "cím@domain"
-                    className = "input-form"
-                />
+                    <input
+                        value={ credential }
+                        onChange={(e) => setCredential( e.target.value )}
+                        type = "text"
+                        name = "credential"
+                        placeholder = "cím@domain"
+                        className = "input-form"
+                    />
 
                 <label className = "label-form" htmlFor = "password"> Jelszó </label>
 
@@ -86,9 +88,7 @@ const Login = ({ onFormSwitch, setRedirect}) => {
             </form>
 
 
-
-            <button className = "link-button" onClick = {() => onFormSwitch( 'register' )}>  Nincs még felhasználói fiókja? Regisztráljon. </button>
-            <Link to = "/"> Mégsem </Link>
+                <button className = "link-button" onClick = {() => onFormSwitch( 'register' )}> Nincs még felhasználói fiókja? Regisztráljon </button>
 
         </div>
     );

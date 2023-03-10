@@ -5,26 +5,15 @@
     align-items: center;
     justify-content: center;
     color: white;
-    background-image: linear-gradient(  35deg,
-    hsl(0deg 0% 0%) 0%,
-    hsl(0deg 0% 0%) 8%,
-    hsl(0deg 0% 0%) 17%,
-    hsl(0deg 0% 0%) 25%,
-    hsl(0deg 12% 8%) 33%,
-    hsl(0deg 11% 17%) 42%,
-    hsl(0deg 11% 25%) 50%,
-    hsl(9deg 10% 37%) 58%,
-    hsl(23deg 9% 50%) 67%,
-    hsl(34deg 8% 62%) 75%,
-    hsl(39deg 33% 71%) 83%,
-    hsl(44deg 59% 81%) 92%,
-    hsl(50deg 84% 90%) 100%);
+    background-image: url("../../src/images/authentication_background.jpg");
+    background-size: cover;
 }
 
 
 .authentication-form-container, .login-form, .register-form {
     display: flex;
     flex-direction: column;
+    background: transparent;
 }
 
 .register-form{
@@ -48,8 +37,11 @@
     .authentication-form-container {
         padding: 3.5rem 5rem;
         border: 1px solid white;
-        border-radius: 10px;
+        border-radius: 20px;
         margin: 0.5rem;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 0 30px rgba(187, 24, 98, 0.5);
+        overflow: hidden;
     }
 }
 
@@ -57,6 +49,28 @@
 .login-form label {
     padding-top: 8px;
     text-align: left;
+}
+
+
+.icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: rgba(187, 24, 98);
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+}
+
+
+.icon-close a {
+    color: #EEEEEE;
+    display: flex;
+
 }
 
 
@@ -80,7 +94,7 @@
     outline: none;
     transition: 1s ease-in-out;
     margin-top: 4%;
-    margin-left: 4%;
+    margin-left: 5%;
 }
 
 
@@ -145,7 +159,7 @@
     outline: none;
     transition: 1s ease-in-out;
     margin-top: 4%;
-    margin-left: 17%;
+    margin-left: 18%;
 }
 
 
@@ -180,24 +194,15 @@
 }
 
 
-.authentication-form-container .link-button {
-    margin-top: 15px;
+.authentication-form-container .link-button{
+    margin-top: 20px;
     padding-left: 8px;
     background: none;
     border: none;
     color: white;
     text-decoration: underline;
-}
-
-
-.authentication-form-container a{
-    margin-top: 40px;
-    margin-left: 35%;
-    background: none;
-    width: 80px;
-    border: none;
-    color: white;
-    text-decoration: underline;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 

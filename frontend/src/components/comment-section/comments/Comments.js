@@ -28,6 +28,7 @@ const Comments = ({currentUserId, currentImdbId }) => {
         (a, b) =>
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
+
   const addComment = (text, parentId) => {
     createCommentApi(text, currentImdbId, parentId).then(() => {
       setActiveComment(false);
@@ -41,8 +42,9 @@ const Comments = ({currentUserId, currentImdbId }) => {
       setFlag(!flag);
     });
   };
+
   const deleteComment = (id) => {
-    if (window.confirm("Biztos vagy benne, hogy törölni akarod ezt a hozzászólást?")) {
+    if (window.confirm("Biztos benne, hogy törölni akarja ezt a hozzászólást?")) {
       deleteCommentApi(id).then(() => {
         setFlag(!flag);
       });
@@ -56,18 +58,19 @@ const Comments = ({currentUserId, currentImdbId }) => {
     });
   }, [flag, currentImdbId]);
 
+
   return (
       loading ?
           null
           :
           <div className="comments">
             <h3 className="comments-title">Hozzászólások</h3>
-            <div className="comment-form-title">Szólj hozzá!</div>
+            <div className="comment-form-title">Szóljon hozzá!</div>
             {
               currentUserId ?
                 <CommentForm submitLabel="Küldés" handleSubmit={addComment}/>
                 :
-                <Link to="/authentication">A hozzászóláshoz jelentkezz be!</Link>
+                <Link to="/authentication">A hozzászóláshoz jelentkezzen be!</Link>
             }
             <div className="comments-container">
               {rootComments.map((rootComment) => (
