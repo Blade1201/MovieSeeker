@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Feb 08. 23:02
+-- Létrehozás ideje: 2023. Már 12. 15:53
 -- Kiszolgáló verziója: 10.4.27-MariaDB
 -- PHP verzió: 8.2.0
 
@@ -104,7 +104,6 @@ CREATE TABLE `subscriptions` (
   `id` int(11) NOT NULL,
   `type` enum('M','S','A') NOT NULL,
   `created_at` datetime NOT NULL,
-  `end_at` datetime NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -119,10 +118,24 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `hash` char(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
-  `rank` enum('U','A','S') NOT NULL DEFAULT 'U',
+  `rank` enum('U','A') NOT NULL DEFAULT 'U',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Tábla szerkezet ehhez a táblához `watchlists`
+--
+
+CREATE TABLE `watchlists` (
+  `user_id` int(11) NOT NULL,
+  `media_id` int(11) NOT NULL,
+  `watched` enum('Y','N') NOT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -172,6 +185,14 @@ ALTER TABLE `subscriptions`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
+
+--
+-- A tábla indexei `watchlists`
+--
+ALTER TABLE `watchlists`
+  ADD PRIMARY KEY (`user_id`,`media_id`),
+  ADD UNIQUE KEY `watchlists_MediaId_UserId_unique` (`user_id`,`media_id`),
+  ADD KEY `media_id` (`media_id`);
 
 --
 -- A kiírt táblák AUTO_INCREMENT értéke
@@ -232,6 +253,13 @@ ALTER TABLE `ratings`
 --
 ALTER TABLE `subscriptions`
   ADD CONSTRAINT `subscriptions_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Megkötések a táblához `watchlists`
+--
+ALTER TABLE `watchlists`
+  ADD CONSTRAINT `watchlists_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `watchlists_ibfk_2` FOREIGN KEY (`media_id`) REFERENCES `media` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

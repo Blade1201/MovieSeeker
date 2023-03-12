@@ -32,7 +32,7 @@ UserModel.init({
         allowNull: false,
     },
     rank: {
-        type: DataTypes.ENUM('U', 'A', 'S'),
+        type: DataTypes.ENUM('U', 'A'),
         allowNull: false,
         defaultValue: "U"
     }

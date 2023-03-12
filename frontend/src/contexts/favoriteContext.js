@@ -18,11 +18,7 @@ export const Favorite = ({children}) => {
 
     const fetchData = async () => {
         try {
-            const res = await axios.get("/favorite", {
-                headers: {
-                    "x-access-token" : localStorage.getItem("token")
-                }
-            });
+            const res = await axios.get("/favorite");
             setFavorites(res["data"]);
         } catch ({response: {data}}) {
             alert(data);
@@ -62,9 +58,14 @@ export const Favorite = ({children}) => {
         }
     }
 
+    const clearFavorites = () => {
+        setFavorites([]);
+    }
+
     const inFavorites = (media) => {
+        console.log(media, favorites);
         return favorites.find(value => value.ImdbID === media.ImdbID);
     }
 
-    return <FavoriteContext.Provider value={{favorites, handleCreate, handleDelete, inFavorites}}>{children}</FavoriteContext.Provider>;
+    return <FavoriteContext.Provider value={{favorites, handleCreate, handleDelete, clearFavorites, inFavorites}}>{children}</FavoriteContext.Provider>;
 }

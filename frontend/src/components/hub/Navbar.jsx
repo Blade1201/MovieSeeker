@@ -7,11 +7,13 @@ import logout_image from '../../images/log-out.png';
 import userContext from "../../contexts/userContext";
 import {HashLink} from "react-router-hash-link";
 import axios from "axios";
+import {FavoriteContext} from "../../contexts/favoriteContext";
 
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const {loggedIn, setLoggedIn, name, setName, setRank, setId} = useContext(userContext);
+    const {clearFavorites} = useContext(FavoriteContext);
 
     let profileMenu = useRef();
 
@@ -71,6 +73,7 @@ const Navbar = () => {
         setName("");
         setRank("G");
         setId(0);
+        clearFavorites();
     }
 
 

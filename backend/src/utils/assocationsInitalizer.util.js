@@ -4,6 +4,7 @@ import SubscriptionModel from "../model/subscription.model.js";
 import MediaModel from "../model/media.model.js";
 import FavoriteModel from "../model/favorite.model.js";
 import RatingModel from "../model/rating.model.js";
+import WatchlistModel from "../model/watchlist.model.js";
 
 const associationsInitializer = () => {
     CommentModel.hasMany(CommentModel, { as: "Replies", foreignKey: "parentId" });
@@ -50,6 +51,16 @@ const associationsInitializer = () => {
         through: RatingModel,
         foreignKey: "MediaId"
     })
+
+    UserModel.belongsToMany(MediaModel, {
+        through: WatchlistModel,
+        as: "watchlistMedia"
+    });
+    MediaModel.belongsToMany(UserModel, {
+        through: WatchlistModel,
+        foreignKey: "MediaId",
+        as: "watchlistUsers"
+    });
 }
 
 export default associationsInitializer;

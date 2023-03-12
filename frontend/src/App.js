@@ -51,25 +51,27 @@ const App = () => {
     <div className = "App">
 
         <UserContext.Provider value={user}>
-            <BrowserRouter>
+            <Favorite>
+                <BrowserRouter>
 
-                <Routes>
+                    <Routes>
 
-                    <Route path = "/" element = { <Hub/> }/>
+                        <Route path = "/" element = { <Hub/> }/>
 
-                    <Route path = "/about" element = { <About/> }/>
+                        <Route path = "/about" element = { <About/> }/>
 
-                    <Route path = "/search" element = { <Home/> }/>
+                        <Route path = "/search" element = {<Home/>}/>
 
-                    <Route path = "/favorite" element={<Favorite><GetFavorites /></Favorite>} />
+                        <Route path = "/favorite" element={<GetFavorites />} />
 
-                    <Route path = "/authentication" element = {
-                        <GuestRoute component={ Authentication } />
-                    }/>
+                        <Route path = "/authentication" element = {
+                            <GuestRoute component={ Authentication } />
+                        }/>
 
-                </Routes>
+                    </Routes>
 
-            </BrowserRouter>
+                </BrowserRouter>
+            </Favorite>
         </UserContext.Provider>
 
     </div>

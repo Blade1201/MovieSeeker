@@ -30,21 +30,18 @@ SubscriptionModel.init({
         allowNull: false
     },
     endAt: {
-        type: DataTypes.DATE,
-        allowNull: false
+        type: DataTypes.VIRTUAL,
+        get() {
+            const endAt = new Date(this.createdAt);
+            const days = SUBSCRIBE_PERIOD_TO_DAYS[this.type];
+            endAt.setDate(endAt.getDate() + days);
+            return endAt;
+        }
     }
 }, {
     sequelize,
     modelName: "Subscription",
     timestamps: false,
-    hooks: {
-        beforeValidate(sub) {
-            const endAt = new Date(sub["createdAt"]);
-            const days = SUBSCRIBE_PERIOD_TO_DAYS[sub["type"]];
-            endAt.setDate(endAt.getDate() + days);
-            sub["endAt"] = endAt;
-        }
-    }
 });
 
 export default SubscriptionModel;

@@ -8,6 +8,8 @@ import commentsRouter from "./src/routes/comments.route.js";
 import ratingRouter from "./src/routes/rating.route.js";
 import favoriteRouter from "./src/routes/favorite.route.js";
 import subscriptionRouter from "./src/routes/subscription.route.js";
+import adminRouter from "./src/routes/admin.route.js";
+import watchlistRouter from "./src/routes/watchlist.route.js";
 import {PORT} from "./src/configs/server.config.js";
 import associationsInitializer from "./src/utils/assocationsInitalizer.util.js";
 associationsInitializer();
@@ -27,6 +29,8 @@ app.use("/comments", commentsRouter);
 app.use("/rating", ratingRouter);
 app.use("/favorite", favoriteRouter);
 app.use("/subscription", subscriptionRouter);
+app.use("/admin", adminRouter);
+app.use("/watchlist", watchlistRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`)

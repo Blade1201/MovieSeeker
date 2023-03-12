@@ -1,40 +1,20 @@
 import FavoriteDao from "../dao/favorite.dao.js";
-import {imageAbsolutePath, refreshBaseImageUrl} from "../configs/outer.api.config.js";
-
-const formatList = async (favorites) => {
-    const result = [];
-    await refreshBaseImageUrl();
-
-    for (const favorite of favorites) {
-        const {tmdbId: id, title, imdbId} = favorite;
-        const type = favorite["tmdbType"] === "M" ? "movie" : "tv";
-        const poster = favorite["posterPath"] ? imageAbsolutePath(favorite["posterPath"]) : null;
-
-        result.push({
-            Id: id,
-            ImdbID: imdbId,
-            Type: type,
-            Title: title,
-            Poster: poster,
-        });
-    }
-
-    return result;
-}
+import formatListFavoriteUtil from "../utils/favorite/formatList.favorite.util.js";
 
 const exist = async (user, media) => {
 
-    const result = await new FavoriteDao().findByPk(user, media)
+    const result = await new FavoriteDao().findByPk(user, media);
 
     return !!result;
 }
 
 const getList = async (req, res) => {
     const {user} = req.body;
+
     const results = await new FavoriteDao().findByUser(user);
 
     if (results) {
-        res.json(await formatList(results));
+        res.json(await formatListFavoriteUtil(results));
     } else {
         res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }

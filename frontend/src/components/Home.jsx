@@ -8,10 +8,6 @@ import Popup from "./Popup";
 import Queries from "./Queries";
 import {Link} from "react-router-dom";
 import {debounce} from "lodash";
-import {Favorite} from "../contexts/favoriteContext";
-
-
-
 
 const Home = () => {
 
@@ -157,7 +153,7 @@ return(
     <main>
         <Results results = { state.results } openPopup = { openPopup }/>
         {(typeof state.selected.Title != "undefined") ?
-            <Favorite><Popup selected = { state.selected } closePopup = { closePopup } /></Favorite>
+            <Popup selected = { state.selected } closePopup = { closePopup } />
             :
             false}
     </main>

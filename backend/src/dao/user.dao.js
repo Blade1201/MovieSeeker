@@ -5,6 +5,18 @@ class UserDao {
         return await UserModel.findByPk(id);
     }
 
+    async findAllById(ids) {
+        return await UserModel.findAll({
+            where: {
+                id: ids
+            }
+        });
+    }
+
+    async findAll() {
+        return await UserModel.findAll();
+    }
+
     async findByUsername(username) {
         return await UserModel.findOne({
             where: {username}
