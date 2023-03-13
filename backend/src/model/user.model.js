@@ -35,7 +35,7 @@ UserModel.init({
         type: DataTypes.ENUM('U', 'A'),
         allowNull: false,
         defaultValue: "U"
-    }
+    },
 }, {
     sequelize, // We need to pass the connection instance
     modelName: "User", // We need to choose the model name,

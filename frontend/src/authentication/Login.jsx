@@ -8,7 +8,7 @@ const Login = ({ onFormSwitch, setRedirect}) => {
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
 
-    const {setLoggedIn, setName, setRank, setId} = useContext(userContext);
+    const {setLoggedIn, setName, setRank, setId, setSubscribed} = useContext(userContext);
 
 
     const sendLoginAttempt = () => {
@@ -20,11 +20,11 @@ const Login = ({ onFormSwitch, setRedirect}) => {
             .then(res => {
                 if (res.status === 200) {
                     const data = res.data;
-                    console.log(data)
                     setLoggedIn(true);
                     setName(data["username"]);
                     setRank(data["rank"]);
                     setId(data["userId"]);
+                    setSubscribed(data["subscribed"]);
                     setRedirect(true);
                 }
             })

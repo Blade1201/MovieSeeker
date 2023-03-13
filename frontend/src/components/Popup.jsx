@@ -12,6 +12,8 @@ import userContext from "../contexts/userContext";
 import axios from "axios";
 import {Link} from "react-router-dom";
 import {FavoriteContext} from "../contexts/favoriteContext";
+import {WatchListContext} from "../contexts/watchlistContext";
+import WatchlistBar from "./WatchlistBar";
 
 
 const Popup = ({selected, closePopup}) => {
@@ -26,7 +28,11 @@ const Popup = ({selected, closePopup}) => {
 
     const [isFavorite, setFavorite] = useState(inFavorites(selected));
 
-    const {id: userId} = useContext(userContext);
+    const {inWatchlist} = useContext(WatchListContext);
+
+    const [watched, setWatched] = useState(inWatchlist(selected));
+
+    const {id: userId, subscribed} = useContext(userContext);
 
 
     const addToFavorites = async () => {
@@ -173,6 +179,8 @@ const Popup = ({selected, closePopup}) => {
                         :
                         null
                 }
+
+                <WatchlistBar selected={selected} userId={userId} subscribed={subscribed} watched={watched} setWatched={setWatched} />
 
 
                 <div className="content-plot">

@@ -7,10 +7,7 @@ const GuestRoute = ({component: Component}) => {
 
     const [loading, setLoading] = useState(true);
     const [redirect, setRedirect] = useState(false);
-
-    useEffect(() => console.log(redirect), [redirect]);
-
-
+    
     useEffect(() => {
         isLoggedIn().then(success => {
             success ? setRedirect(true) : setLoading(false);

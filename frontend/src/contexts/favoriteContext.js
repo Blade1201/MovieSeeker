@@ -63,7 +63,6 @@ export const Favorite = ({children}) => {
     }
 
     const inFavorites = (media) => {
-        console.log(media, favorites);
         return favorites.find(value => value.ImdbID === media.ImdbID);
     }
 

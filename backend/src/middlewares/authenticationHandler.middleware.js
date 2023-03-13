@@ -1,7 +1,7 @@
 import createJWT from "../utils/authentication/createJTW.authentication.util.js";
 
 const authenticationHandlerMiddleware = (req, res) => {
-    const {userId, username, rank} = req;
+    const {userId, username, rank, subscribed} = req;
 
     const token = createJWT(userId, username, rank);
 
@@ -9,7 +9,7 @@ const authenticationHandlerMiddleware = (req, res) => {
 
     if (token) {
         res.cookie("access-token", token, {httpOnly: true});
-        res.json({userId, username, rank});
+        res.json({userId, username, rank, subscribed});
     } else {
         result = {
             success: false,

@@ -9,4 +9,6 @@ export default createContext({
     setRank: () => {},
     id: 0,
     setId: () => {},
+    subscribed: false,
+    setSubscribed: () => {}
 });

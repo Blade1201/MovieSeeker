@@ -8,12 +8,14 @@ import userContext from "../../contexts/userContext";
 import {HashLink} from "react-router-hash-link";
 import axios from "axios";
 import {FavoriteContext} from "../../contexts/favoriteContext";
+import {WatchListContext} from "../../contexts/watchlistContext";
 
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
     const {loggedIn, setLoggedIn, name, setName, setRank, setId} = useContext(userContext);
     const {clearFavorites} = useContext(FavoriteContext);
+    const {clearWatchlist} = useContext(WatchListContext);
 
     let profileMenu = useRef();
 
@@ -74,6 +76,7 @@ const Navbar = () => {
         setRank("G");
         setId(0);
         clearFavorites();
+        clearWatchlist();
     }
 
 

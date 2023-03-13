@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import UserDao from "../dao/user.dao.js";
 import {BCRYPT_SALT_ROUNDS} from "../configs/authorization.config.js";
+import * as subscriptionController from "../controllers/subscription.controller.js"
 
 const comparePasswords = (password, hash) => {
     return bcrypt.compare(password, hash.toString());
@@ -21,11 +22,7 @@ const login = async (body) => {
     const success = await comparePasswords(password, dbUser["hash"]);
 
     if(success) {
-        return {
-            id: dbUser["id"],
-            username: dbUser["username"],
-            rank: dbUser["rank"]
-        }
+        return dbUser;
     }
     return null;
 }
@@ -55,7 +52,8 @@ const get = async (req, res) => {
 
     if (result) {
         const {id, username, email, rank} = result;
-        res.json({id, username, email, rank});
+        const subscribed = await subscriptionController.hasActiveSubscription(result);
+        res.json({id, username, email, rank, subscribed});
     } else {
         res.sendStatus(500);
     }

@@ -9,6 +9,10 @@ import UserContext from "./contexts/userContext";
 import isLoggedIn from "./helpers/isLoggedIn";
 import GetFavorites from "./components/GetFavorites";
 import {Favorite} from "./contexts/favoriteContext";
+import SubscriptionRoute from "./components/SubscriptionRoute";
+import Popular from "./components/Popular";
+import GetWatchlist from "./components/GetWatchlist";
+import {Watchlist} from "./contexts/watchlistContext";
 
 
 
@@ -17,7 +21,8 @@ const App = () => {
     const [name, setName] = useState("");
     const [rank, setRank] = useState('G');
     const [id, setId] = useState(0);
-    const user = {loggedIn, setLoggedIn, name, setName, rank, setRank, id, setId};
+    const [subscribed, setSubscribed] = useState(false);
+    const user = {loggedIn, setLoggedIn, name, setName, rank, setRank, id, setId, subscribed, setSubscribed};
 
     const [loading, setLoading] = useState(true);
 
@@ -36,6 +41,7 @@ const App = () => {
                         setName(result["username"]);
                         setRank(result["rank"]);
                         setId(result["id"]);
+                        setSubscribed(result["subscribed"]);
                         return true;
                     }
                 })
@@ -43,34 +49,41 @@ const App = () => {
         return () => clearTimeout(loader);
     }, []);
 
-    useEffect(() => {
-        console.log(loggedIn);
-    }, [loggedIn]);
 
   return ( loading ? null :
     <div className = "App">
 
         <UserContext.Provider value={user}>
             <Favorite>
-                <BrowserRouter>
+                <Watchlist>
+                    <BrowserRouter>
 
-                    <Routes>
+                        <Routes>
 
-                        <Route path = "/" element = { <Hub/> }/>
+                            <Route path = "/" element = { <Hub/> }/>
 
-                        <Route path = "/about" element = { <About/> }/>
+                            <Route path = "/about" element = { <About/> }/>
 
-                        <Route path = "/search" element = {<Home/>}/>
+                            <Route path = "/search" element = {<Home/>}/>
 
-                        <Route path = "/favorite" element={<GetFavorites />} />
+                            <Route path = "/favorite" element={<GetFavorites />} />
 
-                        <Route path = "/authentication" element = {
-                            <GuestRoute component={ Authentication } />
-                        }/>
+                            <Route path = "/authentication" element = {
+                                <GuestRoute component={ Authentication } />
+                            }/>
 
-                    </Routes>
+                            <Route path="/popular/:type" element={
+                                <SubscriptionRoute component={ Popular }/>
+                            }/>
 
-                </BrowserRouter>
+                            <Route path="/watchlist/:type" element={
+                                <SubscriptionRoute component={ GetWatchlist }/>
+                            }/>
+
+                        </Routes>
+
+                    </BrowserRouter>
+                </Watchlist>
             </Favorite>
         </UserContext.Provider>
 

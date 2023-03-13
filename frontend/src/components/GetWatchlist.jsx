@@ -1,20 +1,33 @@
-import React, {Fragment, useContext, useState} from "react";
-import "../styles/favorite.css"
+import React, {Fragment, useContext, useEffect, useState} from "react";
 import axios from "axios";
-import Popup from "./Popup";
-import FavoriteResults from "./FavoriteResults";
-import {FavoriteContext} from "../contexts/favoriteContext";
+import {Link, Navigate, useParams} from "react-router-dom";
 import Back from "../images/back-arrow.png";
-import {Link} from "react-router-dom";
+import Popup from "./Popup";
+import WatchlistResults from "./WatchlistResults";
+import {WatchListContext} from "../contexts/watchlistContext";
 
-const GetFavorites = () => {
+const GetWatchlist = () => {
+
+    const {type} = useParams();
+
+    const {getWatchlistByType, watchlist} = useContext(WatchListContext);
+
+    const [actualWatchlist, setActualWatchlist] = useState(getWatchlistByType(type));
+
+    useEffect(() => {
+        console.log("Itt");
+        setActualWatchlist(getWatchlistByType(type));
+    }, [watchlist]);
+
     const [state, setState] = useState({
         search: "",
         results: [],
         selected: {}
     });
 
-    const {favorites} = useContext(FavoriteContext);
+    if (!(type === "viewed" || type === "view")) {
+        return <Navigate to="/" replace />;
+    }
 
     const API_URL = "/api?";
 
@@ -36,17 +49,16 @@ const GetFavorites = () => {
             return { ...prevState, selected: {} }
         });
     };
-
     return (
         <Fragment>
             <Link to = "/search"> <img className = 'backToSearch' alt = 'back-to-hub' src = { Back } /> </Link>
-            <h1 className="myFavorites">Kedvencei: </h1>
+            <h1 className="myFavorites">{type === "viewed" ? "Megnézettek": "Megnézendő"}</h1>
             <main>
-                <FavoriteResults results = { favorites } openPopup = { openPopup } />
+                <WatchlistResults results = { actualWatchlist } openPopup = { openPopup } type = {type} />
                 {(typeof state.selected.Title != "undefined") ? <Popup selected = { state.selected } closePopup = { closePopup } /> : false}
             </main>
         </Fragment>
     )
 }
 
-export default GetFavorites;
+export default GetWatchlist;

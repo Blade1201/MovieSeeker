@@ -1,4 +1,5 @@
 import {login} from "../../controllers/user.authorization.controller.js";
+import * as subscriptionController from "../../controllers/subscription.controller.js";
 
 
 const loginAuthorizationMiddleware = async (req, res, next) => {
@@ -8,6 +9,7 @@ const loginAuthorizationMiddleware = async (req, res, next) => {
         req.userId = result.id;
         req.username = result.username;
         req.rank = result.rank;
+        req.subscribed = await subscriptionController.hasActiveSubscription(result);
         next();
     } else {
         res.status(400).json({

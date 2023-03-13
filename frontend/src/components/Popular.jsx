@@ -1,20 +1,34 @@
-import React, {Fragment, useContext, useState} from "react";
-import "../styles/favorite.css"
-import axios from "axios";
-import Popup from "./Popup";
-import FavoriteResults from "./FavoriteResults";
-import {FavoriteContext} from "../contexts/favoriteContext";
+import React, {Fragment, useEffect, useState} from "react";
+import {Link, Navigate, useParams} from "react-router-dom";
 import Back from "../images/back-arrow.png";
-import {Link} from "react-router-dom";
+import Popup from "./Popup";
+import Results from "./Results";
+import axios from "axios";
 
-const GetFavorites = () => {
+const Popular = () => {
+    const {type} = useParams();
+
+    const [popular, setPopular] = useState([]);
+
+    useEffect(() => {
+        axios.get(`/api/popular/${type}`)
+            .then(res => {
+                if (res.status === 200) {
+                    const {data} = res;
+                    setPopular(data);
+                }
+            })
+    }, [type]);
+
     const [state, setState] = useState({
         search: "",
         results: [],
         selected: {}
     });
 
-    const {favorites} = useContext(FavoriteContext);
+    if (!(type === "movie" || type === "tv")) {
+        return <Navigate to="/" replace />;
+    }
 
     const API_URL = "/api?";
 
@@ -36,17 +50,16 @@ const GetFavorites = () => {
             return { ...prevState, selected: {} }
         });
     };
-
     return (
         <Fragment>
             <Link to = "/search"> <img className = 'backToSearch' alt = 'back-to-hub' src = { Back } /> </Link>
-            <h1 className="myFavorites">Kedvencei: </h1>
+            <h1 className="myFavorites">Legnépszerűbb {type === "movie"? "filmek" : "sorozatok"}:</h1>
             <main>
-                <FavoriteResults results = { favorites } openPopup = { openPopup } />
+                <Results results = { popular } openPopup = { openPopup } />
                 {(typeof state.selected.Title != "undefined") ? <Popup selected = { state.selected } closePopup = { closePopup } /> : false}
             </main>
         </Fragment>
     )
 }
 
-export default GetFavorites;
+export default Popular;
