@@ -14,6 +14,7 @@ import Popular from "./components/Popular";
 import GetWatchlist from "./components/GetWatchlist";
 import {Watchlist} from "./contexts/watchlistContext";
 import PricingTable from "./components/PricingTable";
+import Dashboard from "./components/Dashboard";
 
 
 
@@ -82,6 +83,8 @@ const App = () => {
                             }/>
 
                             <Route path="/checkout" element={<PricingTable />} />
+
+                            <Route path="/dashboard" element={<Dashboard />} />
 
                         </Routes>
 

@@ -3,7 +3,7 @@ import verifyJWTMiddleware from "../middlewares/verifyJWT.middleware.js";
 import checkErrorsMiddleware from "../middlewares/checkErrors.middleware.js";
 import isAdminValidatorMiddleware from "../middlewares/validators/isAdmin.validator.middleware.js";
 import * as userController from "../controllers/user.controller.js";
-import editRanksValidatorMiddleware from "../middlewares/validators/editRanks.validator.middleware.js";
+import editRankValidatorMiddleware from "../middlewares/validators/editRank.validator.middleware.js";
 
 const adminRouter = express.Router();
 
@@ -15,10 +15,10 @@ adminRouter.get("/users",
     checkErrorsMiddleware,
     userController.getAll);
 
-adminRouter.post("/users/editRanks",
+adminRouter.patch("/users/",
     verifyJWTMiddleware,
-    editRanksValidatorMiddleware,
+    editRankValidatorMiddleware,
     checkErrorsMiddleware,
-    userController.changeRanks);
+    userController.changeRank);
 
 export default adminRouter;

@@ -1,25 +1,20 @@
 import UserDao from "../dao/user.dao.js";
 
-const changeRanks = async (req, res) => {
-    const {users} = req.body;
+const changeRank = async (req, res) => {
+    const {id, rank} = req.body;
 
     const userDao = new UserDao();
 
-    const dbUsers = await userDao.findAllById(users.map(u => u.id));
+    const user = await userDao.findById(id);
 
-
-    if (dbUsers.length !== users.length) {
-        res.status(404).json({success: false, blameUser: true, message: "Nem található id!"});
+    if (!user) {
+        res.status(404).json({success: false, blameUser: false, reason: "Nem létező felhasználó."});
         return;
     }
 
     try {
-        for (const user of users) {
-            const dbUser = dbUsers.find(u => u.id === user.id);
-
-            dbUser["rank"] = user["newRank"];
-            await userDao.save(dbUser);
-        }
+        user["rank"] = rank;
+        await userDao.save(user);
         res.sendStatus(200);
     } catch (exc) {
         res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
@@ -37,6 +32,6 @@ const getAll = async (_, res) => {
 }
 
 export {
-    changeRanks,
+    changeRank,
     getAll
 }

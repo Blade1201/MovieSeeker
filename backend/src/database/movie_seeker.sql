@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Már 12. 15:53
+-- Létrehozás ideje: 2023. Már 14. 23:00
 -- Kiszolgáló verziója: 10.4.27-MariaDB
 -- PHP verzió: 8.2.0
 
@@ -214,13 +214,13 @@ ALTER TABLE `media`
 -- AUTO_INCREMENT a táblához `subscriptions`
 --
 ALTER TABLE `subscriptions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT a táblához `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Megkötések a kiírt táblákhoz
@@ -261,6 +261,23 @@ ALTER TABLE `watchlists`
   ADD CONSTRAINT `watchlists_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `watchlists_ibfk_2` FOREIGN KEY (`media_id`) REFERENCES `media` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
+
+--
+-- A tábla adatainak kiíratása `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `email`, `hash`, `rank`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Admin', 'admin@exampl.com', '$2b$10$DteNAnpmbpXD8w8syZagoeXiVlc69rlnanI1.UWlfNgDiGo0W1N3.', 'A', '2023-03-14 21:59:15', '2023-03-14 21:59:15', NULL);
+
+--
+-- A tábla adatainak kiíratása `subscriptions`
+--
+
+INSERT INTO `subscriptions` (`id`, `type`, `created_at`, `user_id`) VALUES
+(1, 'A', '2023-03-14 21:59:24', 1);
+
+
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
