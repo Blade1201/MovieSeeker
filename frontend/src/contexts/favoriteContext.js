@@ -20,8 +20,8 @@ export const Favorite = ({children}) => {
         try {
             const res = await axios.get("/favorite");
             setFavorites(res["data"]);
-        } catch ({response: {data}}) {
-            alert(data);
+        } catch (e) {
+            console.error(e.response);
         }
     };
 
@@ -39,8 +39,8 @@ export const Favorite = ({children}) => {
                 }
             });
             setFavorites([...favorites, favorite]);
-        } catch ({response: {data}}) {
-            alert(data["reason"]);
+        } catch (e) {
+            console.error(e.response);
         }
     }
 
@@ -53,8 +53,8 @@ export const Favorite = ({children}) => {
                 data: getData(favorite)
             });
             setFavorites(favorites.filter(value => value.ImdbID !== favorite.ImdbID));
-        } catch ({response: {data}}) {
-            alert(data["reason"]);
+        } catch (e) {
+            console.error(e.response);
         }
     }
 

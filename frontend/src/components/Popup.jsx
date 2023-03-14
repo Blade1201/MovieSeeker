@@ -14,7 +14,7 @@ import {Link} from "react-router-dom";
 import {FavoriteContext} from "../contexts/favoriteContext";
 import {WatchListContext} from "../contexts/watchlistContext";
 import WatchlistBar from "./WatchlistBar";
-
+import isSubscribed from "../helpers/isSubscribed";
 
 const Popup = ({selected, closePopup}) => {
 
@@ -32,7 +32,7 @@ const Popup = ({selected, closePopup}) => {
 
     const [watched, setWatched] = useState(inWatchlist(selected));
 
-    const {id: userId, subscribed} = useContext(userContext);
+    const {id: userId, setSubscribed, subscribed} = useContext(userContext);
 
 
     const addToFavorites = async () => {
@@ -61,6 +61,13 @@ const Popup = ({selected, closePopup}) => {
                 .catch(err => console.error(err));
         }
     }, [selected.ImdbID]);
+
+    useEffect(() => {
+        if (subscribed) {
+            isSubscribed()
+                .then(res => res || setSubscribed(false))
+        }
+    }, [subscribed, setSubscribed]);
 
     const getCertificationPath = (cert) => {
         try {

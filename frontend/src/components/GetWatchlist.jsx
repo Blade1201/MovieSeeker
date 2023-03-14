@@ -15,9 +15,8 @@ const GetWatchlist = () => {
     const [actualWatchlist, setActualWatchlist] = useState(getWatchlistByType(type));
 
     useEffect(() => {
-        console.log("Itt");
         setActualWatchlist(getWatchlistByType(type));
-    }, [watchlist]);
+    }, [watchlist, getWatchlistByType, type]);
 
     const [state, setState] = useState({
         search: "",

@@ -1,10 +1,10 @@
-const PricingTableOption = ({name, price}) => {
+const PricingTableOption = ({name, price, sign, onClick}) => {
     return (
         <div className="columns">
             <ul className="price">
                 <li className="header">{name}</li>
                 <li style={{background: "black"}}>{price} Ft</li>
-                <li className="grey"><a href="#" className="button">Megveszem!</a></li>
+                <li className="button" value={sign} onClick={onClick}>Megveszem!</li>
             </ul>
         </div>
     )

@@ -12,9 +12,10 @@ export const Watchlist = ({children}) => {
     const fetchData = async () => {
         try {
             const res = await axios.get("/watchlist");
-            setWatchlist(res["data"]);
-        } catch ({response: {data}}) {
-            alert(data);
+            res.status === 200 && setWatchlist(res["data"]);
+            return true;
+        } catch (e) {
+            return false;
         }
     };
 
@@ -31,8 +32,8 @@ export const Watchlist = ({children}) => {
                 watched: watchlistItem["Watched"]
             });
             setWatchlist([...watchlist, watchlistItem]);
-        } catch ({response: {data}}) {
-            alert(data["reason"]);
+        } catch (e) {
+            console.error(e.response);
         }
     }
 
@@ -47,7 +48,7 @@ export const Watchlist = ({children}) => {
             const filtered = watchlist.filter(w => w["ImdbID"] !== imdbId);
             setWatchlist([...filtered, result]);
         } catch (e) {
-            alert(e);
+            console.error(e.response);
         }
     }
 

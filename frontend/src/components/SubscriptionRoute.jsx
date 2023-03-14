@@ -8,23 +8,24 @@ const SubscriptionRoute = ({component: Component}) => {
     const [loading, setLoading] = useState(true);
     const [redirect, setRedirect] = useState(false);
 
-    const {setRank} = useContext(userContext);
+    const {setSubscribed} = useContext(userContext);
 
 
     useEffect(() => {
         isSubscribed().then(res => {
             if (res) {
+                setSubscribed(true);
                 setLoading(false);
             } else {
-                setRank("U");
+                setSubscribed(false);
                 setRedirect(true);
             }
         })
-    }, [setRank]);
+    }, [setSubscribed]);
 
 
     if (redirect) {
-        return <Navigate to="/authentication" replace />;
+        return <Navigate to="/checkout" replace />;
     }
 
     return loading ? null : <Component setRedirect={setRedirect} />
