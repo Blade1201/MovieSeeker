@@ -11,10 +11,6 @@ const featuresData = [
     text: 'A jól megírt vélemény segíthet másoknak megtalálni a számukra éppen megfelelő tartalmakat.',
   },
   {
-    title: 'Népszerű tartalmak tárháza',
-    text: 'Ismerje meg a világ legismertebb média tartalmait.',
-  },
-  {
     title: 'Betekintés a jövőbeni tartalmakba',
     text: 'Böngésszen a hamarosan megjelenő tartalmak között.',
   },

@@ -1,17 +1,22 @@
 import React, {useContext, useEffect, useMemo, useState} from 'react';
 import MaterialReactTable from 'material-react-table';
+import "../styles/dashboardQuit.css";
+import {Link} from "react-router-dom";
 import {
-    Box,
-    IconButton,
-    MenuItem,
+    AppBar,
+    Box, CssBaseline, Divider, Drawer,
+    IconButton, List,
+    MenuItem, Toolbar,
     Tooltip, Typography,
 } from '@mui/material';
 import {Edit} from '@mui/icons-material';
 import axios from "axios";
 import UserContext from "../contexts/userContext";
 import {useNavigate} from "react-router";
+import logout_image from "../images/log-out.png";
 
 const RANKS = ["Felhasználó", "Adminisztrátor"];
+
 
 const Dashboard = () => {
     const [tableData, setTableData] = useState([]);
@@ -46,7 +51,7 @@ const Dashboard = () => {
             {
                 accessorKey: 'id',
                 header: 'ID',
-                enableEditing: false, //disable editing on this column
+                enableEditing: false,
                 size: 80,
             },
             {
@@ -70,7 +75,7 @@ const Dashboard = () => {
                 accessorKey: 'rank',
                 header: 'Rang',
                 muiTableBodyCellEditTextFieldProps: ({cell}) => ({
-                    select: true, //change to select for a dropdown
+                    select: true,
                     children: RANKS.map((rank) => (
                         <MenuItem key={rank} value={rank}>
                             {rank}
@@ -108,10 +113,42 @@ const Dashboard = () => {
         } catch (e) {
             console.error(e.response);
         }
-        exitEditingMode(); //required to exit editing mode and close modal
+        exitEditingMode();
     };
 
+
+
     return (
+        <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
+            <AppBar
+                position="fixed"
+                sx={{ width: `calc(100% - 240px)`, ml: `240px` }}
+            >
+                <Toolbar>
+                    <Typography variant="h6" noWrap component="div">
+                        Felhasználók
+                    </Typography>
+                </Toolbar>
+            </AppBar>
+            <Drawer
+                sx={{
+                    width: 240,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: 240,
+                        boxSizing: 'border-box',
+                    },
+                }}
+                variant="permanent"
+                anchor="left"
+            >
+                <Divider />
+                <List>
+                    <Link className="dashboardQuit" to="/"> <img src={logout_image} className="dashboardQuitImage" alt="not-found"/> </Link>
+                </List>
+                <Divider />
+            </Drawer>
         <MaterialReactTable
             displayColumnDefOptions={{
                 'mrt-row-actions': {
@@ -121,15 +158,16 @@ const Dashboard = () => {
                     size: 120,
                 },
             }}
+
             columns={columns}
             data={tableData}
-            editingMode="modal" //default
+            editingMode="modal"
             enableEditing
             onEditingRowSave={handleSaveRowEdits}
             renderRowActions={({row, table}) => {
                 if (userId === row.original.id) return null;
                 return (
-                    <Box sx={{display: 'flex', gap: '1rem'}}>
+                    <Box>
                         <Tooltip arrow placement="left" title="Edit">
                             <IconButton onClick={() => table.setEditingRow(row)}>
                                 <Edit/>
@@ -146,8 +184,9 @@ const Dashboard = () => {
             }}
             renderTopToolbarCustomActions={() => <Typography variant="h3">Felhasználók</Typography>}
         />
+        </Box>
     );
 };
 
-//example of creating a mui dialog modal for creating new rows
+
 export default Dashboard;

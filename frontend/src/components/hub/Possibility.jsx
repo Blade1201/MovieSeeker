@@ -22,7 +22,7 @@ const Possibility = () => (
           <div className="typewriter">
               <Typewriter
                   options={{
-                      strings: ['Top 50 média tartalom', 'Média tartalom értékelése','Nézőlista','Megnézettek listája'],
+                      strings: ['Top 50 média tartalom', 'Média tartalom értékelése','Nézőlista'],
                       autoStart: true,
                       loop: true,
                       delay: 55,

@@ -114,7 +114,7 @@
 }
 
 
-.my-rating, .add-to-favorites, .delete-from-favorites {
+.my-rating, .add-to-favorites, .delete-from-favorites, .watchButton, .watchedButton {
     padding: 10px 10px;
     font-size: 18px;
     margin-bottom: 20px;
@@ -129,7 +129,7 @@
 }
 
 
-.my-rating:hover, .add-to-favorites:hover, .delete-from-favorites:hover {
+.my-rating:hover, .add-to-favorites:hover, .delete-from-favorites:hover, .watchButton:hover, .watchedButton:hover {
     background: #e8cd11;
     color: #000000;
 }
@@ -142,6 +142,13 @@
     background-color: red;
 }
 
+.watchButton{
+    background-color: rgba(255, 173, 170, 0.76);
+}
+
+.watchedButton{
+    background-color: rgba(243, 83, 104, 0.76);
+}
 
 .content-plot {
     display: block;

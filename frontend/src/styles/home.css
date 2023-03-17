@@ -54,29 +54,179 @@ body {
 }
 
 
-.getFavorites{
-    padding: 10px 10px;
-    position: absolute;
-    font-size: 18px;
-    font-weight: 700;
-    color: #FFF;
-    background: #445565;
-    border-radius: 8px;
+.getFavorite {
+    background-color: black;
+    border-radius: 100px;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+    color: #00dfc4;
     cursor: pointer;
-    transition: 0.4s ease-out;
+    display: flex;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    width: 150px;
+    transition: all 250ms;
+    justify-content: center;
+    border: 0;
+    font-size: 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+
+.getFavorite:hover {
+    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
 }
 
 
 .getFavoritePosition {
     position: absolute;
-    top: 5px;
+    text-decoration: none;
+    top: 10px;
     right: 250px;
 }
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    margin-top: 7.5rem;
+    min-width: 160px;
+    background-color: black;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+}
 
-.getFavorites:hover {
-    background: #e8cd11;
-    color: #000000;
+.dropdown-content a {
+    color: #00dfc4;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    width: auto;
+}
+
+.dropdown-content a:hover {
+    background-color: #313b46;
+    object-fit: cover;
+}
+
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: #00dfc4;
+    background-color: inherit;
+    border-top-left-radius: 1rem;
+    font-size: 16px;
+    margin-left: 40px;
+}
+
+.dropdown-arrow {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #00dfc4;
+    margin-top: 10px;
+}
+
+.dropdown{
+    position: absolute;
+    right: 280px;
+    top: 9px;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    display: flex;
+    width: 160px;
+    height: 34px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+}
+
+
+.dropdown:hover{
+    box-shadow: rgba(44, 187, 99, .2) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px;
+}
+
+.dropdown:hover .dropdown-arrow {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #00dfc4;
+    border-top: 5px solid transparent;
+    bottom: 5px;
+    position: relative;
+}
+
+.dropdown-popularContents {
+    display: none;
+    position: absolute;
+    margin-top: 7.5rem;
+    min-width: 160px;
+    background-color: black;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+}
+
+.dropdown-popularContents a {
+    color: #00dfc4;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    width: auto;
+}
+
+.dropdown-popularContents a:hover {
+    background-color: #313b46;
+    object-fit: cover;
+}
+
+.dropdownPopular:hover .dropdown-popularContents {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdownPopular .dropbtnPopular {
+    border: none;
+    outline: none;
+    color: #00dfc4;
+    background-color: inherit;
+    border-top-left-radius: 1rem;
+    font-size: 16px;
+    margin-left: 40px;
+}
+
+.dropdownPopular{
+    position: absolute;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    display: flex;
+    width: 160px;
+    height: 34px;
+    right: 470px;
+    top: 9px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
+}
+
+.dropdownPopular:hover{
+    box-shadow: rgba(44, 187, 99, .2) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px;
+}
+
+
+.dropdownPopular:hover .dropdown-arrow {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #00dfc4;
+    border-top: 5px solid transparent;
+    bottom: 5px;
+    position: relative;
 }
 
 

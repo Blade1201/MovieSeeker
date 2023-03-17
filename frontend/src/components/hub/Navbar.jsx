@@ -1,6 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import '../../styles/hub/navbar.css';
 import {Link} from "react-router-dom";
+import admin from '../../images/admin.png';
 import user from '../../images/user.png';
 import edit from '../../images/edit.png';
 import logout_image from '../../images/log-out.png';
@@ -9,6 +10,7 @@ import {HashLink} from "react-router-hash-link";
 import axios from "axios";
 import {FavoriteContext} from "../../contexts/favoriteContext";
 import {WatchListContext} from "../../contexts/watchlistContext";
+import subscribe from "../../images/subscribe.png";
 
 
 const Navbar = () => {
@@ -36,22 +38,7 @@ const Navbar = () => {
 
     const [clicked, setClicked] = useState(false);
 
-    let mobileMenu = useRef();
 
-
-    /*useEffect(() => {
-        let mobileHandler = (e) => {
-            if (!mobileMenu.current.contains(e.target)) {
-                setClicked(false);
-            }
-        };
-
-        document.addEventListener("mousedown", mobileHandler);
-
-        return () => {
-            document.removeEventListener("mousedown", mobileHandler);
-        }
-    });*/
 
         const [imageSrc, setImageSrc] = useState(null);
         const inputRef = useRef(null);
@@ -114,6 +101,12 @@ const Navbar = () => {
                         <div className={`menu ${open ? 'active' : ''}`}>
                             <h3>{name}</h3>
                             <ul>
+                                <li><img src={admin} alt="not-found"/>
+                                    <Link to="/dashboard" className="subscribe"> Admin Panel </Link>
+                                </li>
+                                <li><img src={subscribe} alt="not-found"/>
+                                    <Link to="/checkout" className="subscribe"> Előfizetés </Link>
+                                </li>
                                 <li><img src={edit} alt="not-found"/>
                                     <button onClick={handleChooseFileClick}> Szerkesztés </button>
                                     <input
@@ -137,13 +130,11 @@ const Navbar = () => {
             </div>
 
 
-            <div ref={mobileMenu}>
                 <div className="mobile" onClick={() => {
                     setClicked(!clicked)
                 }}>
                     <i className={clicked ? "fas fa-times" : "fas fa-bars"}> </i>
                 </div>
-            </div>
 
 
         </div>

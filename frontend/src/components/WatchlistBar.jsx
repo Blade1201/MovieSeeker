@@ -1,4 +1,4 @@
-import {useContext} from "react";
+import React, {useContext} from "react";
 import {WatchListContext} from "../contexts/watchlistContext";
 
 const WatchlistBar = ({selected, userId, subscribed, watched, setWatched}) => {
@@ -25,20 +25,20 @@ const WatchlistBar = ({selected, userId, subscribed, watched, setWatched}) => {
         case -1:
             return (
                 <>
-                    <button onClick={handleEdit} value='N'>Megnézendőhöz ad</button>
+                    <button onClick={handleEdit} value='N' className="watchButton">Megnézendőhöz ad</button>
                 </>
             )
         case 0:
             return (
                 <>
-                    <button onClick={handleCreate} value='Y'>Megnézettekhez ad</button>
-                    <button onClick={handleCreate} value='N'>Megnézendőhöz ad</button>
+                            <button onClick={handleCreate} value='Y' className="watchedButton">Megnézettekhez ad</button>
+                            <button onClick={handleCreate} value='N' className="watchButton">Megnézendőhöz ad</button>
                 </>
             )
         case 1:
             return (
                 <>
-                    <button onClick={handleEdit} value='Y'>Megnézettekhez ad</button>
+                    <button onClick={handleEdit} value='Y' className="watchedButton">Megnézettekhez ad</button>
                 </>
             )
         default:

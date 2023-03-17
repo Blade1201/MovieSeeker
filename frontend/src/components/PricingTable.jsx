@@ -1,23 +1,25 @@
 import "../styles/pricing-table.css"
 import PricingTableOption from "./PricingTableOption";
-import {useContext, useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router";
 import UserContext from "../contexts/userContext";
+import {Link} from "react-router-dom";
+import Back from "../images/back.png";
 
 const PRICING_TABLE = [
     {
-        name: "Havi",
+        name: "1 HÓNAP",
         price: 300,
         sign: "M"
     },
     {
-        name: "Féléves",
-        price: 1500,
+        name: "6 HÓNAP",
+        price: 1200,
         sign: "S"
     },
     {
-        name: "Éves",
+        name: "12 HÓNAP",
         price: 2700,
         sign: "A"
     }
@@ -54,8 +56,14 @@ const PricingTable = () => {
 
     return (
         !loading ?
-            <div style={{color: "#FFF"}}>
-                <h1 style={{textAlign: "center"}}>Fizess elő az extra tartalmakért!</h1>
+            <div className="pricingTable">
+
+                <div className = "back-to-hub">
+                    <Link to = "/">  <img src = { Back } alt = "back-to-hub"/> </Link>
+                </div>
+
+                <h1 className="mainText">Fizessen elő az extra tartalmakért!</h1>
+                <div className="group">
                 {PRICING_TABLE.map((subType) =>
                     <PricingTableOption
                         name={subType["name"]}
@@ -64,6 +72,7 @@ const PricingTable = () => {
                         key={subType["sign"]}
                         onClick={() => handleClick(subType["sign"])}
                     />)}
+                </div>
             </div>
             :
             null

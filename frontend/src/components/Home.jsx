@@ -129,16 +129,37 @@ const Home = () => {
 
 return(
         <div className = "main-home" onClick = { handleClick }>
-        <div className = "home">
+        <nav className = "home">
 
             <Link to = "/"> <img className = 'logo' alt = 'back-to-hub' src = { Back } /> </Link>
 
 
             <Search handleInput = { debouncedHandleInput } search = { searchWithEnter } button = { searchWithButton }/>
 
-            <Link to = "/favorite" className="getFavoritePosition"> <button className="getFavorites"> Kedvenceim </button> </Link>
 
-        </div>
+            <div className="dropdownPopular">
+                <button className="dropbtnPopular">Népszerű</button>
+                <i className="dropdown-arrow"></i>
+                <div className="dropdown-popularContents">
+                    <Link to="/popular/movie"> Filmek </Link>
+                    <Link to="/popular/tv"> Sorozatok </Link>
+                </div>
+            </div>
+
+
+            <div className="dropdown">
+                <button className="dropbtn">Nézőlista</button>
+                <i className="dropdown-arrow"></i>
+                <div className="dropdown-content">
+                    <Link to="/watchlist/view"> Megnézendő </Link>
+                    <Link to="/watchlist/viewed"> Megnézettek </Link>
+                </div>
+            </div>
+
+
+            <Link to = "/favorite" className="getFavoritePosition"> <button className="getFavorite"> Kedvenceim </button> </Link>
+
+        </nav>
             <div className = {isVisible ? 'visible' : 'hidden'}>
                 {state.query && (
                     <ul>

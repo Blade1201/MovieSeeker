@@ -1,64 +1,146 @@
-* {
-    box-sizing: border-box;
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+
+
+
+.back-to-hub{
+    width: 2%;
+    position: absolute;
 }
 
-/* Create three columns of equal width */
-.columns {
-    float: left;
-    width: 33.3%;
+.back-to-hub img{
+    transform: translate(40%,-80%);
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+}
+
+.pricingTable{
+    color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size: 100%;
+    min-height: 100vh;
+    line-height: 1.5;
+    padding: 2.5em 0;
+}
+
+.group{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 280px;
     padding: 8px;
 }
 
-/* Style the list */
-.price {
+.containerContent {
+    border: 2px solid #5d4e65;
+    min-height: 400px;
+    padding: 1.25em;
+    position: relative;
+    text-align: center;
+    transition: all .2s ease-in-out;
+}
+
+.containerContent:hover {
+    background-color: #67314c;
+    border-top: 2px solid #ec7a37;
+    border-bottom: 2px solid #ff4f69;
+    box-shadow: 0 0 10px 0 #ff001e;
+    transform: scale(1.025);
+    z-index: 2;
+}
+
+.containerContent:before, .containerContent:after {
+    content: "";
+    position: absolute;
+    background-color: rgb(246,125,53);
+    top: -2px;
+    bottom: -2px;
+    width: 2px;
+}
+
+.containerContent:before {
+    left: -2px;
+}
+
+.containerContent:after {
+    right: -2px;
+}
+
+.containerContent:hover .button {
+    background-color: rgb(238,122,54);
+}
+
+.containerContent:hover ul {
+    color: rgb(238,122,54);
+}
+
+.mainText {
+    text-align: center;
+}
+
+.subLength {
+    font-size: 1em;
+    font-weight: 400;
+    margin: 0 0 0.5em;
+}
+
+.subPrice {
+    font-size: 1.5em;
+    letter-spacing: 0.0625em;
+    margin: 0 0 0.3333333333333333em;
+}
+
+.titleBanner {
+    font-size: 0.875em;
+}
+
+.titleBanner, ul {
+    margin:0 0 1.5em
+}
+
+ul {
+    color: #9566a9;
+    font-size: 0.75em;
     list-style-type: none;
-    border: 1px solid #eee;
-    margin: 0;
     padding: 0;
-    -webkit-transition: 0.3s;
-    transition: 0.3s;
 }
 
-/* Add shadows on hover */
-.price:hover {
-    box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2)
+li {
+    margin: 0 0 0.8333333333333333em;
 }
 
-/* Pricing header */
-.price .header {
-    background-color: #111;
-    color: white;
-    font-size: 25px;
-}
-
-/* List items */
-.price li {
-    border-bottom: 1px solid #eee;
-    padding: 20px;
-    text-align: center;
-}
-
-/* Grey list item */
-.price .grey {
-    background-color: #eee;
-    font-size: 20px;
-}
-
-/* The "Sign Up" button */
 .button {
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    padding: 10px 25px;
-    text-align: center;
+    background-color: #9c83aa;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 700;
+    padding: 0.75em 1.5em;
+    position: absolute;
+    bottom: 1.25em;
+    left: 50%;
+    margin-left: -60px;
     text-decoration: none;
-    font-size: 18px;
+    width: 120px;
 }
 
-/* Change the width of the three columns to 100%
-(to stack horizontally on small screens) */
-@media only screen and (max-width: 600px) {
-    .columns {
-        width: 100%;
+sup, .small {
+    font-size: 0.6125em;
+}
+
+@media screen and (max-width: 493px){
+    .group{
+        display: grid;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .container {
+        min-width: 250px;
+        padding: 8px;
     }
 }

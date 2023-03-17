@@ -1,12 +1,18 @@
-const PricingTableOption = ({name, price, sign, onClick}) => {
+const PricingTableOption = ({name, price, onClick}) => {
     return (
-        <div className="columns">
-            <ul className="price">
-                <li className="header">{name}</li>
-                <li style={{background: "black"}}>{price} Ft</li>
-                <li className="button" value={sign} onClick={onClick}>Megveszem!</li>
+    <div className="container">
+        <div className="containerContent">
+            <h2 className="subLength">{name}</h2>
+            <h3 className="subPrice"><sup>Ft.</sup>{price}<span className="small">/hó</span></h3>
+            <p className="titleBanner">MovieSeeker</p>
+            <ul>
+                <li>Top 50 média tartalom</li>
+                <li>Média tartalom értékelése</li>
+                <li>Nézőlista</li>
             </ul>
+            <i className="button" onClick={onClick}>VÁSÁROL</i>
         </div>
+    </div>
     )
 }
 

@@ -147,7 +147,7 @@ const Popup = ({selected, closePopup}) => {
 				</span></h2>
 
 
-                {selected.Ratings !== null ?
+                {selected.Ratings !== null && overallRate !== 0 ?
                     <p className="rating"> Értékelés: {overallRate} <img className="rating-star" alt="not-found!"
                                                                               src={Star}/></p> : ""}
                 {selected.Ratings !== null ? <p className="genre"> Műfaj: {selected.Genre} </p> : ""}
