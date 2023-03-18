@@ -19,8 +19,6 @@ const Navbar = () => {
     const {clearFavorites} = useContext(FavoriteContext);
     const {clearWatchlist} = useContext(WatchListContext);
 
-    console.log(subscribed);
-
     let profileMenu = useRef();
 
     useEffect(() => {
