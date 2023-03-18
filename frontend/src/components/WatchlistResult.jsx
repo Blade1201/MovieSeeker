@@ -23,7 +23,7 @@ const WatchlistResult = ({ result, openPopup, type}) => {
             <h3> { result.Title } </h3>
 
             <div className = "delete-button" onClick={handleButtonClick}>
-                {type === "view"? "Törlés" : "Törlés"}
+                {type === "view"? "Megnéztem" : "Megnézendő"}
             </div>
         </div>
     );
