@@ -22,9 +22,8 @@ const Popup = ({selected, closePopup}) => {
 
     const [selectedRate, setSelectedRate] = useState(null);
 
-    const [overallRate, setOverallRate] = useState(selected.Ratings !== "0.0" ? 0 : selected.Ratings);
+    const [overallRate, setOverallRate] = useState(selected.Ratings === "0.00" ? 0 : selected.Ratings);
 
-    console.log(typeof selected.Ratings);
 
     const {inFavorites, handleCreate, handleDelete} = useContext(FavoriteContext);
 

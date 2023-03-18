@@ -15,9 +15,11 @@ import subscribe from "../../images/subscribe.png";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const {loggedIn, setLoggedIn, name, setName, setRank, setId} = useContext(userContext);
+    const {loggedIn, setLoggedIn, name, setName, rank, setRank, setId, subscribed, setSubscribed} = useContext(userContext);
     const {clearFavorites} = useContext(FavoriteContext);
     const {clearWatchlist} = useContext(WatchListContext);
+
+    console.log(subscribed);
 
     let profileMenu = useRef();
 
@@ -62,6 +64,7 @@ const Navbar = () => {
         setName("");
         setRank("G");
         setId(0);
+        setSubscribed(false);
         clearFavorites();
         clearWatchlist();
     }
@@ -101,12 +104,18 @@ const Navbar = () => {
                         <div className={`menu ${open ? 'active' : ''}`}>
                             <h3>{name}</h3>
                             <ul>
-                                <li><img src={admin} alt="not-found"/>
-                                    <Link to="/dashboard" className="subscribe"> Admin Panel </Link>
-                                </li>
-                                <li><img src={subscribe} alt="not-found"/>
-                                    <Link to="/checkout" className="subscribe"> Előfizetés </Link>
-                                </li>
+                                {
+                                    rank === "A" &&
+                                    <li><img src={admin} alt="not-found"/>
+                                        <Link to="/dashboard" className="subscribe"> Admin Panel </Link>
+                                    </li>
+                                }
+                                {
+                                    subscribed ||
+                                    <li><img src={subscribe} alt="not-found"/>
+                                        <Link to="/checkout" className="subscribe"> Előfizetés </Link>
+                                    </li>
+                                }
                                 <li><img src={edit} alt="not-found"/>
                                     <button onClick={handleChooseFileClick}> Szerkesztés </button>
                                     <input

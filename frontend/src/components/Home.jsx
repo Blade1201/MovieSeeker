@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useContext, useEffect, useMemo, useState} from "react";
 import '../styles/home.css';
 import Back from "../images/back-arrow.png";
 import axios from "axios";
@@ -8,6 +8,7 @@ import Popup from "./Popup";
 import Queries from "./Queries";
 import {Link} from "react-router-dom";
 import {debounce} from "lodash";
+import UserContext from "../contexts/userContext";
 
 const Home = () => {
 
@@ -22,6 +23,7 @@ const Home = () => {
 
     const API_URL = "/api?";
 
+    const {loggedIn, subscribed} = useContext(UserContext);
 
     const searchWithButton = () => {
         if (state.search.length !== 0){
@@ -136,28 +138,36 @@ return(
 
             <Search handleInput = { debouncedHandleInput } search = { searchWithEnter } button = { searchWithButton }/>
 
+            {
+                subscribed &&
 
-            <div className="dropdownPopular">
-                <button className="dropbtnPopular">Népszerű</button>
-                <i className="dropdown-arrow"></i>
-                <div className="dropdown-popularContents">
-                    <Link to="/popular/movie"> Filmek </Link>
-                    <Link to="/popular/tv"> Sorozatok </Link>
-                </div>
-            </div>
-
-
-            <div className="dropdown">
-                <button className="dropbtn">Nézőlista</button>
-                <i className="dropdown-arrow"></i>
-                <div className="dropdown-content">
-                    <Link to="/watchlist/view"> Megnézendő </Link>
-                    <Link to="/watchlist/viewed"> Megnézettek </Link>
-                </div>
-            </div>
+                <>
+                    <div className="dropdownPopular">
+                        <button className="dropbtnPopular">Népszerű</button>
+                        <i className="dropdown-arrow"></i>
+                        <div className="dropdown-popularContents">
+                            <Link to="/popular/movie"> Filmek </Link>
+                            <Link to="/popular/tv"> Sorozatok </Link>
+                        </div>
+                    </div>
 
 
-            <Link to = "/favorite" className="getFavoritePosition"> <button className="getFavorite"> Kedvenceim </button> </Link>
+                    <div className="dropdown">
+                        <button className="dropbtn">Nézőlista</button>
+                        <i className="dropdown-arrow"></i>
+                        <div className="dropdown-content">
+                            <Link to="/watchlist/view"> Megnézendő </Link>
+                            <Link to="/watchlist/viewed"> Megnézettek </Link>
+                        </div>
+                    </div>
+                </>
+            }
+
+
+            {
+                loggedIn &&
+                <Link to = "/favorite" className="getFavoritePosition"> <button className="getFavorite"> Kedvenceim </button> </Link>
+            }
 
         </nav>
             <div className = {isVisible ? 'visible' : 'hidden'}>
