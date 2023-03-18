@@ -53,7 +53,7 @@ const Rating = ({ active, selectedRate, setSelectedRate, setOverallRate, imdbId 
             .then(res => res.data)
             .then(overallRate => {
                 setSelectedRate(null);
-                setOverallRate(overallRate);
+                setOverallRate( overallRate === "0.0" || 0);
             })
             .catch(console.error);
     }
