@@ -39,7 +39,7 @@ const GetFavorites = () => {
     return (
         <Fragment>
             <Link to = "/search"> <img className = 'backToSearch' alt = 'back-to-hub' src = { Back } /> </Link>
-            <h1 className="myFavorites">Kedvencei: </h1>
+            <h1 className="myFavorites">Kedvenceim: </h1>
             <main>
                 <FavoriteResults results = { favorites } openPopup = { openPopup } />
                 {(typeof state.selected.Title != "undefined") ? <Popup selected = { state.selected } closePopup = { closePopup } /> : false}

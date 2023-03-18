@@ -128,7 +128,7 @@ const Home = () => {
         });
     };
 
-
+    const [clicked, setClicked] = useState(false);
 return(
         <div className = "main-home" onClick = { handleClick }>
         <nav className = "home">
@@ -138,6 +138,8 @@ return(
 
             <Search handleInput = { debouncedHandleInput } search = { searchWithEnter } button = { searchWithButton }/>
 
+
+            <div className={`mobileContainer ${clicked ? "active" : ""}`}>
             {
                 subscribed &&
 
@@ -168,6 +170,15 @@ return(
                 loggedIn &&
                 <Link to = "/favorite" className="getFavoritePosition"> <button className="getFavorite"> Kedvenceim </button> </Link>
             }
+            </div>
+
+
+            <div className="mobileScreen" onClick={() => {
+                setClicked(!clicked)
+            }}>
+                <i className={clicked ? "fas fa-times" : "fas fa-bars"}> </i>
+            </div>
+
 
         </nav>
             <div className = {isVisible ? 'visible' : 'hidden'}>

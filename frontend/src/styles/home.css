@@ -74,7 +74,6 @@ body {
     touch-action: manipulation;
 }
 
-
 .getFavorite:hover {
     box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
@@ -104,7 +103,78 @@ body {
     display: block;
     text-align: center;
     width: auto;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
 }
+
+
+.mobileScreen i {
+    color: #EEEEEE;
+}
+
+
+.mobileScreen {
+    position: relative;
+    left: 90%;
+    bottom: 116%;
+    width: 25px;
+    display: none;
+}
+
+@media screen and (max-width: 990px){
+    .mobileContainer{
+        z-index: 1;
+        position: absolute;
+        top: 55px;
+        right: 0;
+        display: none;
+        width: 500px;
+        height: 146px;
+        background: rgba(255,255,255,.25);
+        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+        border-radius: 22px;
+        backdrop-filter: blur(5px);
+        padding: 40px 0 0 10px;
+    }
+
+    .mobileScreen {
+        display: flex;
+    }
+
+    .mobileScreen i {
+        font-size: 30px;
+    }
+
+    .mobileContainer.active {
+        display: flex;
+    }
+
+    .dropdown{
+        position: relative;
+        left: 176px;
+    }
+
+    .dropdownPopular{
+        position: relative;
+        left: 8px;
+    }
+
+    .getFavorite{
+        position: relative;
+        left: 93px;
+    }
+}
+
+
+@media screen and (max-width: 500px){
+    .mobileScreen{
+        display: none;
+    }
+
+    .mobileContainer.active{
+        display: none;
+    }
+}
+
 
 .dropdown-content a:hover {
     background-color: #313b46;
@@ -124,6 +194,7 @@ body {
     border-top-left-radius: 1rem;
     font-size: 16px;
     margin-left: 40px;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
 }
 
 .dropdown-arrow {
@@ -178,6 +249,7 @@ body {
     display: block;
     text-align: center;
     width: auto;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
 }
 
 .dropdown-popularContents a:hover {
@@ -198,6 +270,7 @@ body {
     border-top-left-radius: 1rem;
     font-size: 16px;
     margin-left: 40px;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
 }
 
 .dropdownPopular{
@@ -292,7 +365,7 @@ section .movie-not-found-error-message {
 
 .query-results .result:hover {
     box-shadow: 0 0 8px 3px #26c485;
-    min-width: 290px;
+    min-width: 210px;
     border-radius: 15px;
     max-height: 175px;
 }

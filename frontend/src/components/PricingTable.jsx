@@ -1,4 +1,4 @@
-import "../styles/pricing-table.css"
+import "../styles/pricingTable.css"
 import PricingTableOption from "./PricingTableOption";
 import React, {useContext, useEffect, useState} from "react";
 import axios from "axios";

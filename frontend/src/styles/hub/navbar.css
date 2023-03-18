@@ -250,14 +250,13 @@
     .movieseeker-navbar-links__container {
         flex-direction: column;
         z-index: 1;
-        justify-content: flex-start;
         align-items: center;
         position: absolute;
         top: 90px;
         right: 0;
         display: none;
         width: 300px;
-        height: 47%;
+        height: 370px;
         background: rgba(255,255,255,.25);
         box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
         border-radius: 30px;
@@ -299,7 +298,7 @@
 }
 
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 700px) {
     .movieseeker-navbar {
         padding: 2rem;
     }

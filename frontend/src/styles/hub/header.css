@@ -88,8 +88,7 @@ body{
     padding-top: 8px;
     color: #fff;
     text-decoration: none;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-radius: 10px;
     text-align: center;
 }
 
