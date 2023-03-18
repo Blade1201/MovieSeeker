@@ -9,6 +9,8 @@ export const Watchlist = ({children}) => {
 
     const {id} = useContext(userContext);
 
+    const [flag, setFlag] = useState(false);
+
     const fetchData = async () => {
         try {
             const res = await axios.get("/watchlist");
@@ -23,7 +25,7 @@ export const Watchlist = ({children}) => {
         if (id) {
             fetchData();
         }
-    }, [id]);
+    }, [id, flag]);
 
     const handleCreate = async (watchlistItem) => {
         try {
@@ -31,7 +33,7 @@ export const Watchlist = ({children}) => {
                 imdbId : watchlistItem["ImdbID"],
                 watched: watchlistItem["Watched"]
             });
-            setWatchlist([...watchlist, watchlistItem]);
+            setFlag(!flag);
         } catch (e) {
             console.error(e.response);
         }

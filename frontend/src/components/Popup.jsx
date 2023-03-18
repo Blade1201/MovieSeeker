@@ -34,7 +34,6 @@ const Popup = ({selected, closePopup}) => {
 
     const {id: userId, setSubscribed, subscribed} = useContext(userContext);
 
-
     const addToFavorites = async () => {
         await handleCreate(selected);
         setFavorite(true);

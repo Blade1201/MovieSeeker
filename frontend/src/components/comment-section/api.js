@@ -1,10 +1,8 @@
 import axios from "axios";
 
 export const getComments = async (imdbId) => {
-    return await axios({
-        method: 'GET',
-        url: `comments/${imdbId}`,
-    }).then(res => {
+    return await axios.get(`/comments/${imdbId}`)
+        .then(res => {
         return res.data;
     });
 };

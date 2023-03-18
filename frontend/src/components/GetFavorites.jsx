@@ -18,12 +18,11 @@ const GetFavorites = () => {
 
     const API_URL = "/api?";
 
-    const openPopup = (props) => {
-        axios(API_URL + "&i=" + props.id + "&m=" + props.type)
+    const openPopup = ({id, type}) => {
+        axios(API_URL + "&i=" + id + "&m=" + type)
             .then(({ data }) => {
 
                 let result = data;
-
 
                 setState(prevState => {
                     return { ...prevState, selected: result }

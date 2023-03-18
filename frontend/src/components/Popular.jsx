@@ -8,23 +8,23 @@ import axios from "axios";
 const Popular = () => {
     const {type} = useParams();
 
-    const [popular, setPopular] = useState([]);
+    const [state, setState] = useState({
+        search: "",
+        results: [],
+        selected: {}
+    });
 
     useEffect(() => {
         axios.get(`/api/popular/${type}`)
             .then(res => {
                 if (res.status === 200) {
                     const {data} = res;
-                    setPopular(data);
+                    setState(prevState => {
+                        return { ...prevState, results: data }
+                    });
                 }
             })
     }, [type]);
-
-    const [state, setState] = useState({
-        search: "",
-        results: [],
-        selected: {}
-    });
 
     if (!(type === "movie" || type === "tv")) {
         return <Navigate to="/" replace />;
@@ -55,7 +55,7 @@ const Popular = () => {
             <Link to = "/search"> <img className = 'backToSearch' alt = 'back-to-hub' src = { Back } /> </Link>
             <h1 className="myFavorites">Legnépszerűbb {type === "movie"? "filmek" : "sorozatok"}:</h1>
             <main>
-                <Results results = { popular } openPopup = { openPopup } />
+                <Results results = { state.results } openPopup = { openPopup } />
                 {(typeof state.selected.Title != "undefined") ? <Popup selected = { state.selected } closePopup = { closePopup } /> : false}
             </main>
         </Fragment>

@@ -16,6 +16,8 @@ export const Favorite = ({children}) => {
 
     const {id} = useContext(userContext);
 
+    const [flag, setFlag] = useState(false);
+
     const fetchData = async () => {
         try {
             const res = await axios.get("/favorite");
@@ -29,7 +31,7 @@ export const Favorite = ({children}) => {
         if (id) {
             fetchData();
         }
-    }, [id]);
+    }, [id, flag]);
 
     const handleCreate = async (favorite) => {
         try {
@@ -38,7 +40,7 @@ export const Favorite = ({children}) => {
                     "x-access-token" : localStorage.getItem("token")
                 }
             });
-            setFavorites([...favorites, favorite]);
+            setFlag(!flag);
         } catch (e) {
             console.error(e.response);
         }

@@ -79,7 +79,7 @@ const App = () => {
                             }/>
 
                             <Route path="/watchlist/:type" element={
-                                <SubscriptionRoute component={ GetWatchlist }/>
+                                <SubscriptionRoute component={GetWatchlist}/>
                             }/>
 
                             <Route path="/checkout" element={<PricingTable />} />
