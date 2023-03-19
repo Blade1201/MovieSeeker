@@ -16,6 +16,7 @@ import {Watchlist} from "./contexts/watchlistContext";
 import PricingTable from "./components/PricingTable";
 import Dashboard from "./components/Dashboard";
 import Upcoming from "./components/Upcoming";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 
 
@@ -69,11 +70,21 @@ const App = () => {
 
                             <Route path = "/search" element = {<Home/>}/>
 
-                            <Route path = "/favorite" element={<GetFavorites />} />
-
                             <Route path = "/authentication" element = {
                                 <GuestRoute component={ Authentication } />
                             }/>
+
+                            <Route path = "/favorite" element={
+                                <ProtectedRoute component={GetFavorites}/>
+                            } />
+
+                            <Route path = "/upcoming" element={
+                                <ProtectedRoute component={Upcoming}/>
+                            } />
+
+                            <Route path = "/checkout" element={
+                                <ProtectedRoute component={PricingTable}/>
+                            } />
 
                             <Route path="/popular/:type" element={
                                 <SubscriptionRoute component={ Popular }/>
@@ -82,12 +93,6 @@ const App = () => {
                             <Route path="/watchlist/:type" element={
                                 <SubscriptionRoute component={GetWatchlist}/>
                             }/>
-
-                            <Route path="/upcoming" element={
-                                <SubscriptionRoute component={Upcoming} />
-                            } />
-
-                            <Route path="/checkout" element={<PricingTable />} />
 
                             <Route path="/dashboard" element={<Dashboard />} />
 

@@ -32,10 +32,7 @@ const PricingTable = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (!loggedIn) {
-            navigate("/authentication");
-        }
-        else if (subscribed) {
+        if (subscribed) {
             navigate("/");
         } else {
             setLoading(false);

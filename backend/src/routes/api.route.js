@@ -26,8 +26,7 @@ apiRouter.get("/popular/:type",
 apiRouter.get("/upcoming",
     verifyJWTMiddleware,
     body("userId")
-        .custom(userExistValidatorMiddleware)
-        .custom(subscriptionExistValidatorMiddleware),
+        .custom(userExistValidatorMiddleware),
     checkErrorsMiddleware,
     apiController.upcoming);
 
