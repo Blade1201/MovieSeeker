@@ -252,7 +252,10 @@ const Popup = ({selected, closePopup}) => {
 
                         </Slider>
 
+                        <p className="copyright"> Ezt az adatot a <span> JustWatch </span> biztosítja </p>
+
                     </div>
+
 
 
                     <div className="carousel-container">

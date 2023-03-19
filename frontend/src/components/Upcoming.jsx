@@ -48,7 +48,7 @@ const Upcoming = () => {
     return (
         <>
             <Link to="/search"> <img className='backToSearch' alt='back-to-hub' src={Back}/> </Link>
-            <h1 className="myFavorites">Közeljövőben megjelenő filmek:</h1>
+            <h1 className="myFavorites">Hamarosan megjelenő filmek:</h1>
             <main>
                 <Results results={state.results} openPopup={openPopup}/>
                 {(typeof state.selected.Title != "undefined") ?

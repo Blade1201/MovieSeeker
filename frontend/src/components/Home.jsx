@@ -25,6 +25,8 @@ const Home = () => {
 
     const {loggedIn, subscribed} = useContext(UserContext);
 
+    const [clicked, setClicked] = useState(false);
+
     const searchWithButton = () => {
         if (state.search.length !== 0){
 
@@ -128,7 +130,7 @@ const Home = () => {
         });
     };
 
-    const [clicked, setClicked] = useState(false);
+
 return(
         <div className = "main-home" onClick = { handleClick }>
         <nav className = "home">
@@ -168,7 +170,14 @@ return(
 
             {
                 loggedIn &&
-                <Link to = "/favorite" className="getFavoritePosition"> <button className="getFavorite"> Kedvenceim </button> </Link>
+                <div className="dropdownMedia">
+                    <button className="dropbtnMedia">Média</button>
+                    <i className="dropdown-arrow"></i>
+                    <div className="dropdown-mediaContent">
+                        <Link to="/favorite"> Kedvenceim </Link>
+                        <Link to="/upcoming"> Közelgőek </Link>
+                    </div>
+                </div>
             }
             </div>
 

@@ -53,60 +53,6 @@ body {
     border-radius: 20px;
 }
 
-
-.getFavorite {
-    background-color: black;
-    border-radius: 100px;
-    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
-    color: #00dfc4;
-    cursor: pointer;
-    display: flex;
-    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-    padding: 7px 20px;
-    text-align: center;
-    width: 150px;
-    transition: all 250ms;
-    justify-content: center;
-    border: 0;
-    font-size: 16px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
-
-.getFavorite:hover {
-    box-shadow: rgba(44,187,99,.35) 0 -25px 18px -14px inset,rgba(44,187,99,.25) 0 1px 2px,rgba(44,187,99,.25) 0 2px 4px,rgba(44,187,99,.25) 0 4px 8px,rgba(44,187,99,.25) 0 8px 16px,rgba(44,187,99,.25) 0 16px 32px;
-    transform: scale(1.05) rotate(-1deg);
-}
-
-
-.getFavoritePosition {
-    position: absolute;
-    text-decoration: none;
-    top: 10px;
-    right: 250px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    margin-top: 7.5rem;
-    min-width: 160px;
-    background-color: black;
-    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
-}
-
-.dropdown-content a {
-    color: #00dfc4;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: center;
-    width: auto;
-    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-}
-
-
 .mobileScreen i {
     color: #EEEEEE;
 }
@@ -127,7 +73,7 @@ body {
         top: 55px;
         right: 0;
         display: none;
-        width: 500px;
+        width: 510px;
         height: 146px;
         background: rgba(255,255,255,.25);
         box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
@@ -158,9 +104,9 @@ body {
         left: 8px;
     }
 
-    .getFavorite{
+    .dropdownMedia{
         position: relative;
-        left: 93px;
+        left: 343px;
     }
 }
 
@@ -175,27 +121,6 @@ body {
     }
 }
 
-
-.dropdown-content a:hover {
-    background-color: #313b46;
-    object-fit: cover;
-}
-
-.dropdown:hover .dropdown-content {
-    display: flex;
-    flex-direction: column;
-}
-
-.dropdown .dropbtn {
-    border: none;
-    outline: none;
-    color: #00dfc4;
-    background-color: inherit;
-    border-top-left-radius: 1rem;
-    font-size: 16px;
-    margin-left: 40px;
-    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-}
 
 .dropdown-arrow {
     border-left: 10px solid transparent;
@@ -219,12 +144,22 @@ body {
     box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
 }
 
-
-.dropdown:hover{
-    box-shadow: rgba(44, 187, 99, .2) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px;
+.dropdownMedia{
+    position: absolute;
+    right: 92px;
+    top: 9px;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    display: flex;
+    width: 160px;
+    height: 34px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: black;
+    box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
 }
 
-.dropdown:hover .dropdown-arrow {
+.dropdownMedia:hover .dropdown-arrow, .dropdown:hover .dropdown-arrow, .dropdownPopular:hover .dropdown-arrow{
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
     border-bottom: 10px solid #00dfc4;
@@ -233,7 +168,39 @@ body {
     position: relative;
 }
 
-.dropdown-popularContents {
+.dropdown-mediaContent a:hover, .dropdown-content a:hover, .dropdown-popularContents a:hover {
+    background-color: #313b46;
+    object-fit: cover;
+}
+
+.dropdownMedia:hover .dropdown-mediaContent, .dropdown:hover .dropdown-content, .dropdownPopular:hover .dropdown-popularContents {
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdownPopular .dropbtnPopular, .dropdown .dropbtn {
+    border: none;
+    outline: none;
+    color: #00dfc4;
+    background-color: inherit;
+    border-top-left-radius: 1rem;
+    font-size: 16px;
+    margin-left: 40px;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+}
+
+.dropdownMedia .dropbtnMedia{
+    border: none;
+    outline: none;
+    color: #00dfc4;
+    background-color: inherit;
+    border-top-left-radius: 1rem;
+    font-size: 16px;
+    margin-left: 53px;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+}
+
+.dropdown-popularContents, .dropdown-mediaContent, .dropdown-content {
     display: none;
     position: absolute;
     margin-top: 7.5rem;
@@ -242,34 +209,13 @@ body {
     box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
 }
 
-.dropdown-popularContents a {
+.dropdown-popularContents a, .dropdown-mediaContent a, .dropdown-content a {
     color: #00dfc4;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: center;
     width: auto;
-    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
-}
-
-.dropdown-popularContents a:hover {
-    background-color: #313b46;
-    object-fit: cover;
-}
-
-.dropdownPopular:hover .dropdown-popularContents {
-    display: flex;
-    flex-direction: column;
-}
-
-.dropdownPopular .dropbtnPopular {
-    border: none;
-    outline: none;
-    color: #00dfc4;
-    background-color: inherit;
-    border-top-left-radius: 1rem;
-    font-size: 16px;
-    margin-left: 40px;
     font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
 }
 
@@ -288,18 +234,8 @@ body {
     box-shadow: rgba(44, 187, 99, .2) 0 -25px 18px -14px inset, rgba(44, 187, 99, .15) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px, rgba(44, 187, 99, .15) 0 16px 32px;
 }
 
-.dropdownPopular:hover{
+.dropdownPopular:hover, .dropdown:hover, .dropdownMedia:hover{
     box-shadow: rgba(44, 187, 99, .2) 0 1px 2px, rgba(44, 187, 99, .15) 0 2px 4px, rgba(44, 187, 99, .15) 0 4px 8px, rgba(44, 187, 99, .15) 0 8px 16px;
-}
-
-
-.dropdownPopular:hover .dropdown-arrow {
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #00dfc4;
-    border-top: 5px solid transparent;
-    bottom: 5px;
-    position: relative;
 }
 
 
