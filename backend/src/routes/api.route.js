@@ -23,4 +23,12 @@ apiRouter.get("/popular/:type",
     checkErrorsMiddleware,
     apiController.popular);
 
+apiRouter.get("/upcoming",
+    verifyJWTMiddleware,
+    body("userId")
+        .custom(userExistValidatorMiddleware)
+        .custom(subscriptionExistValidatorMiddleware),
+    checkErrorsMiddleware,
+    apiController.upcoming);
+
 export default apiRouter;

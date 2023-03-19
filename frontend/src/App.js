@@ -15,6 +15,7 @@ import GetWatchlist from "./components/GetWatchlist";
 import {Watchlist} from "./contexts/watchlistContext";
 import PricingTable from "./components/PricingTable";
 import Dashboard from "./components/Dashboard";
+import Upcoming from "./components/Upcoming";
 
 
 
@@ -81,6 +82,10 @@ const App = () => {
                             <Route path="/watchlist/:type" element={
                                 <SubscriptionRoute component={GetWatchlist}/>
                             }/>
+
+                            <Route path="/upcoming" element={
+                                <SubscriptionRoute component={Upcoming} />
+                            } />
 
                             <Route path="/checkout" element={<PricingTable />} />
 
