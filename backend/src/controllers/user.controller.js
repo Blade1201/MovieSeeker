@@ -8,7 +8,7 @@ const changeRank = async (req, res) => {
     const user = await userDao.findById(id);
 
     if (!user) {
-        res.status(404).json({success: false, blameUser: false, reason: "Nem létező felhasználó."});
+        res.status(404).json({success: false, reason: "Nem létező felhasználó."});
         return;
     }
 
@@ -17,8 +17,12 @@ const changeRank = async (req, res) => {
         await userDao.save(user);
         res.sendStatus(200);
     } catch (exc) {
-        res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
+        res.status(500).json({success: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }
+}
+
+const changeAvatar = async (req, res) => {
+    res.send();
 }
 
 const getAll = async (_, res) => {
@@ -33,5 +37,6 @@ const getAll = async (_, res) => {
 
 export {
     changeRank,
+    changeAvatar,
     getAll
 }

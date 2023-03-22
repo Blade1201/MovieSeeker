@@ -11,7 +11,7 @@ const create = async (req, res) => {
     const {user, media} = req.body;
 
     if (await exist(user, media)) {
-        res.status(400).json({success: false, blameUser: true, message: "Már létezik ilyen érték a watchlistben!"});
+        res.status(400).json({success: false, message: "Már létezik ilyen érték a watchlistben!"});
         return;
     }
 
@@ -22,7 +22,7 @@ const create = async (req, res) => {
     if (result) {
         res.status(201).json({success: true});
     } else {
-        res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
+        res.status(500).json({success: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }
 }
 
@@ -32,7 +32,7 @@ const edit = async (req, res) => {
     const watchListEntity = await exist(user, media);
 
     if (!watchListEntity) {
-        res.status(400).json({success: false, blameUser: true, message: "Még nem létezik ilyen érték a watchlistben!"});
+        res.status(400).json({success: false, message: "Még nem létezik ilyen érték a watchlistben!"});
         return;
     }
 
@@ -41,7 +41,7 @@ const edit = async (req, res) => {
     if (result) {
         res.json({success: true});
     } else {
-        res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
+        res.status(500).json({success: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }
 };
 

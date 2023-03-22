@@ -13,7 +13,6 @@ const authenticationHandlerMiddleware = (req, res) => {
     } else {
         result = {
             success: false,
-            blameUser: false,
             reason: "Szerverhiba!"
         }
         res.status(500);

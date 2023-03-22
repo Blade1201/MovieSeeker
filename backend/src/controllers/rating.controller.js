@@ -18,7 +18,7 @@ const create = async (req, res, next) => {
     if (result) {
         next();
     } else {
-        res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
+        res.status(500).json({success: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }
 }
 
@@ -30,7 +30,7 @@ const edit = async (req, res, next) => {
     if (result) {
         next();
     } else {
-        res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
+        res.status(500).json({success: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }
 }
 
@@ -42,7 +42,7 @@ const destroy = async (req, res, next) => {
     if (result) {
         next();
     } else {
-        res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
+        res.status(500).json({success: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }
 }
 
@@ -59,7 +59,7 @@ const getAverageScoreByMedia = async (req, res) => {
     if (rating) {
         res.json(roundAverageScore(rating));
     } else {
-        res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
+        res.status(500).json({success: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }
 }
 
@@ -95,7 +95,7 @@ const get = async (req, res) => {
     try {
         result = await new RatingDao().get(user, media);
     } catch (e) {
-        res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
+        res.status(500).json({success: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
         return;
     }
 

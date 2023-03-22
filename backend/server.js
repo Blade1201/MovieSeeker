@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+
 import apiRouter from "./src/routes/api.route.js";
 import authorizationRouter from "./src/routes/authorization.route.js";
 import authenticationRouter from "./src/routes/authentication.route.js";
@@ -10,6 +11,8 @@ import favoriteRouter from "./src/routes/favorite.route.js";
 import subscriptionRouter from "./src/routes/subscription.route.js";
 import adminRouter from "./src/routes/admin.route.js";
 import watchlistRouter from "./src/routes/watchlist.route.js";
+import uploadRouter from "./src/routes/upload.route.js";
+
 import {PORT} from "./src/configs/server.config.js";
 import associationsInitializer from "./src/utils/assocationsInitalizer.util.js";
 associationsInitializer();
@@ -31,6 +34,7 @@ app.use("/favorite", favoriteRouter);
 app.use("/subscription", subscriptionRouter);
 app.use("/admin", adminRouter);
 app.use("/watchlist", watchlistRouter);
+app.use("/upload", uploadRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`)

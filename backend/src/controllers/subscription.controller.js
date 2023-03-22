@@ -8,7 +8,7 @@ const add = async (req, res) => {
     if (result) {
         res.sendStatus(201);
     } else {
-        res.status(500).json({success: false, blameUser: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
+        res.status(500).json({success: false, reason: "Hiba történt az adatbázis kapcsolat közben."});
     }
 
 }

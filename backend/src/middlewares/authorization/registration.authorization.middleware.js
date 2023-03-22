@@ -11,7 +11,6 @@ const registrationAuthorizationMiddleware = async (req, res, next) => {
     } else {
         return res.status(500).json({
             success: false,
-            blameUser: false,
             reason: "Szerverhiba!"
         });
     }

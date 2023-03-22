@@ -11,7 +11,6 @@ const checkErrorsMiddleware = (req, res, next) => {
 
     res.status(400).json({
         success: false,
-        blameUser: true,
         ...retrieveValidationError(errors),
     });
 

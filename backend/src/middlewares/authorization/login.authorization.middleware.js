@@ -14,7 +14,6 @@ const loginAuthorizationMiddleware = async (req, res, next) => {
     } else {
         res.status(400).json({
             success: false,
-            blameUser: true,
             reason: "Helytelen felhasználónév-jelszó páros!"
         });
     }
