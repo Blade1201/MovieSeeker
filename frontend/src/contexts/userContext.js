@@ -10,5 +10,7 @@ export default createContext({
     id: 0,
     setId: () => {},
     subscribed: false,
-    setSubscribed: () => {}
+    setSubscribed: () => {},
+    avatarPath: null,
+    setAvatarPath: () => {}
 });

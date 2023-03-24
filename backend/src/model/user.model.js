@@ -36,6 +36,10 @@ UserModel.init({
         allowNull: false,
         defaultValue: "U"
     },
+    avatarPath: {
+        type: DataTypes.STRING(32),
+        defaultValue: null
+    }
 }, {
     sequelize, // We need to pass the connection instance
     modelName: "User", // We need to choose the model name,

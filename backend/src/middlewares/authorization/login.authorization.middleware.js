@@ -10,6 +10,7 @@ const loginAuthorizationMiddleware = async (req, res, next) => {
         req.username = result.username;
         req.rank = result.rank;
         req.subscribed = await subscriptionController.hasActiveSubscription(result);
+        req.avatarPath = result.avatarPath;
         next();
     } else {
         res.status(400).json({

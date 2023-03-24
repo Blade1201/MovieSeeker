@@ -51,9 +51,9 @@ const get = async (req, res) => {
     const result = await new UserDao().findById(userId);
 
     if (result) {
-        const {id, username, email, rank} = result;
+        const {id, username, email, rank, avatarPath} = result;
         const subscribed = await subscriptionController.hasActiveSubscription(result);
-        res.json({id, username, email, rank, subscribed});
+        res.json({id, username, email, rank, subscribed, avatarPath});
     } else {
         res.sendStatus(500);
     }

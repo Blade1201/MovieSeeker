@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Gép: 127.0.0.1
--- Létrehozás ideje: 2023. Már 14. 23:00
+-- Létrehozás ideje: 2023. Már 24. 11:40
 -- Kiszolgáló verziója: 10.4.27-MariaDB
 -- PHP verzió: 8.2.0
 
@@ -119,6 +119,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `hash` char(60) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `rank` enum('U','A') NOT NULL DEFAULT 'U',
+  `avatar_path` varchar(32) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL
@@ -262,23 +263,21 @@ ALTER TABLE `watchlists`
   ADD CONSTRAINT `watchlists_ibfk_2` FOREIGN KEY (`media_id`) REFERENCES `media` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 --
 -- A tábla adatainak kiíratása `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `hash`, `rank`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Admin', 'admin@exampl.com', '$2b$10$DteNAnpmbpXD8w8syZagoeXiVlc69rlnanI1.UWlfNgDiGo0W1N3.', 'A', '2023-03-14 21:59:15', '2023-03-14 21:59:15', NULL);
+INSERT INTO `users` (`id`, `username`, `email`, `hash`, `rank`, `avatar_path`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, 'Admin', 'admin@example.com', '$2b$10$/q1Nxcs.oXIUJJ4c.U5Tf.wDoWsBrLgNQa1kAJf/Z9AGw5nX47lv6', 'A', NULL, '2023-03-24 10:34:20', '2023-03-24 10:34:20', NULL);
 
 --
 -- A tábla adatainak kiíratása `subscriptions`
 --
 
 INSERT INTO `subscriptions` (`id`, `type`, `created_at`, `user_id`) VALUES
-(1, 'A', '2023-03-14 21:59:24', 1);
+(1, 'A', '2023-03-24 10:39:41', 1);
 
-
-
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -14,6 +14,9 @@ uploadRouter.use(fileUpload());
 
 uploadRouter.use(express.json());
 
+uploadRouter.get("/avatar/:path",
+    userController.getAvatar);
+
 uploadRouter.post("/avatar",
     verifyJWTMiddleware,
     body("userId").custom(userExistValidatorMiddleware),

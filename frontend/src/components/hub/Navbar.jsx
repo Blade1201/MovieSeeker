@@ -15,7 +15,9 @@ import subscribe from "../../images/subscribe.png";
 
 const Navbar = () => {
     const [open, setOpen] = useState(false);
-    const {loggedIn, setLoggedIn, name, setName, rank, setRank, setId, subscribed, setSubscribed} = useContext(userContext);
+    const {
+        loggedIn, setLoggedIn, name, setName, rank, setRank, setId, subscribed, setSubscribed, avatarPath, setAvatarPath
+    } = useContext(userContext);
     const {clearFavorites} = useContext(FavoriteContext);
     const {clearWatchlist} = useContext(WatchListContext);
 
@@ -38,18 +40,29 @@ const Navbar = () => {
 
     const [clicked, setClicked] = useState(false);
 
-
-
-        const [imageSrc, setImageSrc] = useState(null);
         const inputRef = useRef(null);
 
-        function handleImageChange(event) {
+        async function handleImageChange(event) {
             const file = event.target.files[0];
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                setImageSrc(event.target.result);
-            };
-            reader.readAsDataURL(file);
+
+            if (file["type"] === "image/gif" && !subscribed) {
+                alert("GIF-et csak előfizető tölthet fel!");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("avatar", file);
+
+            try {
+                const res = await axios.post("/upload/avatar", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                });
+                setAvatarPath(res["data"]["avatarPath"]);
+            } catch (e) {
+                alert("Hiba történt a kép feltöltése közben!");
+            }
         }
 
         function handleChooseFileClick() {
@@ -63,6 +76,7 @@ const Navbar = () => {
         setRank("G");
         setId(0);
         setSubscribed(false);
+        setAvatarPath(null);
         clearFavorites();
         clearWatchlist();
     }
@@ -96,7 +110,7 @@ const Navbar = () => {
                         <div className="profile" onClick={() => {
                             setOpen(!open)
                         }}>
-                            { imageSrc ? <img src={imageSrc} alt="not-found"></img> : <img src={user} alt="not-found"></img>}
+                            { avatarPath ? <img src={`/upload/avatar/${avatarPath}`} alt="not-found"></img> : <img src={user} alt="not-found"></img>}
                         </div>
 
                         <div className={`menu ${open ? 'active' : ''}`}>
@@ -115,7 +129,7 @@ const Navbar = () => {
                                     </li>
                                 }
                                 <li><img src={edit} alt="not-found"/>
-                                    <button onClick={handleChooseFileClick}> Szerkesztés </button>
+                                    <button onClick={handleChooseFileClick}> Kép csere </button>
                                     <input
                                         ref={inputRef}
                                         type="file"

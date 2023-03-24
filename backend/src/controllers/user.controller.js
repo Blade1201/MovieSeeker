@@ -1,4 +1,13 @@
 import UserDao from "../dao/user.dao.js";
+import path from "path";
+import fs from "fs";
+import {hasActiveSubscription} from "./subscription.controller.js";
+
+export const getAvatar = (req, res) => {
+    const {path} = req.params;
+    res.sendFile(`${path.resolve()}/src/upload/avatar/${path}`);
+};
+
 
 const changeRank = async (req, res) => {
     const {id, rank} = req.body;
@@ -22,7 +31,35 @@ const changeRank = async (req, res) => {
 }
 
 const changeAvatar = async (req, res) => {
-    res.send();
+    const {user} = req.body;
+    const {avatar} = req.files;
+
+    const extensionName = path.extname(avatar.name);
+
+    if (extensionName === ".gif") {
+        if (!await hasActiveSubscription(user)) {
+            res.status(403).json({success: false, reason: "GIF-et csak előfizetéssel lehet feltölteni!"});
+            return;
+        }
+    }
+
+    const previousAvatarPath = user["avatarPath"];
+
+    const uniqueSuffix = Date.now() + '_' + Math.round(Math.random() * 1E9);
+    const newAvatarPath = uniqueSuffix + extensionName;
+
+    await avatar.mv(`${path.resolve()}/src/upload/avatar/${newAvatarPath}`);
+    user["avatarPath"] = newAvatarPath;
+    await new UserDao().save(user);
+    res.status(200).json({success: true, avatarPath: newAvatarPath});
+
+    if (previousAvatarPath) {
+        try {
+            await fs.promises.unlink(`${path.resolve()}/src/upload/avatar/${previousAvatarPath}`);
+        } catch (e) {
+            console.error(e.message);
+        }
+    }
 }
 
 const getAll = async (_, res) => {

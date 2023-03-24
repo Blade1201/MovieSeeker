@@ -8,7 +8,7 @@ const Login = ({ onFormSwitch, setRedirect}) => {
     const [credential, setCredential] = useState("");
     const [password, setPassword] = useState("");
 
-    const {setLoggedIn, setName, setRank, setId, setSubscribed} = useContext(userContext);
+    const {setLoggedIn, setName, setRank, setId, setSubscribed, setAvatarPath} = useContext(userContext);
 
 
     const sendLoginAttempt = () => {
@@ -25,6 +25,7 @@ const Login = ({ onFormSwitch, setRedirect}) => {
                     setRank(data["rank"]);
                     setId(data["userId"]);
                     setSubscribed(data["subscribed"]);
+                    setAvatarPath(data["avatarPath"]);
                     setRedirect(true);
                 }
             })

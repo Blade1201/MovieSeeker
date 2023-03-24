@@ -26,7 +26,15 @@ const App = () => {
     const [rank, setRank] = useState('G');
     const [id, setId] = useState(0);
     const [subscribed, setSubscribed] = useState(false);
-    const user = {loggedIn, setLoggedIn, name, setName, rank, setRank, id, setId, subscribed, setSubscribed};
+    const [avatarPath, setAvatarPath] = useState("");
+    const user = {
+        loggedIn, setLoggedIn,
+        name, setName,
+        rank, setRank,
+        id, setId,
+        subscribed, setSubscribed,
+        avatarPath, setAvatarPath
+    };
 
     const [loading, setLoading] = useState(true);
 
@@ -46,6 +54,7 @@ const App = () => {
                         setRank(result["rank"]);
                         setId(result["id"]);
                         setSubscribed(result["subscribed"]);
+                        setAvatarPath(result["avatarPath"]);
                         return true;
                     }
                 })

@@ -7,6 +7,7 @@ const registrationAuthorizationMiddleware = async (req, res, next) => {
         req.userId = id;
         req.username = username;
         req.rank = rank;
+        req.avatarPath = null;
         next();
     } else {
         return res.status(500).json({
