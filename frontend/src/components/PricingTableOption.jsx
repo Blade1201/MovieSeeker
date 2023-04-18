@@ -9,6 +9,7 @@ const PricingTableOption = ({name, price, onClick}) => {
                 <li>Top 50 média tartalom</li>
                 <li>Média tartalom értékelése</li>
                 <li>Nézőlista</li>
+                <li>Mozgókép (GIF) feltöltése profilképnek</li>
             </ul>
             <i className="button" onClick={onClick}>VÁSÁROL</i>
         </div>
