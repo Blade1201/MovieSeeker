@@ -10,7 +10,9 @@ import * as userController from "../controllers/user.controller.js";
 const uploadRouter = express.Router();
 
 
-uploadRouter.use(fileUpload());
+uploadRouter.use(fileUpload({
+    createParentPath: true
+}));
 
 uploadRouter.use(express.json());
 

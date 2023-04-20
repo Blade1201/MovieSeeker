@@ -4,8 +4,7 @@ import fs from "fs";
 import {hasActiveSubscription} from "./subscription.controller.js";
 
 export const getAvatar = (req, res) => {
-    const {path} = req.params;
-    res.sendFile(`${path.resolve()}/src/upload/avatar/${path}`);
+    res.sendFile(`${path.resolve()}/src/upload/avatar/${req.params.path}`);
 };
 
 
