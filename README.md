@@ -26,7 +26,10 @@ Használati útmutató:
 
     • A phpMyAdmin-ba importáljuk be az alábbi elérési útvonalon 
       található adatbázist - backend/ src/ database/ movie_seeker.sql
+    
+    • Ezután töltsük le, és telepítsük fel a Node.js JavaScript futtató környezetet a https://nodejs.org/weboldalról.
 
     • Visual Studio Code-ban a Terminal megnyitásával és az " npm –i " paranccsal telepítsük fel 
       az összes szükséges modult. Ezután az " npm start " paranccsal indítsuk el az alkalmazást
       amit a http://localhost:3000 címen tudunk elérni.
+      Első indításnál az alkalmazás indítása pár percet vehet igénybe.
