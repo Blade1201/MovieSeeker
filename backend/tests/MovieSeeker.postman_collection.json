@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "ff5258c0-fae6-47dc-99be-abf67d38c083",
+		"name": "MovieSeeker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"vincsEszter\",\r\n    \"email\": \"esztii@example.com\",\r\n    \"password\": \"Valami555@\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3080/authorization/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"authorization",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"credential\": \"vincsEszter\",\r\n    \"password\": \"Valami555@\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3080/authorization/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"authorization",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SearchMedia",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/api/?s=Batman",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"api",
+						""
+					],
+					"query": [
+						{
+							"key": "s",
+							"value": "Batman"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddRating",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"imdbId\": \"tt0142632\",\r\n    \"ratingScore\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3080/rating/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"rating",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetRating",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3080/rating/tt0142632",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3080",
+					"path": [
+						"rating",
+						"tt0142632"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

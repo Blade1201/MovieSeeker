@@ -30,6 +30,9 @@ Használati útmutató:
     • Ezután töltsük le, és telepítsük fel a Node.js 
       JavaScript futtató környezetet a https://nodejs.org/weboldalról.
 
+    • Utoljára a Visual Studio Code-ot kell letöltenünk, mégpedig erről a weboldalról:
+      https://code.visualstudio.com/
+
     • Visual Studio Code-ban a Terminal megnyitásával és az " npm –i " paranccsal telepítsük fel 
       az összes szükséges modult. Ezután az " npm start " paranccsal indítsuk el az alkalmazást
       amit a http://localhost:3000 címen tudunk elérni.
