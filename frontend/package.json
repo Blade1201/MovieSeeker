@@ -1,6 +1,8 @@
 {
   "name": "movie_seeker_frontend",
   "version": "0.1.0",
+  "author": "Holovacki Román (Blade1201)",
+  "license": "ISC",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.10.6",
