@@ -1,6 +1,6 @@
 import React, {useContext, useEffect, useMemo, useState} from 'react';
 import MaterialReactTable from 'material-react-table';
-import "../styles/dashboardQuit.css";
+import "../styles/dashboard-quit.css";
 import {Link} from "react-router-dom";
 import {
     AppBar,

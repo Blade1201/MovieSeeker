@@ -1,6 +1,6 @@
 import React from 'react';
 import Feature from './Feature';
-import '../../styles/hub/whatMovieseeker.css';
+import '../../styles/hub/what-movieseeker.css';
 import {Link} from "react-router-dom";
 
 
